@@ -11,6 +11,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    neovim = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     neovim-nix = {
       url = "github:willruggiano/neovim.nix";
       inputs.flake-parts.follows = "flake-parts";
@@ -101,11 +107,13 @@
     extra-substituters = [
       "https://bandithedoge.cachix.org"
       "https://nekowinston.cachix.org"
+      "https://nix-community.cachix.org"
       "https://pre-commit-hooks.cachix.org"
     ];
     extra-trusted-public-keys = [
       "bandithedoge.cachix.org-1:ZtcHw1anyEa4t6H8m3o/ctYFrwYFPAwoENSvofamE6g="
       "nekowinston.cachix.org-1:lucpmaO+JwtoZj16HCO1p1fOv68s/RL1gumpVzRHRDs="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
     ];
   };

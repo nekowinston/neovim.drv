@@ -6,8 +6,6 @@
       ...
     }: {
       neovim = {
-        package = pkgs.neovim-unwrapped;
-
         paths = with pkgs; [
           # external deps
           fd
