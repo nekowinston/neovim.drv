@@ -3,10 +3,35 @@
     perSystem = {
       inputs',
       pkgs,
+      lib,
       ...
-    }: {
+    }: let
+      env = pkgs.buildEnv {
+        name = "neovim-host-prog";
+        paths = [
+          pkgs.nodePackages.neovim
+          (pkgs.python3.withPackages (ps:
+            with ps; [
+              prompt-toolkit
+              pynvim
+              python-dotenv
+              requests
+              tiktoken
+            ]))
+        ];
+      };
+    in {
       neovim = {
         package = pkgs.neovim-unwrapped;
+
+        build.before = lib.mkForce (pkgs.writeTextFile {
+          name = "before.lua";
+          text = ''
+            vim.g.node_host_prog = "${env}/bin/neovim-node-host"
+            vim.g.python3_host_prog = "${env}/bin/python"
+          '';
+        });
+
         paths = with pkgs; [
           # external deps
           fd

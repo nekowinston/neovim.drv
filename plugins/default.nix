@@ -394,4 +394,9 @@ in rec {
   };
 
   direnv.src = srcs.direnv-vim;
+
+  copilotchat = {
+    src = srcs.copilotchat;
+    config = true;
+  };
 }

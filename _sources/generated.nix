@@ -181,6 +181,18 @@
     };
     date = "2024-02-04";
   };
+  copilotchat = {
+    pname = "copilotchat";
+    version = "2ec21ef46a3333f881d4a55c7d3431b3fe61d8f8";
+    src = fetchFromGitHub {
+      owner = "CopilotC-Nvim";
+      repo = "CopilotChat.nvim";
+      rev = "2ec21ef46a3333f881d4a55c7d3431b3fe61d8f8";
+      fetchSubmodules = false;
+      sha256 = "sha256-cg/EFSNQOCmgNaaFhJFJuAxNAuO9NaJpIRt2FxGEHwo=";
+    };
+    date = "2024-02-14";
+  };
   crates = {
     pname = "crates";
     version = "ec2b04a380c9f3a8e6ca38c230e4990d71978143";

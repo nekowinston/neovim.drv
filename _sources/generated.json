@@ -299,6 +299,26 @@
         },
         "version": "03f825956ec49e550d07875d867ea6e7c4dc8c00"
     },
+    "copilotchat": {
+        "cargoLocks": null,
+        "date": "2024-02-14",
+        "extract": null,
+        "name": "copilotchat",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "CopilotC-Nvim",
+            "repo": "CopilotChat.nvim",
+            "rev": "2ec21ef46a3333f881d4a55c7d3431b3fe61d8f8",
+            "sha256": "sha256-cg/EFSNQOCmgNaaFhJFJuAxNAuO9NaJpIRt2FxGEHwo=",
+            "type": "github"
+        },
+        "version": "2ec21ef46a3333f881d4a55c7d3431b3fe61d8f8"
+    },
     "crates": {
         "cargoLocks": null,
         "date": "2024-02-04",
