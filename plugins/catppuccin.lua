@@ -56,7 +56,7 @@ return function()
 		},
 		highlight_overrides = {
 			all = function(colors)
-				local c = {
+				local overrides = {
 					-- borders
 					FloatBorder = { fg = colors.overlay0 },
 					LspInfoBorder = { link = "FloatBorder" },
@@ -85,11 +85,11 @@ return function()
 
 				local U = require("catppuccin.utils.colors")
 				for i = 1, 20, 1 do
-					c = vim.tbl_extend("keep", c, {
-						["HeaderGradient" .. i] = { fg = U.blend(colors.mauve, colors.pink, i / 20) },
+					overrides = vim.tbl_extend("keep", overrides, {
+						["AlphaHeaderGradient" .. i] = { fg = U.blend(colors.sky, colors.pink, i / 20) },
 					})
 				end
-				return c
+				return overrides
 			end,
 		},
 	})

@@ -1,36 +1,38 @@
 return function()
+	local flash = require("flash")
+
 	require("which-key").register({
 		["s"] = {
 			function()
-				require("flash").jump()
+				flash.jump()
 			end,
 			"Flash",
 			mode = { "n", "x", "o" },
 		},
 		["S"] = {
 			function()
-				require("flash").treesitter()
+				flash.treesitter()
 			end,
 			"Flash Treesitter",
 			mode = { "n", "o", "x" },
 		},
 		["r"] = {
 			function()
-				require("flash").remote()
+				flash.remote()
 			end,
 			"Remote Flash",
 			mode = "o",
 		},
 		["R"] = {
 			function()
-				require("flash").treesitter_search()
+				flash.treesitter_search()
 			end,
 			"Treesitter Search",
 			mode = { "o", "x" },
 		},
 		["<c-f>"] = {
 			function()
-				require("flash").toggle()
+				flash.toggle()
 			end,
 			"Toggle Flash Search",
 			mode = { "c" },

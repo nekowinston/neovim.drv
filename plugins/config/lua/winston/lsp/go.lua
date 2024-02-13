@@ -47,7 +47,7 @@ M.setup = function(opts)
 		run_in_floaterm = false,
 		trouble = true,
 		test_efm = false,
-		luasnip = false,
+		luasnip = true,
 	})
 end
 

@@ -20,9 +20,7 @@ null.setup({
 		}),
 		null.builtins.formatting.gofumpt,
 		null.builtins.formatting.prettier.with({
-			filetypes = {
-				"astro",
-			},
+			filetypes = { "astro" },
 		}),
 		null.builtins.formatting.ruff,
 		null.builtins.formatting.rustfmt,
