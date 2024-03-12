@@ -12,7 +12,8 @@
     };
 
     neovim-nix = {
-      url = "github:willruggiano/neovim.nix";
+      # url = "github:willruggiano/neovim.nix";
+      url = "github:nekowinston/neovim.nix/feat/add-python3-options";
       inputs.flake-parts.follows = "flake-parts";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.pre-commit-nix.follows = "pre-commit-nix";

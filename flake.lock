@@ -325,15 +325,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1706936572,
-        "narHash": "sha256-pEBWnoZX4F7+rzzm3fpLENFmgj5Nl2vW60EVJwwSk/c=",
-        "owner": "willruggiano",
+        "lastModified": 1710210656,
+        "narHash": "sha256-+pz/9/DDE6bm/7havI5GW4/u46eBitCz/G7xhXyy96k=",
+        "owner": "nekowinston",
         "repo": "neovim.nix",
-        "rev": "3384f3cabecfe536ce5cd68eb3872141c9dd9450",
+        "rev": "f19e7950e893d6fda71a3b844e5c1192cc627739",
         "type": "github"
       },
       "original": {
-        "owner": "willruggiano",
+        "owner": "nekowinston",
+        "ref": "feat/add-python3-options",
         "repo": "neovim.nix",
         "type": "github"
       }
