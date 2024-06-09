@@ -1,6 +1,5 @@
-# FIXME:
-# All occurrances of `<space>` should be `<leader>`,
-# but this requires injection in `before.lua` via neovim.nix
+# FIXME: All occurrances of `<space>` should be `<leader>`, but this requires
+# injection in `before.lua` via neovim.nix
 
 { pkgs }:
 let
@@ -28,8 +27,8 @@ in
         "<tab>" = "󰌒 ";
       };
       window = {
-        # FIXME: sort out the load order for `config` so that `vim.g` is available here
-        # border = mkLuaInline "vim.g.bc.style";
+        # FIXME: sort out the load order for `config` so that `vim.g` is
+        # available here border = mkLuaInline "vim.g.bc.style";
         margin = [
           0
           0
@@ -169,13 +168,22 @@ in
   alpha = {
     package = plugins.alpha-nvim;
     config = ./alpha.lua;
-    dependencies = {
-      neovim-session-manager = {
-        package = plugins.neovim-session-manager;
-        main = "session_manager";
-        config.autoload_mode = "CurrentDir";
-      };
-    };
+  };
+  neovim-session-manager = {
+    package = plugins.neovim-session-manager;
+    main = "session_manager";
+    config = # lua
+      ''
+        function()
+          local config = require('session_manager.config')
+          require('session_manager').setup({
+            autoload_mode = {
+              config.AutoloadMode.GitSession,
+              config.AutoloadMode.CurrentDir
+            }
+          })
+        end
+      '';
   };
   auto-dark-mode = {
     package = plugins.auto-dark-mode-nvim;
@@ -527,7 +535,22 @@ in
     cmd = "PyLspCreateVenv";
   };
   # lazy by default
-  rustaceanvim.package = plugins.rustaceanvim;
+  rustaceanvim = {
+    package = plugins.rustaceanvim;
+    # FIXME: this should use `vim.g.bc.style`
+    config = # lua
+      ''
+        function()
+          vim.g.rustaceanvim = {
+            tools = {
+              float_win_config = {
+                border = "rounded"
+              }
+            }
+          }
+        end
+      '';
+  };
 
   crates = {
     package = plugins.crates-nvim;
