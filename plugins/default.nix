@@ -96,9 +96,8 @@ in
         "markdown"
         "markdown_inline"
         "nix"
-        "norg"
-        "norg_meta"
         "nu"
+        "objc"
         "php"
         "php_only"
         "pug"
@@ -145,6 +144,10 @@ in
       	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
       end
     '';
+  };
+  vim-applescript = {
+    package = plugins.vim-applescript;
+    ft = "applescript";
   };
 
   markdown-preview = {

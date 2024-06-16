@@ -1344,6 +1344,26 @@
         },
         "version": "c43d9580c3ff5999a1eabca849f807ab33787ea7"
     },
+    "vim-applescript": {
+        "cargoLocks": null,
+        "date": "2022-01-21",
+        "extract": null,
+        "name": "vim-applescript",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "mityu",
+            "repo": "vim-applescript",
+            "rev": "a39af8fc7e4caf581366e2917d558f6232e4db36",
+            "sha256": "sha256-9asF5VMaKz3lfSsCTrvkicffgMbHY88wDZ+LJR9QTvY=",
+            "type": "github"
+        },
+        "version": "a39af8fc7e4caf581366e2917d558f6232e4db36"
+    },
     "vim-dadbod": {
         "cargoLocks": null,
         "date": "2024-05-31",

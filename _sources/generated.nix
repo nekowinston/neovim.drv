@@ -811,6 +811,18 @@
     };
     date = "2024-01-16";
   };
+  vim-applescript = {
+    pname = "vim-applescript";
+    version = "a39af8fc7e4caf581366e2917d558f6232e4db36";
+    src = fetchFromGitHub {
+      owner = "mityu";
+      repo = "vim-applescript";
+      rev = "a39af8fc7e4caf581366e2917d558f6232e4db36";
+      fetchSubmodules = false;
+      sha256 = "sha256-9asF5VMaKz3lfSsCTrvkicffgMbHY88wDZ+LJR9QTvY=";
+    };
+    date = "2022-01-21";
+  };
   vim-dadbod = {
     pname = "vim-dadbod";
     version = "7888cb7164d69783d3dce4e0283decd26b82538b";

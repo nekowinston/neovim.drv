@@ -278,7 +278,9 @@ return function()
 		nushell = {},
 		phpactor = {},
 		serve_d = {},
-		sourcekit = {},
+		sourcekit = {
+			filetypes = { "swift", "c", "cpp", "objc", "objcpp" },
+		},
 		tailwindcss = {},
 		taplo = {},
 		teal_ls = {},

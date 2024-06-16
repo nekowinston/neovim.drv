@@ -267,6 +267,10 @@ src.git = "https://github.com/folke/trouble.nvim"
 fetch.github = "pmizio/typescript-tools.nvim"
 src.git = "https://github.com/pmizio/typescript-tools.nvim"
 
+[vim-applescript]
+fetch.github = "mityu/vim-applescript"
+src.git = "https://github.com/mityu/vim-applescript"
+
 [vim-dadbod]
 fetch.github = "tpope/vim-dadbod"
 src.git = "https://github.com/tpope/vim-dadbod"
