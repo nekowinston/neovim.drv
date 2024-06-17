@@ -419,6 +419,26 @@
         },
         "version": "4a143f13e122ab91abdc88f89eefbe70a4858a56"
     },
+    "haskell-tools-nvim": {
+        "cargoLocks": null,
+        "date": "2024-06-03",
+        "extract": null,
+        "name": "haskell-tools-nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "mrcjkb",
+            "repo": "haskell-tools.nvim",
+            "rev": "ce95d095fc5abe29868c1bca35ce815803a90148",
+            "sha256": "sha256-3ZOXDG6bStlOa8hWN62M+ZHiEql6c2ETuSkPmI6xpNU=",
+            "type": "github"
+        },
+        "version": "ce95d095fc5abe29868c1bca35ce815803a90148"
+    },
     "indent-blankline-nvim": {
         "cargoLocks": null,
         "date": "2024-05-23",

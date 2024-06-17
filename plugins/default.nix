@@ -554,6 +554,23 @@ in
         end
       '';
   };
+  # lazy by default
+  haskell-tools = {
+    package = plugins.haskell-tools-nvim;
+    config = # lua
+      ''
+        function()
+          vim.g.haskell_tools = {
+            hls = {
+              settings = {
+                cabalFormattingProvider = "cabalfmt",
+                formattingProvider = "ormolu"
+              }
+            }
+          }
+        end
+      '';
+  };
 
   crates = {
     package = plugins.crates-nvim;

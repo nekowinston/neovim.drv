@@ -82,6 +82,10 @@ src.git = "https://github.com/rafamadriz/friendly-snippets"
 fetch.github = "lewis6991/gitsigns.nvim"
 src.git = "https://github.com/lewis6991/gitsigns.nvim"
 
+[haskell-tools-nvim]
+fetch.github = "mrcjkb/haskell-tools.nvim"
+src.git = "https://github.com/mrcjkb/haskell-tools.nvim"
+
 [indent-blankline-nvim]
 fetch.github = "lukas-reineke/indent-blankline.nvim"
 src.git = "https://github.com/lukas-reineke/indent-blankline.nvim"

@@ -253,6 +253,18 @@
     };
     date = "2024-06-07";
   };
+  haskell-tools-nvim = {
+    pname = "haskell-tools-nvim";
+    version = "ce95d095fc5abe29868c1bca35ce815803a90148";
+    src = fetchFromGitHub {
+      owner = "mrcjkb";
+      repo = "haskell-tools.nvim";
+      rev = "ce95d095fc5abe29868c1bca35ce815803a90148";
+      fetchSubmodules = false;
+      sha256 = "sha256-3ZOXDG6bStlOa8hWN62M+ZHiEql6c2ETuSkPmI6xpNU=";
+    };
+    date = "2024-06-03";
+  };
   indent-blankline-nvim = {
     pname = "indent-blankline-nvim";
     version = "d98f537c3492e87b6dc6c2e3f66ac517528f406f";
