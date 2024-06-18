@@ -292,31 +292,31 @@ return function()
 						parentSkeletonSelectedFirst = true,
 					},
 					schemas = vim.tbl_extend("keep", {
-          -- https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.0-standalone/all.json
-          -- stylua: ignore
-          kubernetes = {
-            'deployment.yaml', 'deployment.yml', 'deployment-*.yaml', 'deployment-*.yml', '*-deployment.yaml', '*-deployment.yml',
-            'clusterrole-contour.yaml', 'clusterrole-contour.yml',
-            'clusterrole.yaml', 'clusterrole.yml',
-            'clusterrolebinding.yaml', 'clusterrolebinding.yml',
-            'configmap.yaml', 'configmap.yml',
-            'cronjob.yaml', 'cronjob.yml',
-            'daemonset.yaml', 'daemonset.yml',
-            'hpa.yaml', 'hpa.yml',
-            'ingress.yaml', 'ingress.yml',
-            'job.yaml', 'job.yml',
-            'kubectl-edit-*.yaml',
-            'namespace.yaml', 'namespace.yml',
-            'pvc.yaml', 'pvc.yml',
-            'rbac.yaml', 'rbac.yml',
-            'replicaset.yaml', 'replicaset.yml',
-            'role.yaml', 'role.yml',
-            'rolebinding.yaml', 'rolebinding.yml',
-            'secret.yaml', 'secret.yml',
-            'service.yaml', 'service.yml', 'service-*.yaml', 'service-*.yml', '*-service.yaml', '*-service.yml',
-            'service-account.yaml', 'service-account.yml', 'serviceaccount.yaml', 'serviceaccount.yml', 'serviceaccounts.yaml', 'serviceaccounts.yml', 'sa.yaml', 'sa.yml',
-            'statefulset.yaml', 'statefulset.yml'
-          },
+            -- https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.0-standalone/all.json
+            -- stylua: ignore
+            kubernetes = {
+              'deployment.yaml', 'deployment.yml', 'deployment-*.yaml', 'deployment-*.yml', '*-deployment.yaml', '*-deployment.yml',
+              'clusterrole-contour.yaml', 'clusterrole-contour.yml',
+              'clusterrole.yaml', 'clusterrole.yml',
+              'clusterrolebinding.yaml', 'clusterrolebinding.yml',
+              'configmap.yaml', 'configmap.yml',
+              'cronjob.yaml', 'cronjob.yml',
+              'daemonset.yaml', 'daemonset.yml',
+              'hpa.yaml', 'hpa.yml',
+              'ingress.yaml', 'ingress.yml',
+              'job.yaml', 'job.yml',
+              'kubectl-edit-*.yaml',
+              'namespace.yaml', 'namespace.yml',
+              'pvc.yaml', 'pvc.yml',
+              'rbac.yaml', 'rbac.yml',
+              'replicaset.yaml', 'replicaset.yml',
+              'role.yaml', 'role.yml',
+              'rolebinding.yaml', 'rolebinding.yml',
+              'secret.yaml', 'secret.yml',
+              'service.yaml', 'service.yml', 'service-*.yaml', 'service-*.yml', '*-service.yaml', '*-service.yml',
+              'service-account.yaml', 'service-account.yml', 'serviceaccount.yaml', 'serviceaccount.yml', 'serviceaccounts.yaml', 'serviceaccounts.yml', 'sa.yaml', 'sa.yml',
+              'statefulset.yaml', 'statefulset.yml'
+            },
 					}, schemastore.yaml.schemas()),
 				},
 				redhat = {
@@ -326,6 +326,7 @@ return function()
 				},
 			},
 		},
+		zls = {},
 	}
 
 	for server, config in pairs(servers) do

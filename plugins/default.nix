@@ -112,6 +112,7 @@ in
         "vimdoc"
         "vue"
         "yaml"
+        "zig"
       ];
     };
     config = ./nvim-treesitter.lua;
