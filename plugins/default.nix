@@ -56,7 +56,7 @@ in
   };
 
   nvim-treesitter = {
-    event = "VeryLazy";
+    event = "BufRead";
     package = pkgs.vimPlugins.nvim-treesitter.override {
       grammars = [
         "arduino"
@@ -82,9 +82,11 @@ in
         "gosum"
         "gpg"
         "graphql"
+        "groovy"
         "haskell"
         "hlsl"
         "html"
+        "java"
         "javascript"
         "jsdoc"
         "json"
@@ -362,6 +364,7 @@ in
         yaml = true;
       };
     };
+    cmd = "Copilot";
     event = "InsertEnter";
   };
 
@@ -512,6 +515,7 @@ in
   lspconfig = {
     package = plugins.nvim-lspconfig;
     config = ./lsp.lua;
+    event = "BufRead";
     dependencies = {
       cmp.package = plugins.nvim-cmp;
       cmp-buffer.package = plugins.cmp-buffer;
@@ -572,6 +576,7 @@ in
         end
       '';
   };
+  nvim-jdtls.package = plugins.nvim-jdtls;
 
   crates = {
     package = plugins.crates-nvim;

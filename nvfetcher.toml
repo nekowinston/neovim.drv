@@ -170,6 +170,10 @@ src.git = "https://github.com/rcarriga/nvim-dap-ui"
 fetch.github = "theHamsta/nvim-dap-virtual-text"
 src.git = "https://github.com/theHamsta/nvim-dap-virtual-text"
 
+[nvim-jdtls]
+fetch.github = "mfussenegger/nvim-jdtls"
+src.git = "https://github.com/mfussenegger/nvim-jdtls"
+
 [nvim-lspconfig]
 fetch.github = "neovim/nvim-lspconfig"
 src.git = "https://github.com/neovim/nvim-lspconfig"
