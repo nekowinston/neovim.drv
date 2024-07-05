@@ -203,9 +203,9 @@ return function()
 				"fix_all",
 				"remove_unused",
 			},
-    -- Nix silliness
-    -- stylua: ignore
-    tsserver_path = vim.fn.resolve(vim.fn.exepath("tsserver") .. "/../../lib/node_modules/typescript/bin/tsserver"),
+      -- Nix silliness
+      -- stylua: ignore
+      tsserver_path = vim.fn.resolve(vim.fn.exepath("tsserver") .. "/../../lib/node_modules/typescript/bin/tsserver"),
 		},
 	})
 
