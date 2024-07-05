@@ -18,10 +18,6 @@
             nixd
             nixfmt-rfc-style
 
-            # python
-            ruff
-            nodePackages.pyright
-
             # shell scripting
             nodePackages.bash-language-server
             shellcheck
@@ -36,7 +32,6 @@
             nodePackages.vscode-langservers-extracted
             nodePackages.yaml-language-server
             nodejs
-            phpactor
 
             # data formats
             dhall-lsp-server
