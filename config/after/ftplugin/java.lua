@@ -25,6 +25,9 @@ require("jdtls").start_or_attach({
 		"-javaagent:" .. vim.g.lombok_path,
 	},
 	-- stylua: ignore end
+	init_options = {
+		bundles = { vim.env.JAVA_DEBUG_JAR },
+	},
 	root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
 	settings = {
 		java = {
