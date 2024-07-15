@@ -1,0 +1,39 @@
+diff --git a/pom.xml b/pom.xml
+index c277e8a..7b4f95b 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -13,6 +13,7 @@
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+         <tycho-version>4.0.6</tycho-version>
+         <checkstyleDir>${basedir}</checkstyleDir>
++        <project.build.outputTimestamp>2024-01-01T00:00:00Z</project.build.outputTimestamp>
+     </properties>
+ 
+     <licenses>
+@@ -146,7 +147,25 @@
+                             </artifact>
+                         </target>
+                     </configuration>
+-                </plugin>
++                  </plugin>
++                  <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-enforcer-plugin</artifactId>
++                    <version>3.3.0</version>
++                    <executions>
++                      <execution>
++                        <id>enforce-plugin-versions</id>
++                        <goals>
++                          <goal>enforce</goal>
++                        </goals>
++                        <configuration>
++                          <rules>
++                            <requirePluginVersions />
++                          </rules>
++                        </configuration>
++                      </execution>
++                    </executions>
++                  </plugin>
+             </plugins>
+         </pluginManagement>
+         <plugins>

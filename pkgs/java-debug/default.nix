@@ -11,15 +11,17 @@ maven.buildMavenPackage rec {
   src = fetchFromGitHub {
     owner = "microsoft";
     repo = pname;
-    rev = version;
+    rev = "refs/tags/${version}";
     hash = "sha256-Lke+yyCUqcoGYS6pNYXdQdAn9uZ+S3pk9JVhfakAFvY=";
   };
 
-  mvnHash = "sha256-rZRYYcKxM0ss7zXcNWdJUNf0XL4C3+7bIah1JzpXy1c=";
+  patches = [ ./make-deterministic.patch ];
+
+  mvnHash = "sha256-Am2jZvQOl+XAGiPK47DWfgaeW609KRHp3D+7XjJ1I3A=";
 
   installPhase = ''
-    mkdir -p $out/share/java-debug
-    install -Dm644 com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-${version}.jar $out/share/java-debug/java-debug.jar
+    mkdir -p "$out/share/java-debug"
+    install -Dm644 "com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-${version}.jar" "$out/share/java-debug/java-debug.jar"
   '';
 
   meta = with lib; {
