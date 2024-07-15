@@ -1,7 +1,9 @@
 {
   fetchFromGitHub,
+  jdk,
   lib,
   maven,
+  stdenv,
   ...
 }:
 maven.buildMavenPackage rec {
@@ -17,7 +19,7 @@ maven.buildMavenPackage rec {
 
   patches = [ ./make-deterministic.patch ];
 
-  mvnHash = "sha256-Am2jZvQOl+XAGiPK47DWfgaeW609KRHp3D+7XjJ1I3A=";
+  mvnHash = "sha256-29ypLMSh32lEuvh3FZnDB0fO/bOuSPLbXCg4vcL9mPI=";
 
   installPhase = ''
     mkdir -p "$out/share/java-debug"
@@ -28,6 +30,7 @@ maven.buildMavenPackage rec {
     description = "The debug server implementation for Java. It conforms to the debug protocol of Visual Studio Code (DAP, Debugger Adapter Protocol)";
     homepage = "https://github.com/microsoft/java-debug";
     license = licenses.epl10;
+    platforms = jdk.meta.platforms;
     maintainers = [ ];
   };
 }
