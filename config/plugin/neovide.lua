@@ -37,9 +37,9 @@ vim.keymap.set("n", "<D-->", function()
 end)
 
 if system == "Darwin" then
-	vim.keymap.set({ "n", "v" }, "<D-v>", '"+p')
+	vim.keymap.set("n", "<D-s>", ":w<CR>")
 	vim.keymap.set("v", "<D-c>", '"+y')
-else
-	vim.keymap.set({ "n", "v" }, "<C-v>", '"+p')
-	vim.keymap.set("v", "<C-c>", '"+y')
+	vim.keymap.set({ "n", "v" }, "<D-v>", '"+P')
+	vim.keymap.set("c", "<D-v>", "<C-R>+")
+	vim.keymap.set("i", "<D-v>", '<esc>l"+Pli')
 end

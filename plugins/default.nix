@@ -27,8 +27,9 @@ in
         "<tab>" = "󰌒 ";
       };
       window = {
-        # FIXME: sort out the load order for `config` so that `vim.g` is
-        # available here border = mkLuaInline "vim.g.bc.style";
+        # FIXME: sort out the load order for `config` so that `vim.g` is 
+        # available here:
+        # border = mkLuaInline "vim.g.bc.style";
         margin = [
           0
           0
@@ -231,7 +232,7 @@ in
       };
       notification = {
         override_vim_notify = true;
-        window.winblend = 0;
+        window.winblend = 30;
       };
     };
     event = "VeryLazy";
@@ -545,13 +546,13 @@ in
   # lazy by default
   rustaceanvim = {
     package = plugins.rustaceanvim;
-    # FIXME: this should use `vim.g.bc.style`
     config = # lua
       ''
         function()
           vim.g.rustaceanvim = {
             tools = {
               float_win_config = {
+                -- FIXME: this should use `vim.g.bc.style`
                 border = "rounded"
               }
             }
@@ -565,14 +566,7 @@ in
     config = # lua
       ''
         function()
-          vim.g.haskell_tools = {
-            hls = {
-              settings = {
-                cabalFormattingProvider = "cabalfmt",
-                formattingProvider = "ormolu"
-              }
-            }
-          }
+          vim.g.haskell_tools = {}
         end
       '';
   };
@@ -656,10 +650,17 @@ in
     config = {
       open_mapping = "<C-t>";
       shade_terminals = false;
+      direction = "float";
+      float_opts = {
+        # FIXME: this should use `vim.g.bc.style`
+        border = "rounded";
+        winblend = 10;
+      };
+      winbar.enabled = true;
     };
     cmd = "ToggleTerm";
     keys = ''
-      { { "<C-t>", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" } }
+      { { "<C-t>", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle Terminal" } }
     '';
   };
 
