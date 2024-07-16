@@ -16,9 +16,12 @@ maven.buildMavenPackage rec {
     hash = "sha256-Lke+yyCUqcoGYS6pNYXdQdAn9uZ+S3pk9JVhfakAFvY=";
   };
 
+  buildOffline = true;
+
   patches = [ ./make-deterministic.patch ];
 
-  mvnHash = "sha256-J3u3P27WL38M+tWtMj+zGSedoUh7Qw8ARQL7ykW4UoU=";
+  mvnHash = "sha256-+W9Ks3RXVkMh9ZEvJScSoF3PqA8nNFUJdeQc88TEUYc=";
+  mvnParameters = "-Dproject.build.outputTimestamp=1980-01-01T00:00:02Z";
 
   installPhase = ''
     mkdir -p "$out/share/java-debug"
