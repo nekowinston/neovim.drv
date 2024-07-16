@@ -1,5 +1,5 @@
 diff --git a/pom.xml b/pom.xml
-index c277e8a..5edcdfc 100644
+index c277e8a..bdd3add 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -13,6 +13,7 @@
@@ -15,22 +15,22 @@ index c277e8a..5edcdfc 100644
          <pluginManagement>
              <plugins>
 +                <plugin>
-+                  <groupId>org.apache.maven.plugins</groupId>
-+                  <artifactId>maven-enforcer-plugin</artifactId>
-+                  <version>3.3.0</version>
-+                  <executions>
-+                    <execution>
-+                      <id>enforce-plugin-versions</id>
-+                      <goals>
-+                        <goal>enforce</goal>
-+                      </goals>
-+                      <configuration>
-+                        <rules>
-+                          <requirePluginVersions />
-+                        </rules>
-+                      </configuration>
-+                    </execution>
-+                  </executions>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-enforcer-plugin</artifactId>
++                    <version>3.3.0</version>
++                    <executions>
++                        <execution>
++                            <id>enforce-plugin-versions</id>
++                            <goals>
++                                <goal>enforce</goal>
++                            </goals>
++                            <configuration>
++                                <rules>
++                                    <requirePluginVersions />
++                                </rules>
++                            </configuration>
++                        </execution>
++                    </executions>
 +                </plugin>
                  <plugin>
                      <groupId>org.apache.maven.plugins</groupId>
@@ -43,4 +43,66 @@ index c277e8a..5edcdfc 100644
                      <executions>
                          <execution>
                              <?m2e execute onConfiguration?>
+@@ -147,6 +167,61 @@
+                         </target>
+                     </configuration>
+                 </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-surefire-plugin</artifactId>
++                    <version>3.2.5</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-jar-plugin</artifactId>
++                    <version>3.4.1</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-clean-plugin</artifactId>
++                    <version>3.2.0</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-install-plugin</artifactId>
++                    <version>3.1.2</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-site-plugin</artifactId>
++                    <version>3.12.1</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-resources-plugin</artifactId>
++                    <version>3.3.1</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-deploy-plugin</artifactId>
++                    <version>3.1.2</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.eclipse.tycho</groupId>
++                    <artifactId>tycho-p2-plugin</artifactId>
++                    <version>${tycho-version}</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.eclipse.tycho</groupId>
++                    <artifactId>tycho-ds-plugin</artifactId>
++                    <version>${tycho-version}</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.eclipse.tycho</groupId>
++                    <artifactId>tycho-packaging-plugin</artifactId>
++                    <version>${tycho-version}</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.eclipse.tycho</groupId>
++                    <artifactId>tycho-bnd-plugin</artifactId>
++                    <version>${tycho-version}</version>
++                </plugin>
+             </plugins>
+         </pluginManagement>
+         <plugins>
 

@@ -3,7 +3,6 @@
   jdk,
   lib,
   maven,
-  stdenv,
   ...
 }:
 maven.buildMavenPackage rec {
@@ -19,7 +18,7 @@ maven.buildMavenPackage rec {
 
   patches = [ ./make-deterministic.patch ];
 
-  mvnHash = "sha256-29ypLMSh32lEuvh3FZnDB0fO/bOuSPLbXCg4vcL9mPI=";
+  mvnHash = "sha256-J3u3P27WL38M+tWtMj+zGSedoUh7Qw8ARQL7ykW4UoU=";
 
   installPhase = ''
     mkdir -p "$out/share/java-debug"
