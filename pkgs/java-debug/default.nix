@@ -20,22 +20,9 @@ maven.buildMavenPackage rec {
 
   patches = [ ./make-deterministic.patch ];
 
-  manualMvnArtifacts = [
-    "org.apache.maven.plugins:maven-jar-plugin:3.4.1"
-    "org.apache.maven.plugins:maven-clean-plugin:3.2.0"
-    "org.apache.maven.plugins:maven-install-plugin:3.1.2"
-    "org.apache.maven.plugins:maven-site-plugin:3.12.1"
-    "org.apache.maven.plugins:maven-resources-plugin:3.3.1"
-    "org.apache.maven.plugins:maven-deploy-plugin:3.1.2"
-    "org.apache.maven.surefire:surefire-junit4:3.2.5"
-    "org.apache.maven.plugins:maven-surefire-plugin:3.2.5"
-    "org.eclipse.tycho:tycho-p2-plugin:4.0.6"
-    "org.eclipse.tycho:tycho-ds-plugin:4.0.6"
-    "org.eclipse.tycho:tycho-packaging-plugin:4.0.6"
-    "org.eclipse.tycho:tycho-bnd-plugin:4.0.6"
-  ];
+  manualMvnArtifacts = [ "org.apache.maven.plugins:maven-surefire-plugin:3.2.5" ];
 
-  mvnHash = "sha256-U8hRHfGPb8AwzoMWVyL3jyaPL9rOy341A9NV7hef2oA=";
+  mvnHash = "sha256-ZucMxrfCK7ybyHp6J/5GtOmHDS0Du86aeI+CypFMvR4=";
   mvnParameters = "-Dproject.build.outputTimestamp=1980-01-01T00:00:02Z";
 
   installPhase = ''
