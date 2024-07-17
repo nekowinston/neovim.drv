@@ -15,30 +15,7 @@ in
   };
 
   plenary.package = plugins.plenary-nvim;
-  which-key = {
-    package = plugins.which-key-nvim;
-    config = {
-      key_labels = {
-        "<space>" = "󱁐 ";
-        "<leader>" = "󱁐 ";
-        "<bs>" = "󰌍 ";
-        "<cr>" = "󰌑 ";
-        "<esc>" = "󱊷 ";
-        "<tab>" = "󰌒 ";
-      };
-      window = {
-        # FIXME: sort out the load order for `config` so that `vim.g` is 
-        # available here:
-        # border = mkLuaInline "vim.g.bc.style";
-        margin = [
-          0
-          0
-          0
-          0
-        ];
-      };
-    };
-  };
+  which-key.package = plugins.which-key-nvim;
   nvim-tree = {
     package = plugins.nvim-tree-lua;
     config = {
