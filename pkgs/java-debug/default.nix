@@ -1,15 +1,11 @@
 {
   fetchFromGitHub,
-  jdk17,
+  jdk,
   lib,
   maven,
   ...
 }:
-let
-  jdk = jdk17;
-  maven' = maven.override { inherit jdk; };
-in
-maven'.buildMavenPackage rec {
+maven.buildMavenPackage rec {
   pname = "java-debug";
   version = "0.53.0";
 
