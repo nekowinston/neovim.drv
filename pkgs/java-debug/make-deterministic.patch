@@ -35,48 +35,6 @@ index bb14494..5057dba 100644
              </plugin>
          </plugins>
      </build>
-diff --git a/com.microsoft.java.debug.plugin/pom.xml b/com.microsoft.java.debug.plugin/pom.xml
-index 93323db..2fd6ff3 100644
---- a/com.microsoft.java.debug.plugin/pom.xml
-+++ b/com.microsoft.java.debug.plugin/pom.xml
-@@ -12,6 +12,24 @@
-     <name>${base.name} :: Debugger Plugin</name>
-     <build>
-         <plugins>
-+            <plugin>
-+                <groupId>org.apache.maven.plugins</groupId>
-+                <artifactId>maven-enforcer-plugin</artifactId>
-+                <version>3.3.0</version>
-+                <executions>
-+                    <execution>
-+                        <id>enforce-plugin-versions</id>
-+                        <goals>
-+                            <goal>enforce</goal>
-+                        </goals>
-+                        <configuration>
-+                            <rules>
-+                                <requirePluginVersions />
-+                            </rules>
-+                        </configuration>
-+                    </execution>
-+                </executions>
-+            </plugin>
-             <plugin>
-                 <groupId>org.eclipse.tycho</groupId>
-                 <artifactId>tycho-maven-plugin</artifactId>
-@@ -32,10 +50,12 @@
-             <plugin>
-                 <groupId>org.apache.maven.plugins</groupId>
-                 <artifactId>maven-checkstyle-plugin</artifactId>
-+                <version>3.4.0</version>
-             </plugin>
-             <plugin>
-                 <groupId>org.apache.maven.plugins</groupId>
-                 <artifactId>maven-dependency-plugin</artifactId>
-+                <version>3.7.1</version>
-                 <configuration>
-                     <artifactItems>
-                         <artifactItem>
 diff --git a/pom.xml b/pom.xml
 index c277e8a..19d00e7 100644
 --- a/pom.xml

@@ -1,11 +1,15 @@
 {
   fetchFromGitHub,
-  jdk,
+  jdk17,
   lib,
   maven,
   ...
 }:
-maven.buildMavenPackage rec {
+let
+  jdk = jdk17;
+  maven' = maven.override { inherit jdk; };
+in
+maven'.buildMavenPackage rec {
   pname = "java-debug";
   version = "0.53.0";
 
@@ -16,18 +20,19 @@ maven.buildMavenPackage rec {
     hash = "sha256-Lke+yyCUqcoGYS6pNYXdQdAn9uZ+S3pk9JVhfakAFvY=";
   };
 
-  buildOffline = true;
-
   patches = [ ./make-deterministic.patch ];
 
-  manualMvnArtifacts = [ "org.apache.maven.plugins:maven-surefire-plugin:3.2.5" ];
-
-  mvnHash = "sha256-ZucMxrfCK7ybyHp6J/5GtOmHDS0Du86aeI+CypFMvR4=";
-  mvnParameters = "-Dproject.build.outputTimestamp=1980-01-01T00:00:02Z";
+  buildOffline = true;
+  mvnHash = "sha256-GtDyFlMmmw0Xtbs/wyhsNW/DtO0KZ/lRkATngNIhT/o=";
+  mvnParameters = lib.escapeShellArgs [
+    "-Dproject.build.outputTimestamp=1980-01-01T00:00:02Z"
+    "--projects=com.microsoft.java.debug.core"
+  ];
+  manualMvnArtifacts = [ "org.apache.maven.surefire:surefire-junit4:3.2.5" ];
 
   installPhase = ''
     mkdir -p "$out/share/java-debug"
-    install -Dm644 "com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-${version}.jar" "$out/share/java-debug/java-debug.jar"
+    install -Dm644 "com.microsoft.java.debug.core/target/com.microsoft.java.debug.core-${version}.jar" "$out/share/java-debug/java-debug.jar"
   '';
 
   meta = with lib; {
