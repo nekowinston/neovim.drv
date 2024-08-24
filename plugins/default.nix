@@ -124,15 +124,16 @@ in
   nvim-autopairs = {
     package = plugins.nvim-autopairs;
     event = "InsertEnter";
-    config = ''
-      function()
-      	require("nvim-autopairs").setup()
+    config = # lua
+      ''
+        function()
+        	require("nvim-autopairs").setup()
 
-      	local cmp = require("cmp")
-      	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-      	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-      end
-    '';
+        	local cmp = require("cmp")
+        	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+        	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+        end
+      '';
   };
   vim-applescript = {
     package = plugins.vim-applescript;
@@ -149,11 +150,12 @@ in
   };
   vim-table-mode = {
     package = plugins.vim-table-mode;
-    config = ''
-      function()
-        vim.cmd([[autocmd FileType markdown let g:table_mode_corner='|']])
-      end
-    '';
+    config = # lua
+      ''
+        function()
+          vim.cmd([[autocmd FileType markdown let g:table_mode_corner='|']])
+        end
+      '';
     ft = "markdown";
   };
 
@@ -185,7 +187,10 @@ in
   };
   milspec = {
     package = plugins.milspec-nvim;
-    config = "function() vim.cmd.colorscheme('milspec') end";
+    config = # lua
+      ''
+        function() vim.cmd.colorscheme('milspec') end
+      '';
     lazy = false;
     priority = 1000;
     dev = true;
@@ -194,15 +199,16 @@ in
   flash = {
     package = plugins.flash-nvim;
     config = true;
-    keys = ''
-      {
-        { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-        { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-        { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-        { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-        { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-      }
-    '';
+    keys = # lua
+      ''
+        {
+          { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+          { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+          { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+          { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+          { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+        }
+      '';
   };
 
   dressing = {
@@ -303,22 +309,23 @@ in
   };
   tagalong-vim = {
     package = plugins.tagalong-vim;
-    config = ''
-      function()
-        vim.g.tagalong_filetypes = {
-          "astro",
-          "blade",
-          "ejs",
-          "html",
-          "htmldjango",
-          "htmltera",
-          "javascriptreact",
-          "php",
-          "typescriptreact",
-          "xml",
-        }
-      end
-    '';
+    config = # lua
+      ''
+        function()
+          vim.g.tagalong_filetypes = {
+            "astro",
+            "blade",
+            "ejs",
+            "html",
+            "htmldjango",
+            "htmltera",
+            "javascriptreact",
+            "php",
+            "typescriptreact",
+            "xml",
+          }
+        end
+      '';
     ft = [
       "astro"
       "blade"
@@ -367,9 +374,10 @@ in
     package = plugins.neogit;
     config.integrations.diffview = true;
     cmd = "Neogit";
-    keys = ''
-      { { "<space>ng", "<cmd>Neogit<cr>", desc = "Neogit" } }
-    '';
+    keys = # lua
+      ''
+        { { "<space>ng", "<cmd>Neogit<cr>", desc = "Neogit" } }
+      '';
   };
   diffview = {
     package = plugins.diffview-nvim;
@@ -377,9 +385,10 @@ in
       "DiffviewOpen"
       "DiffviewFileHistory"
     ];
-    keys = ''
-      { { "<space>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview" } }
-    '';
+    keys = # lua
+      ''
+        { { "<space>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview" } }
+      '';
   };
 
   # presence = {
@@ -389,11 +398,12 @@ in
   # };
 
   wakatime = {
-    enabled = ''
-      function()
-        return vim.fn.glob("~/.wakatime.cfg") ~= "" or vim.fn.glob("$WAKATIME_HOME/.wakatime.cfg") ~= ""
-      end
-    '';
+    enabled = # lua
+      ''
+        function()
+          return vim.fn.glob("~/.wakatime.cfg") ~= "" or vim.fn.glob("$WAKATIME_HOME/.wakatime.cfg") ~= ""
+        end
+      '';
     package = pkgs.vimPlugins.vim-wakatime;
     paths = [ pkgs.wakatime ];
     event = "VeryLazy";
@@ -410,13 +420,14 @@ in
   };
   vim-dadbod-ui = {
     package = plugins.vim-dadbod-ui;
-    config = ''
-      function()
-        vim.g.db_ui_use_nerd_fonts = true
-        vim.g.db_ui_use_nvim_notify = true
-        vim.g.db_ui_win_position = "right"
-      end
-    '';
+    config = # lua
+      ''
+        function()
+          vim.g.db_ui_use_nerd_fonts = true
+          vim.g.db_ui_use_nvim_notify = true
+          vim.g.db_ui_win_position = "right"
+        end
+      '';
     cmd = "DBUI";
   };
 
@@ -617,15 +628,16 @@ in
       telescope-project.package = plugins.telescope-project-nvim;
     };
     cmd = "Telescope";
-    keys = ''
-      {
-        { "<space>fd", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
-        { "<space>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
-        { "<space>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
-        { "<space>fp", "<cmd>Telescope project<cr>", desc = "Project" },
-        { "<space>fs", "<cmd>SessionManager load_session<cr>", desc = "Show Sessions" },
-      }
-    '';
+    keys = # lua
+      ''
+        {
+          { "<space>fd", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+          { "<space>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
+          { "<space>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
+          { "<space>fp", "<cmd>Telescope project<cr>", desc = "Project" },
+          { "<space>fs", "<cmd>SessionManager load_session<cr>", desc = "Show Sessions" },
+        }
+      '';
   };
   octo = {
     package = plugins.octo-nvim;
@@ -647,9 +659,10 @@ in
       winbar.enabled = true;
     };
     cmd = "ToggleTerm";
-    keys = ''
-      { { "<C-t>", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle Terminal" } }
-    '';
+    keys = # lua
+      ''
+        { { "<C-t>", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle Terminal" } }
+      '';
   };
 
   spectre = {
