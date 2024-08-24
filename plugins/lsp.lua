@@ -220,12 +220,14 @@ return function()
 			single_file_support = false,
 		},
 		dockerls = {},
+		elmls = {},
 		emmet_language_server = {
 			filetypes = {
 				"astro",
 				"css",
 				"eruby",
 				"html",
+				"htmltera",
 				"javascript",
 				"javascriptreact",
 				"less",

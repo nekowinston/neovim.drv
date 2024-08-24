@@ -50,6 +50,7 @@ in
         "dhall"
         "diff"
         "dockerfile"
+        "elm"
         "git_config"
         "git_rebase"
         "gitattributes"
@@ -71,6 +72,7 @@ in
         "jsonc"
         "just"
         "kdl"
+        "kotlin"
         "lua"
         "make"
         "markdown"
@@ -83,7 +85,9 @@ in
         "pug"
         "python"
         "rust"
+        "scala"
         "scss"
+        "ssh_config"
         "svelte"
         "tsv"
         "tsx"
@@ -111,6 +115,10 @@ in
   };
   vim-helm = {
     package = plugins.vim-helm;
+    event = "VeryLazy";
+  };
+  vim-tera = {
+    package = plugins.vim-tera;
     event = "VeryLazy";
   };
   nvim-autopairs = {
@@ -180,6 +188,7 @@ in
     config = "function() vim.cmd.colorscheme('milspec') end";
     lazy = false;
     priority = 1000;
+    dev = true;
   };
 
   flash = {
@@ -230,6 +239,7 @@ in
         "html"
         "html"
         "htmldjango"
+        "htmltera"
         "javascriptreact"
         "php"
         "typescriptreact"
@@ -301,6 +311,7 @@ in
           "ejs",
           "html",
           "htmldjango",
+          "htmltera",
           "javascriptreact",
           "php",
           "typescriptreact",

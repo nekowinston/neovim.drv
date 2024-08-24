@@ -19,7 +19,7 @@ maven.buildMavenPackage rec {
   patches = [ ./make-deterministic.patch ];
 
   buildOffline = true;
-  mvnHash = "sha256-GtDyFlMmmw0Xtbs/wyhsNW/DtO0KZ/lRkATngNIhT/o=";
+  mvnHash = "sha256-7D6ECEWs4h7rw6MVTozd4HCpeVp8NA67/d0p93Cy0is=";
   mvnParameters = lib.escapeShellArgs [
     "-Dproject.build.outputTimestamp=1980-01-01T00:00:02Z"
     "--projects=com.microsoft.java.debug.core"

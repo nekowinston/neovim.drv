@@ -303,6 +303,10 @@ src.git = "https://github.com/towolf/vim-helm"
 fetch.github = "dhruvasagar/vim-table-mode"
 src.git = "https://github.com/dhruvasagar/vim-table-mode"
 
+[vim-tera]
+fetch.github = "vkhitrin/vim-tera"
+src.git = "https://github.com/vkhitrin/vim-tera"
+
 [which-key-nvim]
 fetch.github = "folke/which-key.nvim"
 src.git = "https://github.com/folke/which-key.nvim"
