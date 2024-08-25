@@ -1,5 +1,10 @@
 vim.g.mapleader = " "
 
+vim.opt.shell = "nu"
+vim.opt.shellcmdflag = "-c"
+vim.opt.shellquote = ""
+vim.opt.shellxquote = ""
+
 -- netrw is handled by nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

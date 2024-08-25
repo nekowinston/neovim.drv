@@ -4,6 +4,7 @@ vim.filetype.add({
 	},
 	pattern = {
 		[".*%.blade%.php"] = "blade",
+		[".*%.html%.tera"] = "htmltera",
 	},
 	filename = {
 		[".Justfile"] = "just",

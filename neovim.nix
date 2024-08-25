@@ -8,6 +8,7 @@
             JAVA_DEBUG_JAR = (pkgs.callPackage ./pkgs/java-debug { }) + "/share/java-debug/java-debug.jar";
           };
           paths = with pkgs; [
+            nushell
             fd
             git
             gh
