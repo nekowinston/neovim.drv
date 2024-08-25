@@ -528,8 +528,8 @@ in
       lspkind.package = plugins.lspkind-nvim;
       ltex-extra.package = plugins.ltex-extra-nvim;
       luasnip.package = plugins.luasnip;
-      neodev = {
-        package = plugins.neodev-nvim;
+      lazydev = {
+        package = plugins.lazydev-nvim;
         config = true;
       };
       schemastore.package = plugins.schemastore-nvim;

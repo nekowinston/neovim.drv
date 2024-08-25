@@ -90,6 +90,10 @@ src.git = "https://github.com/mrcjkb/haskell-tools.nvim"
 fetch.github = "lukas-reineke/indent-blankline.nvim"
 src.git = "https://github.com/lukas-reineke/indent-blankline.nvim"
 
+[lazydev-nvim]
+fetch.github = "folke/lazydev.nvim"
+src.git = "https://github.com/folke/lazydev.nvim"
+
 [lazy-nvim]
 fetch.github = "folke/lazy.nvim"
 src.git = "https://github.com/folke/lazy.nvim"
@@ -117,10 +121,6 @@ src.git = "https://github.com/nekowinston/milspec.nvim"
 [neoconf-nvim]
 fetch.github = "folke/neoconf.nvim"
 src.git = "https://github.com/folke/neoconf.nvim"
-
-[neodev-nvim]
-fetch.github = "folke/neodev.nvim"
-src.git = "https://github.com/folke/neodev.nvim"
 
 [neogit]
 fetch.github = "NeogitOrg/neogit"
