@@ -205,7 +205,6 @@ in
         function() vim.cmd.colorscheme('milspec') end
       '';
     priority = 1000;
-    dev = true;
   };
 
   flash = {
