@@ -2,6 +2,7 @@ if not vim.g.neovide then
 	return
 end
 
+local map = vim.keymap.set
 local system = vim.uv.os_uname().sysname
 
 vim.g.neovide_cursor_vfx_mode = "ripple"
@@ -33,9 +34,9 @@ vim.keymap.set("n", "<D-->", function()
 end)
 
 if system == "Darwin" then
-	vim.keymap.set("n", "<D-s>", ":w<CR>")
-	vim.keymap.set("v", "<D-c>", '"+y')
-	vim.keymap.set({ "n", "v" }, "<D-v>", '"+p')
-	vim.keymap.set("c", "<D-v>", "<C-R>+")
-	vim.keymap.set("i", "<D-v>", '<esc>l"+pa')
+	map("n", "<D-s>", ":w<CR>")
+	map("v", "<D-c>", '"+y')
+	map({ "n", "v" }, "<D-v>", '"+p')
+	map("c", "<D-v>", "<C-R>+")
+	map("i", "<D-v>", '<esc>l"+pa')
 end

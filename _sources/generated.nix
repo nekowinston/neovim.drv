@@ -145,6 +145,18 @@
     };
     date = "2024-08-20";
   };
+  copilot-cmp = {
+    pname = "copilot-cmp";
+    version = "b6e5286b3d74b04256d0a7e3bd2908eabec34b44";
+    src = fetchFromGitHub {
+      owner = "zbirenbaum";
+      repo = "copilot-cmp";
+      rev = "b6e5286b3d74b04256d0a7e3bd2908eabec34b44";
+      fetchSubmodules = false;
+      sha256 = "sha256-8w9go2SBkI+BrXNadWM8ZxDDfrAnZZJx6RbVHAK4+Pg=";
+    };
+    date = "2024-06-16";
+  };
   copilot-lua = {
     pname = "copilot-lua";
     version = "86537b286f18783f8b67bccd78a4ef4345679625";
@@ -373,6 +385,18 @@
     };
     date = "2024-08-24";
   };
+  neogen = {
+    pname = "neogen";
+    version = "e932ba918b56723436b77aa3efb844a11b2851ab";
+    src = fetchFromGitHub {
+      owner = "danymat";
+      repo = "neogen";
+      rev = "e932ba918b56723436b77aa3efb844a11b2851ab";
+      fetchSubmodules = false;
+      sha256 = "sha256-0/XTVOzcWuFwz/UgEhGJwmSYloBgU8DVl2cauR0Qitc=";
+    };
+    date = "2024-08-22";
+  };
   neogit = {
     pname = "neogit";
     version = "6af8fc6b03210d0ac99398f8eff27c5be7b2ba8a";
@@ -445,6 +469,30 @@
     };
     date = "2024-08-02";
   };
+  noice-nvim = {
+    pname = "noice-nvim";
+    version = "448bb9c524a7601035449210838e374a30153172";
+    src = fetchFromGitHub {
+      owner = "folke";
+      repo = "noice.nvim";
+      rev = "448bb9c524a7601035449210838e374a30153172";
+      fetchSubmodules = false;
+      sha256 = "sha256-86oWl3XGuuVhaWVe6egjc7Mt8Pp7qpTMJ2EZiNlztt8=";
+    };
+    date = "2024-07-25";
+  };
+  nui-nvim = {
+    pname = "nui-nvim";
+    version = "61574ce6e60c815b0a0c4b5655b8486ba58089a1";
+    src = fetchFromGitHub {
+      owner = "MunifTanjim";
+      repo = "nui.nvim";
+      rev = "61574ce6e60c815b0a0c4b5655b8486ba58089a1";
+      fetchSubmodules = false;
+      sha256 = "sha256-o2iNktcWxL0oCtCkbARMiWnTlZA8QWQHy2qeOanBlO4=";
+    };
+    date = "2024-06-26";
+  };
   nvim-autopairs = {
     pname = "nvim-autopairs";
     version = "19606af7c039271d5aa96bceff101e7523af3136";
@@ -492,6 +540,18 @@
       sha256 = "sha256-GcAZXPaJfxz3boQhCOnn/aayUJ3XSVp7VaU9Qv1I5OA=";
     };
     date = "2024-08-18";
+  };
+  nvim-dap-python = {
+    pname = "nvim-dap-python";
+    version = "7c427e2bbc72d46ea3c9602bede6465ef61b8c19";
+    src = fetchFromGitHub {
+      owner = "mfussenegger";
+      repo = "nvim-dap-python";
+      rev = "7c427e2bbc72d46ea3c9602bede6465ef61b8c19";
+      fetchSubmodules = false;
+      sha256 = "sha256-OXAMFIi83lEOtKJ6/bkmaus23GKtYeRkx2Wv+Yvb67g=";
+    };
+    date = "2024-08-19";
   };
   nvim-dap-ui = {
     pname = "nvim-dap-ui";
@@ -564,6 +624,18 @@
       sha256 = "sha256-i6imNTb1xrfBlaeOyxyIwAZ/+o6ew9C4/z34a7/BgFg=";
     };
     date = "2024-07-11";
+  };
+  nvim-notify = {
+    pname = "nvim-notify";
+    version = "d333b6f167900f6d9d42a59005d82919830626bf";
+    src = fetchFromGitHub {
+      owner = "rcarriga";
+      repo = "nvim-notify";
+      rev = "d333b6f167900f6d9d42a59005d82919830626bf";
+      fetchSubmodules = false;
+      sha256 = "sha256-wxyHwL/uFdp6w32CVHgSOWkzRrIRuFvWh+J2401RAAA=";
+    };
+    date = "2024-05-17";
   };
   nvim-spectre = {
     pname = "nvim-spectre";
@@ -690,18 +762,6 @@
       sha256 = "sha256-ZpsunLsn//zYgUtmAm5FqKVueVd/Pa1r55ZDqxCimBk=";
     };
     date = "2023-01-29";
-  };
-  py_lsp-nvim = {
-    pname = "py_lsp-nvim";
-    version = "db01c2d7695a894bfbe5f942b14f798406af5345";
-    src = fetchFromGitHub {
-      owner = "hallerpatrick";
-      repo = "py_lsp.nvim";
-      rev = "db01c2d7695a894bfbe5f942b14f798406af5345";
-      fetchSubmodules = false;
-      sha256 = "sha256-OUk3G1i68cq/B3+Q7/Vl5xN3A+A0EeL9Ys1WlYM95E0=";
-    };
-    date = "2024-08-12";
   };
   rainbow-delimiters = {
     pname = "rainbow-delimiters";
@@ -834,6 +894,18 @@
       sha256 = "sha256-8WH/eCff1liDVaezZFvu6RqCtXU4Uwq80BlWiH+tQME=";
     };
     date = "2024-07-18";
+  };
+  venv-selector-nvim = {
+    pname = "venv-selector-nvim";
+    version = "c43dc6bf8c7e7cf124a991775ed3defe87112d3a";
+    src = fetchFromGitHub {
+      owner = "linux-cultist";
+      repo = "venv-selector.nvim";
+      rev = "c43dc6bf8c7e7cf124a991775ed3defe87112d3a";
+      fetchSubmodules = false;
+      sha256 = "sha256-puF9GaP+o0JBARdaid4JNgwfcOH94ipJQCWi+hP98R4=";
+    };
+    date = "2024-08-09";
   };
   vim-applescript = {
     pname = "vim-applescript";

@@ -239,6 +239,26 @@
         },
         "version": "62eba813b7501b39612146cbf29cd07f1d4ac29c"
     },
+    "copilot-cmp": {
+        "cargoLocks": null,
+        "date": "2024-06-16",
+        "extract": null,
+        "name": "copilot-cmp",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "zbirenbaum",
+            "repo": "copilot-cmp",
+            "rev": "b6e5286b3d74b04256d0a7e3bd2908eabec34b44",
+            "sha256": "sha256-8w9go2SBkI+BrXNadWM8ZxDDfrAnZZJx6RbVHAK4+Pg=",
+            "type": "github"
+        },
+        "version": "b6e5286b3d74b04256d0a7e3bd2908eabec34b44"
+    },
     "copilot-lua": {
         "cargoLocks": null,
         "date": "2024-06-14",
@@ -619,6 +639,26 @@
         },
         "version": "39bf4e553d184ede39bda04baf902f9145c189cc"
     },
+    "neogen": {
+        "cargoLocks": null,
+        "date": "2024-08-22",
+        "extract": null,
+        "name": "neogen",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "danymat",
+            "repo": "neogen",
+            "rev": "e932ba918b56723436b77aa3efb844a11b2851ab",
+            "sha256": "sha256-0/XTVOzcWuFwz/UgEhGJwmSYloBgU8DVl2cauR0Qitc=",
+            "type": "github"
+        },
+        "version": "e932ba918b56723436b77aa3efb844a11b2851ab"
+    },
     "neogit": {
         "cargoLocks": null,
         "date": "2024-08-21",
@@ -739,6 +779,46 @@
         },
         "version": "cbaebd92dce84e9ba63cb07d3199e5a19b204c1a"
     },
+    "noice-nvim": {
+        "cargoLocks": null,
+        "date": "2024-07-25",
+        "extract": null,
+        "name": "noice-nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "folke",
+            "repo": "noice.nvim",
+            "rev": "448bb9c524a7601035449210838e374a30153172",
+            "sha256": "sha256-86oWl3XGuuVhaWVe6egjc7Mt8Pp7qpTMJ2EZiNlztt8=",
+            "type": "github"
+        },
+        "version": "448bb9c524a7601035449210838e374a30153172"
+    },
+    "nui-nvim": {
+        "cargoLocks": null,
+        "date": "2024-06-26",
+        "extract": null,
+        "name": "nui-nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "MunifTanjim",
+            "repo": "nui.nvim",
+            "rev": "61574ce6e60c815b0a0c4b5655b8486ba58089a1",
+            "sha256": "sha256-o2iNktcWxL0oCtCkbARMiWnTlZA8QWQHy2qeOanBlO4=",
+            "type": "github"
+        },
+        "version": "61574ce6e60c815b0a0c4b5655b8486ba58089a1"
+    },
     "nvim-autopairs": {
         "cargoLocks": null,
         "date": "2024-08-19",
@@ -818,6 +898,26 @@
             "type": "github"
         },
         "version": "281a2e4cd1e7a17cea7ecb1745d84a8ab1249925"
+    },
+    "nvim-dap-python": {
+        "cargoLocks": null,
+        "date": "2024-08-19",
+        "extract": null,
+        "name": "nvim-dap-python",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "mfussenegger",
+            "repo": "nvim-dap-python",
+            "rev": "7c427e2bbc72d46ea3c9602bede6465ef61b8c19",
+            "sha256": "sha256-OXAMFIi83lEOtKJ6/bkmaus23GKtYeRkx2Wv+Yvb67g=",
+            "type": "github"
+        },
+        "version": "7c427e2bbc72d46ea3c9602bede6465ef61b8c19"
     },
     "nvim-dap-ui": {
         "cargoLocks": null,
@@ -938,6 +1038,26 @@
             "type": "github"
         },
         "version": "a428f309119086dc78dd4b19306d2d67be884eee"
+    },
+    "nvim-notify": {
+        "cargoLocks": null,
+        "date": "2024-05-17",
+        "extract": null,
+        "name": "nvim-notify",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "rcarriga",
+            "repo": "nvim-notify",
+            "rev": "d333b6f167900f6d9d42a59005d82919830626bf",
+            "sha256": "sha256-wxyHwL/uFdp6w32CVHgSOWkzRrIRuFvWh+J2401RAAA=",
+            "type": "github"
+        },
+        "version": "d333b6f167900f6d9d42a59005d82919830626bf"
     },
     "nvim-spectre": {
         "cargoLocks": {
@@ -1143,26 +1263,6 @@
             "type": "github"
         },
         "version": "87c857a56b7703f976d3a5ef15967d80508df6e6"
-    },
-    "py_lsp-nvim": {
-        "cargoLocks": null,
-        "date": "2024-08-12",
-        "extract": null,
-        "name": "py_lsp-nvim",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "hallerpatrick",
-            "repo": "py_lsp.nvim",
-            "rev": "db01c2d7695a894bfbe5f942b14f798406af5345",
-            "sha256": "sha256-OUk3G1i68cq/B3+Q7/Vl5xN3A+A0EeL9Ys1WlYM95E0=",
-            "type": "github"
-        },
-        "version": "db01c2d7695a894bfbe5f942b14f798406af5345"
     },
     "rainbow-delimiters": {
         "cargoLocks": null,
@@ -1383,6 +1483,26 @@
             "type": "github"
         },
         "version": "f8c2e0b36b651c85f52ad5c5373ff8b07adc15a7"
+    },
+    "venv-selector-nvim": {
+        "cargoLocks": null,
+        "date": "2024-08-09",
+        "extract": null,
+        "name": "venv-selector-nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "linux-cultist",
+            "repo": "venv-selector.nvim",
+            "rev": "c43dc6bf8c7e7cf124a991775ed3defe87112d3a",
+            "sha256": "sha256-puF9GaP+o0JBARdaid4JNgwfcOH94ipJQCWi+hP98R4=",
+            "type": "github"
+        },
+        "version": "c43dc6bf8c7e7cf124a991775ed3defe87112d3a"
     },
     "vim-applescript": {
         "cargoLocks": null,

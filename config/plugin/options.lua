@@ -1,9 +1,13 @@
 vim.g.mapleader = " "
 
-vim.opt.shell = "nu"
-vim.opt.shellcmdflag = "-c"
-vim.opt.shellquote = ""
-vim.opt.shellxquote = ""
+-- use Nushell as the shell
+vim.o.shell = "nu"
+vim.o.shellcmdflag = "-c"
+vim.o.shellquote = ""
+vim.o.shellxquote = ""
+
+-- execute .nvim.lua, .nvimrc, and .exrc files in directories
+vim.o.exrc = true
 
 -- netrw is handled by nvim-tree
 vim.g.loaded_netrw = 1

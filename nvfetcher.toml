@@ -50,6 +50,10 @@ src.git = "https://github.com/stevearc/conform.nvim"
 fetch.github = "zbirenbaum/copilot.lua"
 src.git = "https://github.com/zbirenbaum/copilot.lua"
 
+[copilot-cmp]
+fetch.github = "zbirenbaum/copilot-cmp"
+src.git = "https://github.com/zbirenbaum/copilot-cmp"
+
 [crates-nvim]
 fetch.github = "saecki/crates.nvim"
 src.git = "https://github.com/saecki/crates.nvim"
@@ -122,6 +126,10 @@ src.git = "https://github.com/nekowinston/milspec.nvim"
 fetch.github = "folke/neoconf.nvim"
 src.git = "https://github.com/folke/neoconf.nvim"
 
+[neogen]
+fetch.github = "danymat/neogen"
+src.git = "https://github.com/danymat/neogen"
+
 [neogit]
 fetch.github = "NeogitOrg/neogit"
 src.git = "https://github.com/NeogitOrg/neogit"
@@ -146,6 +154,14 @@ src.git = "https://github.com/nvim-neotest/neotest-go"
 fetch.github = "Shatur/neovim-session-manager"
 src.git = "https://github.com/Shatur/neovim-session-manager"
 
+[noice-nvim]
+fetch.github = "folke/noice.nvim"
+src.git = "https://github.com/folke/noice.nvim"
+
+[nui-nvim]
+fetch.github = "MunifTanjim/nui.nvim"
+src.git = "https://github.com/MunifTanjim/nui.nvim"
+
 [nvim-autopairs]
 fetch.github = "windwp/nvim-autopairs"
 src.git = "https://github.com/windwp/nvim-autopairs"
@@ -166,6 +182,10 @@ src.git = "https://github.com/mfussenegger/nvim-dap"
 fetch.github = "rcarriga/nvim-dap-ui"
 src.git = "https://github.com/rcarriga/nvim-dap-ui"
 
+[nvim-dap-python]
+fetch.github = "mfussenegger/nvim-dap-python"
+src.git = "https://github.com/mfussenegger/nvim-dap-python"
+
 [nvim-dap-virtual-text]
 fetch.github = "theHamsta/nvim-dap-virtual-text"
 src.git = "https://github.com/theHamsta/nvim-dap-virtual-text"
@@ -185,6 +205,10 @@ src.git = "https://github.com/SmiteshP/nvim-navic"
 [nvim-nio]
 fetch.github = "nvim-neotest/nvim-nio"
 src.git = "https://github.com/nvim-neotest/nvim-nio"
+
+[nvim-notify]
+fetch.github = "rcarriga/nvim-notify"
+src.git = "https://github.com/rcarriga/nvim-notify"
 
 [nvim-spectre]
 fetch.github = "nvim-pack/nvim-spectre"
@@ -226,10 +250,6 @@ src.git = "https://github.com/nvim-lua/plenary.nvim"
 [presence-nvim]
 fetch.github = "andweeb/presence.nvim"
 src.git = "https://github.com/andweeb/presence.nvim"
-
-[py_lsp-nvim]
-fetch.github = "hallerpatrick/py_lsp.nvim"
-src.git = "https://github.com/hallerpatrick/py_lsp.nvim"
 
 [rainbow-delimiters]
 fetch.github = "hiphish/rainbow-delimiters.nvim"
@@ -274,6 +294,11 @@ src.git = "https://github.com/folke/trouble.nvim"
 [typescript-tools-nvim]
 fetch.github = "pmizio/typescript-tools.nvim"
 src.git = "https://github.com/pmizio/typescript-tools.nvim"
+
+[venv-selector-nvim]
+fetch.github = "linux-cultist/venv-selector.nvim"
+src.git = "https://github.com/linux-cultist/venv-selector.nvim"
+src.branch = "regexp"
 
 [vim-applescript]
 fetch.github = "mityu/vim-applescript"

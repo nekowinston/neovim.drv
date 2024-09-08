@@ -1,22 +1,32 @@
 {
   config = {
     perSystem =
-      { pkgs, ... }:
+      {
+        config,
+        lib,
+        pkgs,
+        ...
+      }:
       {
         neovim = {
-          env = {
-            JAVA_DEBUG_JAR = (pkgs.callPackage ./pkgs/java-debug { }) + "/share/java-debug/java-debug.jar";
-          };
+          build.initlua = lib.mkForce (
+            pkgs.writeText "init.lua" ''
+              vim.opt.exrc = true
+              vim.cmd.source "${config.neovim.build.before}"
+              vim.cmd.source "${config.neovim.build.plugins}"
+            ''
+          );
+          env.JAVA_DEBUG_JAR = (pkgs.callPackage ./pkgs/java-debug { }) + "/share/java-debug/java-debug.jar";
           paths = with pkgs; [
-            nushell
             fd
-            git
             gh
+            git
+            nushell
             ripgrep
 
             # lua
-            stylua
             lua-language-server
+            stylua
 
             # nix
             nixd
@@ -38,17 +48,20 @@
             nodejs
 
             # data formats
-            dhall-lsp-server
-            helm-ls
-            jq-lsp
-            ltex-ls
             nodePackages.dockerfile-language-server-nodejs
             taplo
           ];
 
           lazy = {
             package = (pkgs.callPackage ./pkgs/plugins { }).lazy-nvim;
-            settings.dev.path = "~/Code/neovim";
+            settings = {
+              change_detection.enabled = false;
+              checker.enabled = false;
+              dev = {
+                path = "~/Code/neovim";
+                fallback = false;
+              };
+            };
             plugins = import ./plugins { inherit pkgs; };
           };
         };

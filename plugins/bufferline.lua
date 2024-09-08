@@ -24,31 +24,31 @@ return function()
 		},
 	})
 
-	vim.keymap.set("n", "<A-,>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Select buffer to the left" })
-	vim.keymap.set("n", "<A-.>", "<cmd>BufferLineCycleNext<cr>", { desc = "Select buffer to the right" })
+	local map = vim.keymap.set
 
-	vim.keymap.set("n", "<A-<>", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer left" })
-	vim.keymap.set("n", "<A->>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer right" })
+	map("n", "<A-,>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Select buffer to the left" })
+	map("n", "<A-.>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Select buffer to the right" })
 
-  -- stylua: ignore start
-	vim.keymap.set("n", "<A-1>", function() bufferline.go_to(1, true) end, { desc = "Go to buffer 1" })
-	vim.keymap.set("n", "<A-2>", function() bufferline.go_to(2, true) end, { desc = "Go to buffer 2" })
-	vim.keymap.set("n", "<A-3>", function() bufferline.go_to(3, true) end, { desc = "Go to buffer 3" })
-	vim.keymap.set("n", "<A-4>", function() bufferline.go_to(4, true) end, { desc = "Go to buffer 4" })
-	vim.keymap.set("n", "<A-5>", function() bufferline.go_to(5, true) end, { desc = "Go to buffer 5" })
-	vim.keymap.set("n", "<A-6>", function() bufferline.go_to(6, true) end, { desc = "Go to buffer 6" })
-	vim.keymap.set("n", "<A-7>", function() bufferline.go_to(7, true) end, { desc = "Go to buffer 7" })
-	vim.keymap.set("n", "<A-8>", function() bufferline.go_to(8, true) end, { desc = "Go to buffer 8" })
-	vim.keymap.set("n", "<A-9>", function() bufferline.go_to(9, true) end, { desc = "Go to buffer 9" })
-	vim.keymap.set("n", "<A-0>", function() bufferline.go_to(-1, true) end, { desc = "Go to last buffer" })
-	-- stylua: ignore end
+	map("n", "<A-<>", "<Cmd>BufferLineMovePrev<CR>", { desc = "Move buffer left" })
+	map("n", "<A->>", "<Cmd>BufferLineMoveNext<CR>", { desc = "Move buffer right" })
 
-	vim.keymap.set("n", "<A-p>", "<cmd>BufferLineTogglePin<cr>", { desc = "Pin/unpin buffer" })
-	vim.keymap.set("n", "<A-x>", "<cmd>bdelete<cr>", { desc = "Close buffer" })
-	vim.keymap.set("n", "<A-X>", "<cmd>bdelete!<cr>", { desc = "Close buffer (force)" })
-	vim.keymap.set("n", "<A-c>", "<cmd>enew<cr>", { desc = "Create new buffer" })
+	map("n", "<A-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", { desc = "Go to buffer 1" })
+	map("n", "<A-2>", "<Cmd>BufferLineGoToBuffer 2<CR>", { desc = "Go to buffer 2" })
+	map("n", "<A-3>", "<Cmd>BufferLineGoToBuffer 3<CR>", { desc = "Go to buffer 3" })
+	map("n", "<A-4>", "<Cmd>BufferLineGoToBuffer 4<CR>", { desc = "Go to buffer 4" })
+	map("n", "<A-5>", "<Cmd>BufferLineGoToBuffer 5<CR>", { desc = "Go to buffer 5" })
+	map("n", "<A-6>", "<Cmd>BufferLineGoToBuffer 6<CR>", { desc = "Go to buffer 6" })
+	map("n", "<A-7>", "<Cmd>BufferLineGoToBuffer 7<CR>", { desc = "Go to buffer 7" })
+	map("n", "<A-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", { desc = "Go to buffer 8" })
+	map("n", "<A-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", { desc = "Go to buffer 9" })
+	map("n", "<A-0>", "<Cmd>BufferLineGoToBuffer -1<CR>", { desc = "Go to last buffer" })
 
-	vim.keymap.set("n", "<A-space>", "<cmd>BufferLinePick<cr>", { desc = "Pick buffer" })
-	vim.keymap.set("n", "<Space>bd", "<cmd>BufferLineSortByDirectory<cr>", { desc = "Sort buffers by directory" })
-	vim.keymap.set("n", "<Space>bl", "<cmd>BufferLineSortByExtension<cr>", { desc = "Sort buffers by extension" })
+	map("n", "<A-p>", "<Cmd>BufferLineTogglePin<CR>", { desc = "Pin/unpin buffer" })
+	map("n", "<A-x>", "<Cmd>bdelete<CR>", { desc = "Close buffer" })
+	map("n", "<A-X>", "<Cmd>bdelete!<CR>", { desc = "Close buffer (force)" })
+	map("n", "<A-c>", "<Cmd>enew<CR>", { desc = "Create new buffer" })
+
+	map("n", "<A-space>", "<Cmd>BufferLinePick<CR>", { desc = "Pick buffer" })
+	map("n", "<Space>bd", "<Cmd>BufferLineSortByDirectory<CR>", { desc = "Sort buffers by directory" })
+	map("n", "<Space>bl", "<Cmd>BufferLineSortByExtension<CR>", { desc = "Sort buffers by extension" })
 end

@@ -1,5 +1,6 @@
 return function()
-	--- @type fun(text: string[]): { type: string, val: table, opts: table }
+	--- @param text string[]
+	--- @return { type: string, val: table, opts: table }
 	local function render_header(text)
 		local lines = {}
 		for _, line in pairs(text) do
@@ -22,8 +23,9 @@ return function()
 	end
 
 	local alpha = require("alpha")
-	local theta = require("alpha.themes.theta")
+	local fortune = require("alpha.fortune")
 	local dashboard = require("alpha.themes.dashboard")
+	local theta = require("alpha.themes.theta")
 
 	local header = {
 		[[            ____             ]],
@@ -42,14 +44,18 @@ return function()
 		[[  \/_____________________/   ]],
 	}
 
+	for _, line in pairs(fortune()) do
+		table.insert(header, line)
+	end
+
 	local buttons = {
 		type = "group",
 		position = "center",
 		val = {
-			dashboard.button("n", "  New file", ":ene <bar> startinsert <cr>"),
-			dashboard.button("SPC fd", "  Find file", ":Telescope find_files<cr>"),
-			dashboard.button("SPC fg", "  Live grep", ":Telescope live_grep<cr>"),
-			dashboard.button("s", "  Show sessions", ":SessionManager load_session<cr>"),
+			dashboard.button("n", "  New file", ":ene <bar> startinsert <CR>"),
+			dashboard.button("SPC fd", "  Find file", ":Telescope find_files<CR>"),
+			dashboard.button("SPC fg", "  Live grep", ":Telescope live_grep<CR>"),
+			dashboard.button("s", "  Show sessions", ":SessionManager load_session<CR>"),
 			dashboard.button("SPC fp", "  Projects", ":Telescope project<CR>"),
 			dashboard.button("q", "  Quit", ":qa<CR>"),
 		},

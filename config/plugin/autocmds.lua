@@ -35,8 +35,10 @@ local ignore_ft = {
 	"toggleterm",
 	"Trouble",
 }
+
 ---@param callback fun(): nil
-local ft_guard = function(callback)
+---@return nil
+local function ft_guard(callback)
 	if not vim.tbl_contains(ignore_ft, vim.bo.filetype) then
 		callback()
 	end
@@ -61,7 +63,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "BufEnter", "WinEnter", "FocusGaine
 vim.api.nvim_create_autocmd({ "CmdlineEnter", "CmdlineLeave" }, {
 	callback = function(data)
 		ft_guard(function()
-			vim.opt.rnu = data.event == "CmdlineLeave"
+			vim.o.rnu = data.event == "CmdlineLeave"
 			vim.cmd.redraw()
 		end)
 	end,

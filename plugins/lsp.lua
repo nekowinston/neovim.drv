@@ -1,22 +1,13 @@
 return function()
-	local lsp_present, lspconfig = pcall(require, "lspconfig")
-	local cmp_present, cmp = pcall(require, "cmp")
-	local luasnip_present, luasnip = pcall(require, "luasnip")
-	local navic_present, navic = pcall(require, "nvim-navic")
+	local lspconfig = require("lspconfig")
+	local cmp = require("cmp")
+	local luasnip = require("luasnip")
 
-	if not (cmp_present and lsp_present and luasnip_present) then
-		vim.notify("lsp, cmp, luasnip not present", vim.log.levels.ERROR)
-		return
-	end
-
-	vim.opt.completeopt = "menu,menuone,noselect"
-	require("luasnip.loaders.from_vscode").lazy_load()
+	vim.o.completeopt = "menu,menuone,noselect"
 
 	-- border style
 	require("lspconfig.ui.windows").default_options.border = vim.g.bc.style
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = vim.g.bc.style,
-	})
+
 	local cmp_borders = {
 		border = {
 			vim.g.bc.topleft,
@@ -37,13 +28,11 @@ return function()
 				luasnip.lsp_expand(args.body)
 			end,
 		},
-		window = {
-			completion = cmp_borders,
-			documentation = cmp_borders,
-		},
+		preselect = cmp.PreselectMode.Item,
 		mapping = cmp.mapping.preset.insert({
-			["<C-b>"] = cmp.mapping.scroll_docs(-4),
+			["<C-d>"] = cmp.mapping.scroll_docs(-4),
 			["<C-f>"] = cmp.mapping.scroll_docs(4),
+			["<C-Space>"] = cmp.mapping.complete(),
 
 			["<CR>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
@@ -78,14 +67,20 @@ return function()
 			end, { "i", "s" }),
 		}),
 		sources = cmp.config.sources({
+			{ name = "copilot" },
 			{ name = "nvim_lsp" },
 			{ name = "luasnip" },
 			{ name = "vim-dadbod-completion" },
 			{ name = "buffer" },
 		}),
 		formatting = {
+			expandable_indicator = true,
 			fields = { "kind", "abbr", "menu" },
 			format = function(entry, vim_item)
+				require("lspkind").init({
+					symbol_map = { Copilot = "" },
+				})
+
 				local kind = require("lspkind").cmp_format({
 					mode = "symbol_text",
 					ellipsis_char = "…",
@@ -93,11 +88,29 @@ return function()
 				})(entry, vim_item)
 				local strings = vim.split(kind.kind, "%s", { trimempty = true })
 
-				kind.kind = " " .. (strings[1] or "") .. " "
+				kind.kind = strings[1] or ""
 				kind.menu = "   (" .. (strings[2] or "") .. ")"
 
 				return kind
 			end,
+		},
+		sorting = require("cmp.config.default")().sorting,
+		experimental = {
+			ghost_text = {
+				hl_group = "CmpGhostText",
+			},
+		},
+		window = {
+			completion = cmp_borders,
+			documentation = cmp_borders,
+		},
+	})
+
+	vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
+
+	vim.diagnostic.config({
+		float = {
+			border = vim.g.bc.style,
 		},
 	})
 
@@ -138,8 +151,6 @@ return function()
 		}),
 	})
 
-	local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 	vim.api.nvim_create_autocmd("LspAttach", {
 		group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 		callback = function(ev)
@@ -149,39 +160,48 @@ return function()
 				return
 			end
 
+			-- use navic, show symbols in the winbar
+			local navic_present, navic = pcall(require, "nvim-navic")
 			if navic_present and client.server_capabilities.documentSymbolProvider then
 				navic.attach(client, ev.buf)
 			end
 
+			-- enable inlay hints
 			if client.server_capabilities.inlayHintProvider then
 				vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
 			end
 
+			-- local keymaps
+			local map = vim.keymap.set
 			local opts = { buffer = ev.buf }
-			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-			vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-			vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-			vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-			vim.keymap.set("n", "<space>wl", function()
-				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+			local lsp = vim.lsp.buf
+
+			-- peeking & navigation
+			map("n", "K", lsp.hover, opts)
+			map("n", "gD", lsp.declaration, opts)
+			map("n", "gd", lsp.definition, opts)
+			map("n", "gi", lsp.implementation, opts)
+			map("n", "gK", lsp.signature_help, opts)
+			map("i", "<C-k>", lsp.signature_help, opts)
+			map("n", "gr", lsp.references, opts)
+			-- jump to diagnostics
+			map("n", "]d", vim.diagnostic.goto_next, opts)
+			map("n", "[d", vim.diagnostic.goto_prev, opts)
+			-- workspace config
+			map("n", "<space>wa", lsp.add_workspace_folder, opts)
+			map("n", "<space>wr", lsp.remove_workspace_folder, opts)
+			map("n", "<space>D", lsp.type_definition, opts)
+			-- editing
+			map({ "n", "v" }, "<space>ca", lsp.code_action, opts)
+			map("n", "<space>rn", lsp.rename, opts)
+			-- formatting
+			map("n", "<space>fm", function()
+				lsp.format({ async = true })
 			end, opts)
-			vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-			vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-			vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
-			vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-			vim.keymap.set("n", "<space>lr", vim.cmd.LspRestart, opts)
-			vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-			vim.keymap.set("n", "<space>fm", function()
-				vim.lsp.buf.format({ async = true })
-			end, opts)
+			-- kickstart the server
+			map("n", "<space>lr", vim.cmd.LspRestart, opts)
 		end,
 	})
-
-	local common = { capabilities = capabilities }
 
 	require("typescript-tools").setup({
 		single_file_support = false,
@@ -198,11 +218,6 @@ return function()
 			return root_dir
 		end,
 		settings = {
-			expose_as_code_action = {
-				"add_missing_imports",
-				"fix_all",
-				"remove_unused",
-			},
       -- Nix silliness
       -- stylua: ignore
       tsserver_path = vim.fn.resolve(vim.fn.exepath("tsserver") .. "/../../lib/node_modules/typescript/bin/tsserver"),
@@ -330,6 +345,9 @@ return function()
 		},
 		zls = {},
 	}
+
+	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+	local common = { capabilities = capabilities }
 
 	for server, config in pairs(servers) do
 		if config == {} then

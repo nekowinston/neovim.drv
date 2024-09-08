@@ -42,11 +42,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1724440431,
-        "narHash": "sha256-9etXEOUtzeMgqg1u0wp+EdwG7RpmrAZ2yX516bMj2aE=",
+        "lastModified": 1724857454,
+        "narHash": "sha256-Qyl9Q4QMTLZnnBb/8OuQ9LSkzWjBU1T5l5zIzTxkkhk=",
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "rev": "c8a54057aae480c56e28ef3e14e4960628ac495b",
+        "rev": "4509ca64f1084e73bc7a721b20c669a8d4c5ebe6",
         "type": "github"
       },
       "original": {
@@ -76,47 +76,31 @@
         "type": "github"
       }
     },
-    "lazy-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1678889456,
-        "narHash": "sha256-R+sfPOuWfwbrNXUiKQcb8MHYqK+o5Pw8gkEaYaidqp0=",
-        "owner": "folke",
-        "repo": "lazy.nvim",
-        "rev": "6b55862d2d264f0b48e0b9e42cc2d14f136bed55",
-        "type": "github"
-      },
-      "original": {
-        "owner": "folke",
-        "repo": "lazy.nvim",
-        "type": "github"
-      }
-    },
     "neovim-nix": {
       "inputs": {
+        "example": [],
         "flake-parts": [
           "flake-parts"
         ],
-        "lazy-nvim": "lazy-nvim",
+        "git-hooks": [
+          "git-hooks-nix"
+        ],
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "pre-commit-nix": [
-          "git-hooks-nix"
         ]
       },
       "locked": {
-        "lastModified": 1716847783,
-        "narHash": "sha256-CVebsLDw+WWoM+bMefNpc1NZ6HSJnvKJtGemrRVohgI=",
+        "lastModified": 1725205441,
+        "narHash": "sha256-go26fmPdyBgwzHMostxKFAg23HekfD/L/U2Fnl00JN8=",
         "owner": "nekowinston",
         "repo": "neovim.nix",
-        "rev": "80cdf1480b9bfcd2c8b744a6fcb229b62fb2eb0a",
+        "rev": "36761e2fcd5e81fa3b39cb72d9fbcb92098edad8",
         "type": "github"
       },
       "original": {
         "owner": "nekowinston",
-        "ref": "dev",
         "repo": "neovim.nix",
+        "rev": "36761e2fcd5e81fa3b39cb72d9fbcb92098edad8",
         "type": "github"
       }
     },
@@ -187,11 +171,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1724396973,
-        "narHash": "sha256-yYzF18GWuITdIMNbIjI5ofMvhTaxg3O7y+qK3CSLBik=",
+        "lastModified": 1725151483,
+        "narHash": "sha256-NeNAAWlr1fKyNydrahyMaFJZjXE7cyCEmP9r0f6B46g=",
         "owner": "nekowinston",
         "repo": "nvim-treesitter-nix",
-        "rev": "b77ebe8089e10f2d7e8caacb772ef211f6d2164c",
+        "rev": "621bc3da2c16d4265b02279fa256c74edcfe07ff",
         "type": "github"
       },
       "original": {

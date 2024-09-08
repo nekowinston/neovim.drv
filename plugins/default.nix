@@ -8,6 +8,12 @@ let
   inherit (lib.generators) mkLuaInline;
 in
 {
+  direnv = {
+    package = plugins.direnv-vim;
+    lazy = false;
+    priority = 10000;
+  };
+
   config = {
     src = ../config;
     lazy = false;
@@ -25,7 +31,7 @@ in
       renderer.indent_markers.enable = true;
     };
     keys = ''
-      { { "<C-n>", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree" } }
+      { { "<C-n>", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" } }
     '';
   };
   nvim-web-devicons = {
@@ -87,6 +93,7 @@ in
         "rust"
         "scala"
         "scss"
+        "sql"
         "ssh_config"
         "svelte"
         "tsv"
@@ -101,6 +108,12 @@ in
     };
     config = ./nvim-treesitter.lua;
     dependencies = {
+      neogen = {
+        package = plugins.neogen;
+        config = {
+          snippet_engine = "luasnip";
+        };
+      };
       nvim-treesitter-context = {
         package = plugins.nvim-treesitter-context;
         config = {
@@ -191,7 +204,6 @@ in
       ''
         function() vim.cmd.colorscheme('milspec') end
       '';
-    lazy = false;
     priority = 1000;
     dev = true;
   };
@@ -212,24 +224,27 @@ in
   };
 
   dressing = {
-    package = plugins.dressing-nvim;
     event = "VeryLazy";
+    package = plugins.dressing-nvim;
   };
-  fidget = {
-    package = plugins.fidget-nvim;
+  noice = {
+    package = plugins.noice-nvim;
+    event = "VeryLazy";
     config = {
-      progress = {
-        ignore = [ "copilot" ];
-        display.done_icon = "󰗡";
-      };
-      notification = {
-        override_vim_notify = true;
-        window.winblend = 30;
+      lsp.override = {
+        "vim.lsp.util.convert_input_to_markdown_lines" = true;
+        "vim.lsp.util.stylize_markdown" = true;
+        "cmp.entry.get_documentation" = true;
       };
     };
-    event = "VeryLazy";
+    dependencies = {
+      nui.package = plugins.nui-nvim;
+      nvim-notify = {
+        package = plugins.nvim-notify;
+        config = ./nvim-notify.lua;
+      };
+    };
   };
-
   bufferline = {
     package = plugins.bufferline-nvim;
     config = ./bufferline.lua;
@@ -348,17 +363,8 @@ in
     package = plugins.copilot-lua;
     config = {
       panel.enabled = false;
-      suggestion = {
-        enabled = true;
-        auto_trigger = true;
-        debounce = 75;
-        keymap.accept = "<C-J>";
-      };
-      filetypes = {
-        gitcommit = true;
-        markdown = true;
-        yaml = true;
-      };
+      suggestion.enabled = false;
+      filetypes.yaml = true;
     };
     cmd = "Copilot";
     event = "InsertEnter";
@@ -376,7 +382,7 @@ in
     cmd = "Neogit";
     keys = # lua
       ''
-        { { "<space>ng", "<cmd>Neogit<cr>", desc = "Neogit" } }
+        { { "<space>ng", "<Cmd>Neogit<CR>", desc = "Neogit" } }
       '';
   };
   diffview = {
@@ -387,7 +393,7 @@ in
     ];
     keys = # lua
       ''
-        { { "<space>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview" } }
+        { { "<space>gd", "<Cmd>DiffviewOpen<CR>", desc = "Diffview" } }
       '';
   };
 
@@ -517,6 +523,10 @@ in
     config = ./lsp.lua;
     event = "BufRead";
     dependencies = {
+      copilot-cmp = {
+        package = plugins.copilot-cmp;
+        config = true;
+      };
       cmp.package = plugins.nvim-cmp;
       cmp-buffer.package = plugins.cmp-buffer;
       cmp-cmdline.package = plugins.cmp-cmdline;
@@ -535,12 +545,6 @@ in
       schemastore.package = plugins.schemastore-nvim;
       typescript-tools.package = plugins.typescript-tools-nvim;
     };
-  };
-  py_lsp = {
-    package = plugins.py_lsp-nvim;
-    config.host_python = lib.getExe pkgs.python3;
-    event = "BufRead *.py";
-    cmd = "PyLspCreateVenv";
   };
   # lazy by default
   rustaceanvim = {
@@ -600,7 +604,10 @@ in
     package = plugins.nvim-dap;
     config = ./dap.lua;
     dependencies = {
-      nvim-dap-virtual-text.package = plugins.nvim-dap-virtual-text;
+      nvim-dap-virtual-text = {
+        package = plugins.nvim-dap-virtual-text;
+        config = true;
+      };
       nvim-dap-ui = {
         package = plugins.nvim-dap-ui;
         config = true;
@@ -631,11 +638,11 @@ in
     keys = # lua
       ''
         {
-          { "<space>fd", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
-          { "<space>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
-          { "<space>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
-          { "<space>fp", "<cmd>Telescope project<cr>", desc = "Project" },
-          { "<space>fs", "<cmd>SessionManager load_session<cr>", desc = "Show Sessions" },
+          { "<space>fd", "<Cmd>Telescope find_files<CR>", desc = "Find Files" },
+          { "<space>fg", "<Cmd>Telescope live_grep<CR>", desc = "Live Grep" },
+          { "<space>fh", "<Cmd>Telescope help_tags<CR>", desc = "Help Tags" },
+          { "<space>fp", "<Cmd>Telescope project<CR>", desc = "Project" },
+          { "<space>fs", "<Cmd>SessionManager load_session<CR>", desc = "Show Sessions" },
         }
       '';
   };
@@ -643,6 +650,21 @@ in
     package = plugins.octo-nvim;
     config = true;
     cmd = "Octo";
+  };
+  venv-selector-nvim = {
+    package = plugins.venv-selector-nvim;
+    config = {
+      settings.options.notify_user_on_venv_activation = true;
+    };
+    dependencies = {
+      nvim-dap-python.package = plugins.nvim-dap-python;
+    };
+    cmd = "VenvSelect";
+    ft = "python";
+    keys = # lua
+      ''
+        { { "<leader>cv", "<Cmd>:VenvSelect<CR>", desc = "Select VirtualEnv", ft = "python" } }
+      '';
   };
 
   toggleterm = {
@@ -661,7 +683,7 @@ in
     cmd = "ToggleTerm";
     keys = # lua
       ''
-        { { "<C-t>", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle Terminal" } }
+        { { "<C-t>", "<Cmd>ToggleTerm direction=float<CR>", desc = "Toggle Terminal" } }
       '';
   };
 
@@ -669,11 +691,6 @@ in
     package = plugins.nvim-spectre;
     config.default.replace.cmd = "oxi";
     cmd = "Spectre";
-  };
-
-  direnv = {
-    package = plugins.direnv-vim;
-    event = "VeryLazy";
   };
 
   neorepl = {

@@ -6,10 +6,11 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     neovim-nix = {
-      url = "github:nekowinston/neovim.nix/dev";
+      url = "github:nekowinston/neovim.nix/36761e2fcd5e81fa3b39cb72d9fbcb92098edad8";
       inputs.flake-parts.follows = "flake-parts";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.pre-commit-nix.follows = "git-hooks-nix";
+      inputs.git-hooks.follows = "git-hooks-nix";
+      inputs.example.follows = "";
     };
     nvim-treesitter-nix = {
       url = "github:nekowinston/nvim-treesitter-nix";
@@ -54,10 +55,7 @@
             settings = {
               excludes = [ "_sources/.+" ];
               hooks = {
-                nixfmt = {
-                  enable = true;
-                  package = pkgs.nixfmt-rfc-style;
-                };
+                nixfmt-rfc-style.enable = true;
                 stylua.enable = true;
               };
             };

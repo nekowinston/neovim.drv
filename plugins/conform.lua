@@ -1,12 +1,13 @@
 return function()
-	local js_fmt = { { "deno_fmt", "prettier" } }
+	---@type conform.FiletypeFormatterInternal
+	local js_fmt = { "deno_fmt", "prettier", stop_after_first = true }
 
 	require("conform").setup({
 		formatters_by_ft = {
 			d = { "dfmt" },
-			go = { { "gofumpt", "gofmt" } },
+			go = { "gofumpt", "gofmt", stop_after_first = true },
 			lua = { "stylua" },
-			python = { { "ruff_format", "black" } },
+			python = { "ruff_format", "black", stop_after_first = true },
 			rust = { "rustfmt" },
 
 			-- shell
@@ -15,7 +16,7 @@ return function()
 
 			-- data
 			json = { "prettier" },
-			nix = { { "alejandra", "nixfmt" } },
+			nix = { "alejandra", "nixfmt", stop_after_first = true },
 			toml = { "taplo" },
 			yaml = { "prettier" },
 
