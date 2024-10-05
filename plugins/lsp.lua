@@ -256,6 +256,7 @@ return function()
 			},
 		},
 		gopls = {},
+		gradle_ls = {},
 		graphql = {
 			filetypes = {
 				"graphql",

@@ -50,6 +50,9 @@
             # data formats
             nodePackages.dockerfile-language-server-nodejs
             taplo
+
+            # java etc
+            gradle-language-server
           ];
 
           lazy = {
