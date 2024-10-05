@@ -125,6 +125,7 @@ in
       nvim-treesitter-textobjects.package = plugins.nvim-treesitter-textobjects;
       nvim-ts-autotag.package = plugins.nvim-ts-autotag;
       rainbow-delimiters.package = plugins.rainbow-delimiters;
+      twilight-nvim.package = plugins.twilight-nvim;
     };
   };
   vim-helm = {
@@ -518,6 +519,10 @@ in
     config = true;
     priority = 100; # make sure this loads before `lspconfig`.
   };
+  lazydev = {
+    package = plugins.lazydev-nvim;
+    config = true;
+  };
   lspconfig = {
     package = plugins.nvim-lspconfig;
     config = ./lsp.lua;
@@ -538,10 +543,6 @@ in
       lspkind.package = plugins.lspkind-nvim;
       ltex-extra.package = plugins.ltex-extra-nvim;
       luasnip.package = plugins.luasnip;
-      lazydev = {
-        package = plugins.lazydev-nvim;
-        config = true;
-      };
       schemastore.package = plugins.schemastore-nvim;
       typescript-tools.package = plugins.typescript-tools-nvim;
     };
@@ -549,19 +550,7 @@ in
   # lazy by default
   rustaceanvim = {
     package = plugins.rustaceanvim;
-    config = # lua
-      ''
-        function()
-          vim.g.rustaceanvim = {
-            tools = {
-              float_win_config = {
-                -- FIXME: this should use `vim.g.bc.style`
-                border = "rounded"
-              }
-            }
-          }
-        end
-      '';
+    config = ./rustaceanvim.lua;
   };
   # lazy by default
   haskell-tools = {
@@ -697,6 +686,8 @@ in
     package = plugins.neorepl-nvim;
     cmd = "Repl";
   };
+
+  winshift.package = plugins.winshift-nvim;
 
   zen-mode-nvim = {
     package = plugins.zen-mode-nvim;

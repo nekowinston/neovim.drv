@@ -38,7 +38,6 @@ return function()
 
 	vim.api.nvim_create_user_command("FormatDisable", function(args)
 		if args.bang then
-			---@diagnostic disable-next-line: inject-field
 			vim.b.disable_autoformat = true
 		else
 			vim.g.disable_autoformat = true
@@ -49,7 +48,6 @@ return function()
 	})
 
 	vim.api.nvim_create_user_command("FormatEnable", function()
-		---@diagnostic disable-next-line: inject-field
 		vim.b.disable_autoformat = false
 		vim.g.disable_autoformat = false
 	end, {

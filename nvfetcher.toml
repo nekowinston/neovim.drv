@@ -291,6 +291,10 @@ src.git = "https://github.com/akinsho/toggleterm.nvim"
 fetch.github = "folke/trouble.nvim"
 src.git = "https://github.com/folke/trouble.nvim"
 
+[twilight-nvim]
+fetch.github = "folke/twilight.nvim"
+src.git = "https://github.com/folke/twilight.nvim"
+
 [typescript-tools-nvim]
 fetch.github = "pmizio/typescript-tools.nvim"
 src.git = "https://github.com/pmizio/typescript-tools.nvim"
@@ -335,6 +339,10 @@ src.git = "https://github.com/vkhitrin/vim-tera"
 [which-key-nvim]
 fetch.github = "folke/which-key.nvim"
 src.git = "https://github.com/folke/which-key.nvim"
+
+[winshift-nvim]
+fetch.github = "sindrets/winshift.nvim"
+src.git = "https://github.com/sindrets/winshift.nvim"
 
 [zen-mode-nvim]
 fetch.github = "folke/zen-mode.nvim"

@@ -883,6 +883,18 @@
     };
     date = "2024-07-22";
   };
+  twilight-nvim = {
+    pname = "twilight-nvim";
+    version = "1584c0b0a979b71fd86b18d302ba84e9aba85b1b";
+    src = fetchFromGitHub {
+      owner = "folke";
+      repo = "twilight.nvim";
+      rev = "1584c0b0a979b71fd86b18d302ba84e9aba85b1b";
+      fetchSubmodules = false;
+      sha256 = "sha256-sC9DSgkQw+jHvi+xUP+iWSSLV0kIWWmrom2Mq5q+RJo=";
+    };
+    date = "2024-07-22";
+  };
   typescript-tools-nvim = {
     pname = "typescript-tools-nvim";
     version = "f8c2e0b36b651c85f52ad5c5373ff8b07adc15a7";
@@ -1014,6 +1026,18 @@
       sha256 = "sha256-FY0KM0F2keMCqB5QhwfGS4w2wQOOeCXgZEa3U7Q1Bek=";
     };
     date = "2024-08-31";
+  };
+  winshift-nvim = {
+    pname = "winshift-nvim";
+    version = "37468ed6f385dfb50402368669766504c0e15583";
+    src = fetchFromGitHub {
+      owner = "sindrets";
+      repo = "winshift.nvim";
+      rev = "37468ed6f385dfb50402368669766504c0e15583";
+      fetchSubmodules = false;
+      sha256 = "sha256-mW3kaducHWRlDx18WcwcbWDlNnAyHgELS3XjpeFFCgs=";
+    };
+    date = "2022-09-06";
   };
   zen-mode-nvim = {
     pname = "zen-mode-nvim";

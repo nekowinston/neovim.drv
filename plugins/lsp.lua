@@ -8,6 +8,8 @@ return function()
 	-- border style
 	require("lspconfig.ui.windows").default_options.border = vim.g.bc.style
 
+	require("luasnip.loaders.from_vscode").lazy_load()
+
 	local cmp_borders = {
 		border = {
 			vim.g.bc.topleft,
@@ -72,6 +74,7 @@ return function()
 			{ name = "luasnip" },
 			{ name = "vim-dadbod-completion" },
 			{ name = "buffer" },
+			{ name = "lazydev", group_index = 0 },
 		}),
 		formatting = {
 			expandable_indicator = true,

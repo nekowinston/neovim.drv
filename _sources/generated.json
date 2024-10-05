@@ -1464,6 +1464,26 @@
         },
         "version": "6efc446226679fda0547c0fd6a7892fd5f5b15d8"
     },
+    "twilight-nvim": {
+        "cargoLocks": null,
+        "date": "2024-07-22",
+        "extract": null,
+        "name": "twilight-nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "folke",
+            "repo": "twilight.nvim",
+            "rev": "1584c0b0a979b71fd86b18d302ba84e9aba85b1b",
+            "sha256": "sha256-sC9DSgkQw+jHvi+xUP+iWSSLV0kIWWmrom2Mq5q+RJo=",
+            "type": "github"
+        },
+        "version": "1584c0b0a979b71fd86b18d302ba84e9aba85b1b"
+    },
     "typescript-tools-nvim": {
         "cargoLocks": null,
         "date": "2024-07-18",
@@ -1683,6 +1703,26 @@
             "type": "github"
         },
         "version": "bfec3d6bc0a9b0b2cb11644642f78c2c3915eef0"
+    },
+    "winshift-nvim": {
+        "cargoLocks": null,
+        "date": "2022-09-06",
+        "extract": null,
+        "name": "winshift-nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "sindrets",
+            "repo": "winshift.nvim",
+            "rev": "37468ed6f385dfb50402368669766504c0e15583",
+            "sha256": "sha256-mW3kaducHWRlDx18WcwcbWDlNnAyHgELS3XjpeFFCgs=",
+            "type": "github"
+        },
+        "version": "37468ed6f385dfb50402368669766504c0e15583"
     },
     "zen-mode-nvim": {
         "cargoLocks": null,
