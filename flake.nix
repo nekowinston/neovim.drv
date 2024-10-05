@@ -48,10 +48,7 @@
             overlays = [
               inputs.nvim-treesitter-nix.overlays.default
               # inputs.neovim-nightly-overlay.overlays.default
-              (final: prev: {
-                gradle-language-server = final.callPackage ./pkgs/gradle-language-server { };
-                java-debug = final.callPackage ./pkgs/java-debug { };
-              })
+              (final: prev: { java-debug = final.callPackage ./pkgs/java-debug { }; })
             ];
           };
 
@@ -101,7 +98,7 @@
                   ])
                   ++ [ neovim ];
               };
-              inherit (pkgs) gradle-language-server java-debug;
+              inherit (pkgs) java-debug;
             };
         };
     };
