@@ -6,7 +6,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     neovim-nix = {
-      url = "github:nekowinston/neovim.nix/36761e2fcd5e81fa3b39cb72d9fbcb92098edad8";
+      url = "github:willruggiano/neovim.nix";
       inputs.flake-parts.follows = "flake-parts";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.git-hooks.follows = "git-hooks-nix";

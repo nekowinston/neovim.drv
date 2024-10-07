@@ -1,15 +1,14 @@
 return function()
 	local lspconfig = require("lspconfig")
 	local cmp = require("cmp")
+
 	local luasnip = require("luasnip")
+	require("luasnip.loaders.from_vscode").lazy_load()
 
 	vim.o.completeopt = "menu,menuone,noselect"
 
 	-- border style
 	require("lspconfig.ui.windows").default_options.border = vim.g.bc.style
-
-	require("luasnip.loaders.from_vscode").lazy_load()
-
 	local cmp_borders = {
 		border = {
 			vim.g.bc.topleft,
@@ -23,6 +22,11 @@ return function()
 		},
 		winhighlight = "Normal:CmpPmenu,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None",
 	}
+	local handlers = {
+		["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = vim.g.bc.style }),
+		["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = vim.g.bc.style }),
+	}
+	vim.diagnostic.config({ float = { border = vim.g.bc.style } })
 
 	cmp.setup({
 		snippet = {
@@ -110,12 +114,6 @@ return function()
 	})
 
 	vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
-
-	vim.diagnostic.config({
-		float = {
-			border = vim.g.bc.style,
-		},
-	})
 
 	vim.api.nvim_create_autocmd("BufRead", {
 		group = vim.api.nvim_create_augroup("CmpSourceCargo", { clear = true }),
@@ -259,9 +257,10 @@ return function()
 		graphql = {
 			filetypes = {
 				"graphql",
-				"typescriptreact",
 				"javascriptreact",
 				"typescript",
+				"typescriptreact",
+				"javascript",
 			},
 		},
 		helm_ls = {},
@@ -297,9 +296,7 @@ return function()
 		nushell = {},
 		phpactor = {},
 		serve_d = {},
-		sourcekit = {
-			filetypes = { "swift", "c", "cpp", "objc", "objcpp" },
-		},
+		sourcekit = {},
 		tailwindcss = {},
 		taplo = {},
 		teal_ls = {},
@@ -307,42 +304,9 @@ return function()
 			settings = {
 				yaml = {
 					completion = true,
+					schemas = schemastore.yaml.schemas(),
+					suggest = { parentSkeletonSelectedFirst = true },
 					validate = true,
-					suggest = {
-						parentSkeletonSelectedFirst = true,
-					},
-					schemas = vim.tbl_extend("keep", {
-            -- https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.0-standalone/all.json
-            -- stylua: ignore
-            kubernetes = {
-              'deployment.yaml', 'deployment.yml', 'deployment-*.yaml', 'deployment-*.yml', '*-deployment.yaml', '*-deployment.yml',
-              'clusterrole-contour.yaml', 'clusterrole-contour.yml',
-              'clusterrole.yaml', 'clusterrole.yml',
-              'clusterrolebinding.yaml', 'clusterrolebinding.yml',
-              'configmap.yaml', 'configmap.yml',
-              'cronjob.yaml', 'cronjob.yml',
-              'daemonset.yaml', 'daemonset.yml',
-              'hpa.yaml', 'hpa.yml',
-              'ingress.yaml', 'ingress.yml',
-              'job.yaml', 'job.yml',
-              'kubectl-edit-*.yaml',
-              'namespace.yaml', 'namespace.yml',
-              'pvc.yaml', 'pvc.yml',
-              'rbac.yaml', 'rbac.yml',
-              'replicaset.yaml', 'replicaset.yml',
-              'role.yaml', 'role.yml',
-              'rolebinding.yaml', 'rolebinding.yml',
-              'secret.yaml', 'secret.yml',
-              'service.yaml', 'service.yml', 'service-*.yaml', 'service-*.yml', '*-service.yaml', '*-service.yml',
-              'service-account.yaml', 'service-account.yml', 'serviceaccount.yaml', 'serviceaccount.yml', 'serviceaccounts.yaml', 'serviceaccounts.yml', 'sa.yaml', 'sa.yml',
-              'statefulset.yaml', 'statefulset.yml'
-            },
-					}, schemastore.yaml.schemas()),
-				},
-				redhat = {
-					telemetry = {
-						enabled = false,
-					},
 				},
 			},
 		},
@@ -350,7 +314,10 @@ return function()
 	}
 
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
-	local common = { capabilities = capabilities }
+	local common = {
+		capabilities = capabilities,
+		handlers = handlers,
+	}
 
 	for server, config in pairs(servers) do
 		if config == {} then
