@@ -9,14 +9,14 @@
       url = "github:willruggiano/neovim.nix";
       inputs.flake-parts.follows = "flake-parts";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.git-hooks.follows = "git-hooks-nix";
+      inputs.git-hooks.follows = "git-hooks";
       inputs.example.follows = "";
     };
     nvim-treesitter-nix = {
       url = "github:nekowinston/nvim-treesitter-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    git-hooks-nix.url = "github:cachix/git-hooks.nix";
+    git-hooks.url = "github:cachix/git-hooks.nix";
   };
 
   outputs =
@@ -24,7 +24,7 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         ./neovim.nix
-        inputs.git-hooks-nix.flakeModule
+        inputs.git-hooks.flakeModule
         inputs.neovim-nix.flakeModule
       ];
       systems = [
