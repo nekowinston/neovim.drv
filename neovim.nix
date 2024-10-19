@@ -61,6 +61,7 @@
                 path = "~/Code/neovim";
                 fallback = false;
               };
+              pkg.enabled = false;
             };
             plugins = import ./plugins { inherit pkgs; };
           };

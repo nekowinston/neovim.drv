@@ -521,7 +521,17 @@ in
   };
   lazydev = {
     package = plugins.lazydev-nvim;
-    config = true;
+    ft = "lua";
+    config.library = [
+      {
+        path = "luvit-meta/library";
+        words = [ "vim%.uv" ];
+      }
+    ];
+  };
+  luvit-meta = {
+    package = plugins.luvit-meta;
+    lazy = true;
   };
   lspconfig = {
     package = plugins.nvim-lspconfig;
@@ -687,7 +697,10 @@ in
     cmd = "Repl";
   };
 
-  winshift.package = plugins.winshift-nvim;
+  winshift = {
+    package = plugins.winshift-nvim;
+    cmd = "WinShift";
+  };
 
   zen-mode-nvim = {
     package = plugins.zen-mode-nvim;

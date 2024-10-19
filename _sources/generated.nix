@@ -361,6 +361,18 @@
     };
     date = "2024-09-12";
   };
+  luvit-meta = {
+    pname = "luvit-meta";
+    version = "ce76f6f6cdc9201523a5875a4471dcfe0186eb60";
+    src = fetchFromGitHub {
+      owner = "Bilal2453";
+      repo = "luvit-meta";
+      rev = "ce76f6f6cdc9201523a5875a4471dcfe0186eb60";
+      fetchSubmodules = false;
+      sha256 = "sha256-zAAptV/oLuLAAsa2zSB/6fxlElk4+jNZd/cPr9oxFig=";
+    };
+    date = "2024-01-20";
+  };
   milspec-nvim = {
     pname = "milspec-nvim";
     version = "3988464c4514e441b4f81599507bdf2815b2f9e2";

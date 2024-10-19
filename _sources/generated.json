@@ -599,6 +599,26 @@
         },
         "version": "e808bee352d1a6fcf902ca1a71cee76e60e24071"
     },
+    "luvit-meta": {
+        "cargoLocks": null,
+        "date": "2024-01-20",
+        "extract": null,
+        "name": "luvit-meta",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "Bilal2453",
+            "repo": "luvit-meta",
+            "rev": "ce76f6f6cdc9201523a5875a4471dcfe0186eb60",
+            "sha256": "sha256-zAAptV/oLuLAAsa2zSB/6fxlElk4+jNZd/cPr9oxFig=",
+            "type": "github"
+        },
+        "version": "ce76f6f6cdc9201523a5875a4471dcfe0186eb60"
+    },
     "milspec-nvim": {
         "cargoLocks": null,
         "date": "2024-06-08",
