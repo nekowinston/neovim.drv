@@ -26,6 +26,13 @@ return function()
 		["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = vim.g.bc.style }),
 		["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = vim.g.bc.style }),
 	}
+	local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+	function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+		opts = opts or {}
+		opts.border = cmp_borders.border
+		opts.winhighlight = cmp_borders.winhighlight
+		return orig_util_open_floating_preview(contents, syntax, opts, ...)
+	end
 	vim.diagnostic.config({ float = { border = vim.g.bc.style } })
 
 	cmp.setup({
@@ -229,6 +236,7 @@ return function()
 
 	local servers = {
 		astro = {},
+		basedpyright = {},
 		bashls = {},
 		cssls = {},
 		denols = {

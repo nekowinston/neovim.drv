@@ -83,6 +83,7 @@ in
         "make"
         "markdown"
         "markdown_inline"
+        "meson"
         "nginx"
         "nix"
         "nu"
