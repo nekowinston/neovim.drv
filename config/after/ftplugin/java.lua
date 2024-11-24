@@ -21,14 +21,13 @@ require("jdtls").start_or_attach({
 	cmd = {
 		jdtls_bin,
 		"-configuration", vim.fn.expand("~/.cache/jdtls"),
-		"-data",          vim.fs.joinpath(vim.fn.expand("~/workspace"), project_name),
+		"-data", vim.fs.joinpath(vim.fn.stdpath("data"), "/jdtls", project_name),
 		"-javaagent:" .. vim.g.lombok_path,
 	},
 	-- stylua: ignore end
 	init_options = {
 		bundles = { vim.env.JAVA_DEBUG_JAR },
 	},
-	root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
 	settings = {
 		java = {
 			import = {

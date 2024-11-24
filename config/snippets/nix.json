@@ -1,13 +1,33 @@
 {
-  "mks": {
+  "Nix development shell": {
     "prefix": "mkshell",
     "body": [
-      "{ pkgs ? import <nixpkgs> {} }:",
+      "{",
+      "  pkgs ? import <nixpkgs> {",
+      "    config = { };",
+      "    overlays = [ ];",
+      "  },",
+      "}:",
+      "let",
+      "  inherit (pkgs) lib;",
+      "  inherit (pkgs.stdenv) isDarwin isLinux;",
+      "in",
       "pkgs.mkShell {",
-      "  buildInputs = with pkgs; [",
-      "    $1",
-      "  ];",
-      "}"
+      "  nativeBuildInputs =",
+      "    with pkgs;",
+      "    [",
+      "      ${1}",
+      "    ]",
+      "    ++ lib.optionals isDarwin [",
+      "      # darwin",
+      "      ${2}",
+      "    ]",
+      "    ++ lib.optionals isLinux [",
+      "      # linux deps",
+      "      ${3}",
+      "    ];",
+      "}",
+      ""
     ],
     "description": "Nix development shell"
   }

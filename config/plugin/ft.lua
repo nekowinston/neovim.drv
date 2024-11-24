@@ -1,6 +1,7 @@
 vim.filetype.add({
 	extension = {
 		jq = "jq",
+		purs = "purescript",
 	},
 	pattern = {
 		[".*%.blade%.php"] = "blade",

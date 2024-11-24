@@ -30,9 +30,10 @@ in
       modified.enable = true;
       renderer.indent_markers.enable = true;
     };
-    keys = ''
-      { { "<C-n>", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" } }
-    '';
+    keys = # lua
+      ''
+        { { "<C-n>", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" } }
+      '';
   };
   nvim-web-devicons = {
     package = plugins.nvim-web-devicons;
@@ -41,72 +42,9 @@ in
 
   nvim-treesitter = {
     event = "BufRead";
-    package = pkgs.vimPlugins.nvim-treesitter.override {
-      grammars = [
-        "arduino"
-        "astro"
-        "awk"
-        "bash"
-        "blade"
-        "c"
-        "cpp"
-        "css"
-        "csv"
-        "d"
-        "dhall"
-        "diff"
-        "dockerfile"
-        "elm"
-        "git_config"
-        "git_rebase"
-        "gitattributes"
-        "gitcommit"
-        "gitignore"
-        "go"
-        "gomod"
-        "gosum"
-        "gpg"
-        "graphql"
-        "groovy"
-        "haskell"
-        "hlsl"
-        "html"
-        "java"
-        "javascript"
-        "jsdoc"
-        "json"
-        "jsonc"
-        "just"
-        "kdl"
-        "kotlin"
-        "lua"
-        "make"
-        "markdown"
-        "markdown_inline"
-        "meson"
-        "nginx"
-        "nix"
-        "nu"
-        "objc"
-        "php"
-        "php_only"
-        "pug"
-        "python"
-        "rust"
-        "scala"
-        "scss"
-        "sql"
-        "ssh_config"
-        "svelte"
-        "tsv"
-        "tsx"
-        "typescript"
-        "vim"
-        "vimdoc"
-        "vue"
-        "yaml"
-        "zig"
-      ];
+    package = pkgs.symlinkJoin {
+      name = "nvim-treesitter";
+      paths = with pkgs.vimPlugins; [ nvim-treesitter ] ++ nvim-treesitter.withAllGrammars.dependencies;
     };
     config = ./nvim-treesitter.lua;
     dependencies = {
@@ -200,6 +138,7 @@ in
     config = true;
     lazy = false;
     priority = 1000;
+    dev = true;
   };
   milspec = {
     package = plugins.milspec-nvim;
@@ -208,6 +147,7 @@ in
         function() vim.cmd.colorscheme('milspec') end
       '';
     priority = 1000;
+    dev = true;
   };
 
   flash = {

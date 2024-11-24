@@ -287,7 +287,7 @@ return function()
 			on_attach = function()
 				require("ltex_extra").setup({
 					load_langs = { "en-US", "de-AT" },
-					path = vim.fn.stdpath("data") .. "/dictionary",
+					path = vim.fs.joinpath(vim.fn.stdpath("data"), "/dictionary"),
 				})
 			end,
 			settings = {
@@ -303,6 +303,7 @@ return function()
 		nixd = {},
 		nushell = {},
 		phpactor = {},
+		purescriptls = {},
 		serve_d = {},
 		sourcekit = {},
 		tailwindcss = {},

@@ -170,11 +170,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728128240,
-        "narHash": "sha256-8wVHrbBoDneRecPQR2df0TMQ98R4W+h94alUjAxzmNU=",
+        "lastModified": 1732405326,
+        "narHash": "sha256-imv9ok0y9fv0SC6VCLqiDvXne+5VKMai4XA8Vv7w5Zo=",
         "owner": "nekowinston",
         "repo": "nvim-treesitter-nix",
-        "rev": "b24d0db9c8308d5fac93535507025adea0c5b691",
+        "rev": "c0222a23d4a605233fca1c3c689acc2a44b16287",
         "type": "github"
       },
       "original": {
