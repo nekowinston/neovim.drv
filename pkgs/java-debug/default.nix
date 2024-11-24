@@ -7,19 +7,19 @@
 }:
 maven.buildMavenPackage rec {
   pname = "java-debug";
-  version = "0.53.0";
+  version = "0.53.1";
 
   src = fetchFromGitHub {
     owner = "microsoft";
     repo = pname;
     rev = "refs/tags/${version}";
-    hash = "sha256-Lke+yyCUqcoGYS6pNYXdQdAn9uZ+S3pk9JVhfakAFvY=";
+    hash = "sha256-7h2U0l8OE8VrXymggfQ3XSXacvfBbQKCJmQVSo8J4M0=";
   };
 
   patches = [ ./make-deterministic.patch ];
 
   buildOffline = true;
-  mvnHash = "sha256-7D6ECEWs4h7rw6MVTozd4HCpeVp8NA67/d0p93Cy0is=";
+  mvnHash = "sha256-vvsMPUfvbwXx6oYqz43UwkqGND7rynK51el7W5ZOWRY=";
   mvnParameters = lib.escapeShellArgs [
     "-Dproject.build.outputTimestamp=1980-01-01T00:00:02Z"
     "--projects=com.microsoft.java.debug.core"
