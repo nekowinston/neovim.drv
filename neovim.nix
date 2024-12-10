@@ -10,11 +10,13 @@
       {
         neovim = {
           build.initlua = lib.mkForce (
-            pkgs.writeText "init.lua" ''
-              vim.opt.exrc = true
-              vim.cmd.source "${config.neovim.build.before}"
-              vim.cmd.source "${config.neovim.build.plugins}"
-            ''
+            pkgs.writeText "init.lua" # lua
+              ''
+                ${builtins.readFile ./before.lua}
+
+                vim.cmd.source "${config.neovim.build.before}"
+                vim.cmd.source "${config.neovim.build.plugins}"
+              ''
           );
           env.JAVA_DEBUG_JAR = "${pkgs.java-debug}/share/java-debug/java-debug.jar";
           paths = with pkgs; [

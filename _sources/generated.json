@@ -179,6 +179,26 @@
         },
         "version": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90"
     },
+    "codecompanion-nvim": {
+        "cargoLocks": null,
+        "date": "2024-11-27",
+        "extract": null,
+        "name": "codecompanion-nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "olimorris",
+            "repo": "codecompanion.nvim",
+            "rev": "a3d26105194e2b08b9b46bce107a857cb4d607d9",
+            "sha256": "sha256-7xvRVSk4MztzaWr0W6fXuzaGZg0ed1F6LRpHCJS0axs=",
+            "type": "github"
+        },
+        "version": "a3d26105194e2b08b9b46bce107a857cb4d607d9"
+    },
     "color-picker-nvim": {
         "cargoLocks": null,
         "date": "2023-05-21",
@@ -238,46 +258,6 @@
             "type": "github"
         },
         "version": "62d5accad8b29d6ba9b58d3dff90c43a55621c60"
-    },
-    "copilot-cmp": {
-        "cargoLocks": null,
-        "date": "2024-06-16",
-        "extract": null,
-        "name": "copilot-cmp",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "zbirenbaum",
-            "repo": "copilot-cmp",
-            "rev": "b6e5286b3d74b04256d0a7e3bd2908eabec34b44",
-            "sha256": "sha256-8w9go2SBkI+BrXNadWM8ZxDDfrAnZZJx6RbVHAK4+Pg=",
-            "type": "github"
-        },
-        "version": "b6e5286b3d74b04256d0a7e3bd2908eabec34b44"
-    },
-    "copilot-lua": {
-        "cargoLocks": null,
-        "date": "2024-10-18",
-        "extract": null,
-        "name": "copilot-lua",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "zbirenbaum",
-            "repo": "copilot.lua",
-            "rev": "f8d8d872bb319f640d5177dad5fbf01f7a16d7d0",
-            "sha256": "sha256-UY6N2Q+egh+Cn4REZXrSGH9ElWQBedl0n8tWJvGe7vs=",
-            "type": "github"
-        },
-        "version": "f8d8d872bb319f640d5177dad5fbf01f7a16d7d0"
     },
     "crates-nvim": {
         "cargoLocks": null,
@@ -1303,6 +1283,26 @@
             "type": "github"
         },
         "version": "d803ba7668ba390aa4cfd3580183c982cac36fd8"
+    },
+    "render-markdown-nvim": {
+        "cargoLocks": null,
+        "date": "2024-11-25",
+        "extract": null,
+        "name": "render-markdown-nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "MeanderingProgrammer",
+            "repo": "render-markdown.nvim",
+            "rev": "6096cf3608b576a38fd1396227dbc0473091714d",
+            "sha256": "sha256-b/zWORxU3ItBRyP+pcKJx3M5S0rls1pxO326vWmKTus=",
+            "type": "github"
+        },
+        "version": "6096cf3608b576a38fd1396227dbc0473091714d"
     },
     "rustaceanvim": {
         "cargoLocks": null,

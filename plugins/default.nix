@@ -1,6 +1,3 @@
-# FIXME: All occurrances of `<space>` should be `<leader>`, but this requires
-# injection in `before.lua` via neovim.nix
-
 { pkgs }:
 let
   plugins = pkgs.callPackage ../pkgs/plugins { };
@@ -172,12 +169,14 @@ in
   noice = {
     package = plugins.noice-nvim;
     event = "VeryLazy";
-    config = {
-      lsp.override = {
+    config.lsp = {
+      override = {
         "vim.lsp.util.convert_input_to_markdown_lines" = true;
         "vim.lsp.util.stylize_markdown" = true;
         "cmp.entry.get_documentation" = true;
       };
+      hover.enabled = false;
+      signature.enabled = false;
     };
     dependencies = {
       nui.package = plugins.nui-nvim;
@@ -301,15 +300,31 @@ in
     event = "VeryLazy";
   };
 
-  copilot = {
-    package = plugins.copilot-lua;
-    config = {
-      panel.enabled = false;
-      suggestion.enabled = false;
-      filetypes.yaml = true;
-    };
-    cmd = "Copilot";
-    event = "InsertEnter";
+  codecompanion = {
+    package = plugins.codecompanion-nvim;
+    config = ./codecompanion.lua;
+    cmd = [
+      "CodeCompanion"
+      "CodeCompanionActions"
+      "CodeCompanionChat"
+      "CodeCompanionCmd"
+    ];
+    keys = # lua
+      ''
+        {
+          { "<C-a>", "<Cmd>CodeCompanionActions<CR>", mode = {"n", "v"} },
+          { "<leader>a", "<Cmd>CodeCompanionChat Toggle<CR>", mode = {"n", "v"}, desc = "CodeCompanion: Toggle" },
+          { "ga", "<Cmd>CodeCompanionChat Add<CR>", mode = "v", desc = "CodeCompanion: Add selection" },
+        }
+      '';
+  };
+  render-markdown-nvim = rec {
+    package = plugins.render-markdown-nvim;
+    config.file_types = ft;
+    ft = [
+      "markdown"
+      "codecompanion"
+    ];
   };
 
   gitsigns = {
@@ -324,7 +339,7 @@ in
     cmd = "Neogit";
     keys = # lua
       ''
-        { { "<space>ng", "<Cmd>Neogit<CR>", desc = "Neogit" } }
+        { { "<leader>ng", "<Cmd>Neogit<CR>", desc = "Neogit" } }
       '';
   };
   diffview = {
@@ -335,7 +350,7 @@ in
     ];
     keys = # lua
       ''
-        { { "<space>gd", "<Cmd>DiffviewOpen<CR>", desc = "Diffview" } }
+        { { "<leader>gd", "<Cmd>DiffviewOpen<CR>", desc = "Diffview" } }
       '';
   };
 
@@ -479,10 +494,6 @@ in
     config = ./lsp.lua;
     event = "BufRead";
     dependencies = {
-      copilot-cmp = {
-        package = plugins.copilot-cmp;
-        config = true;
-      };
       cmp.package = plugins.nvim-cmp;
       cmp-buffer.package = plugins.cmp-buffer;
       cmp-cmdline.package = plugins.cmp-cmdline;
@@ -578,11 +589,11 @@ in
     keys = # lua
       ''
         {
-          { "<space>fd", "<Cmd>Telescope find_files<CR>", desc = "Find Files" },
-          { "<space>fg", "<Cmd>Telescope live_grep<CR>", desc = "Live Grep" },
-          { "<space>fh", "<Cmd>Telescope help_tags<CR>", desc = "Help Tags" },
-          { "<space>fp", "<Cmd>Telescope project<CR>", desc = "Project" },
-          { "<space>fs", "<Cmd>SessionManager load_session<CR>", desc = "Show Sessions" },
+          { "<leader>fd", "<Cmd>Telescope find_files<CR>", desc = "Find Files" },
+          { "<leader>fg", "<Cmd>Telescope live_grep<CR>", desc = "Live Grep" },
+          { "<leader>fh", "<Cmd>Telescope help_tags<CR>", desc = "Help Tags" },
+          { "<leader>fp", "<Cmd>Telescope project<CR>", desc = "Project" },
+          { "<leader>fs", "<Cmd>SessionManager load_session<CR>", desc = "Show Sessions" },
         }
       '';
   };
@@ -614,8 +625,7 @@ in
       shade_terminals = false;
       direction = "float";
       float_opts = {
-        # FIXME: this should use `vim.g.bc.style`
-        border = "rounded";
+        border = mkLuaInline "vim.g.bc.style";
         winblend = 10;
       };
       winbar.enabled = true;

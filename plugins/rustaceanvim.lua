@@ -10,8 +10,7 @@ return function()
 		},
 		tools = {
 			float_win_config = {
-				-- FIXME: this should use `vim.g.bc.style`
-				border = "rounded",
+				border = vim.g.bc.style,
 			},
 		},
 	}

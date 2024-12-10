@@ -49,6 +49,6 @@ return function()
 	map("n", "<A-c>", "<Cmd>enew<CR>", { desc = "Create new buffer" })
 
 	map("n", "<A-space>", "<Cmd>BufferLinePick<CR>", { desc = "Pick buffer" })
-	map("n", "<Space>bd", "<Cmd>BufferLineSortByDirectory<CR>", { desc = "Sort buffers by directory" })
-	map("n", "<Space>bl", "<Cmd>BufferLineSortByExtension<CR>", { desc = "Sort buffers by extension" })
+	map("n", "<leader>bd", "<Cmd>BufferLineSortByDirectory<CR>", { desc = "Sort buffers by directory" })
+	map("n", "<leader>bl", "<Cmd>BufferLineSortByExtension<CR>", { desc = "Sort buffers by extension" })
 end

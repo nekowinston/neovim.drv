@@ -10,6 +10,10 @@ src.git = "https://github.com/f-person/auto-dark-mode.nvim"
 fetch.github = "akinsho/bufferline.nvim"
 src.git = "https://github.com/akinsho/bufferline.nvim"
 
+[codecompanion-nvim]
+fetch.github = "olimorris/codecompanion.nvim"
+src.git = "https://github.com/olimorris/codecompanion.nvim"
+
 [cmp-buffer]
 fetch.github = "hrsh7th/cmp-buffer"
 src.git = "https://github.com/hrsh7th/cmp-buffer"
@@ -45,14 +49,6 @@ src.git = "https://github.com/numtostr/comment.nvim"
 [conform-nvim]
 fetch.github = "stevearc/conform.nvim"
 src.git = "https://github.com/stevearc/conform.nvim"
-
-[copilot-lua]
-fetch.github = "zbirenbaum/copilot.lua"
-src.git = "https://github.com/zbirenbaum/copilot.lua"
-
-[copilot-cmp]
-fetch.github = "zbirenbaum/copilot-cmp"
-src.git = "https://github.com/zbirenbaum/copilot-cmp"
 
 [crates-nvim]
 fetch.github = "saecki/crates.nvim"
@@ -258,6 +254,10 @@ src.git = "https://github.com/andweeb/presence.nvim"
 [rainbow-delimiters]
 fetch.github = "hiphish/rainbow-delimiters.nvim"
 src.git = "https://github.com/hiphish/rainbow-delimiters.nvim"
+
+[render-markdown-nvim]
+fetch.github = "MeanderingProgrammer/render-markdown.nvim"
+src.git = "https://github.com/MeanderingProgrammer/render-markdown.nvim"
 
 [rustaceanvim]
 fetch.github = "mrcjkb/rustaceanvim"

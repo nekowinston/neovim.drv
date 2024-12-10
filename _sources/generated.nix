@@ -109,6 +109,18 @@
     };
     date = "2024-11-04";
   };
+  codecompanion-nvim = {
+    pname = "codecompanion-nvim";
+    version = "a3d26105194e2b08b9b46bce107a857cb4d607d9";
+    src = fetchFromGitHub {
+      owner = "olimorris";
+      repo = "codecompanion.nvim";
+      rev = "a3d26105194e2b08b9b46bce107a857cb4d607d9";
+      fetchSubmodules = false;
+      sha256 = "sha256-7xvRVSk4MztzaWr0W6fXuzaGZg0ed1F6LRpHCJS0axs=";
+    };
+    date = "2024-11-27";
+  };
   color-picker-nvim = {
     pname = "color-picker-nvim";
     version = "06cb5f853535dea529a523e9a0e8884cdf9eba4d";
@@ -144,30 +156,6 @@
       sha256 = "sha256-h/roo1FbtiLjQrbCgdTCp60VOXcHlokcwdTkT3aUVLg=";
     };
     date = "2024-11-20";
-  };
-  copilot-cmp = {
-    pname = "copilot-cmp";
-    version = "b6e5286b3d74b04256d0a7e3bd2908eabec34b44";
-    src = fetchFromGitHub {
-      owner = "zbirenbaum";
-      repo = "copilot-cmp";
-      rev = "b6e5286b3d74b04256d0a7e3bd2908eabec34b44";
-      fetchSubmodules = false;
-      sha256 = "sha256-8w9go2SBkI+BrXNadWM8ZxDDfrAnZZJx6RbVHAK4+Pg=";
-    };
-    date = "2024-06-16";
-  };
-  copilot-lua = {
-    pname = "copilot-lua";
-    version = "f8d8d872bb319f640d5177dad5fbf01f7a16d7d0";
-    src = fetchFromGitHub {
-      owner = "zbirenbaum";
-      repo = "copilot.lua";
-      rev = "f8d8d872bb319f640d5177dad5fbf01f7a16d7d0";
-      fetchSubmodules = false;
-      sha256 = "sha256-UY6N2Q+egh+Cn4REZXrSGH9ElWQBedl0n8tWJvGe7vs=";
-    };
-    date = "2024-10-18";
   };
   crates-nvim = {
     pname = "crates-nvim";
@@ -786,6 +774,18 @@
       sha256 = "sha256-nAg4XbPlJ/z6ELHKqBrp/FLRwIkiam7BAKR9eqkoxCI=";
     };
     date = "2024-11-19";
+  };
+  render-markdown-nvim = {
+    pname = "render-markdown-nvim";
+    version = "6096cf3608b576a38fd1396227dbc0473091714d";
+    src = fetchFromGitHub {
+      owner = "MeanderingProgrammer";
+      repo = "render-markdown.nvim";
+      rev = "6096cf3608b576a38fd1396227dbc0473091714d";
+      fetchSubmodules = false;
+      sha256 = "sha256-b/zWORxU3ItBRyP+pcKJx3M5S0rls1pxO326vWmKTus=";
+    };
+    date = "2024-11-25";
   };
   rustaceanvim = {
     pname = "rustaceanvim";

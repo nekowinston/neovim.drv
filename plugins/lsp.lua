@@ -8,7 +8,6 @@ return function()
 	vim.o.completeopt = "menu,menuone,noselect"
 
 	-- border style
-	require("lspconfig.ui.windows").default_options.border = vim.g.bc.style
 	local cmp_borders = {
 		border = {
 			vim.g.bc.topleft,
@@ -22,18 +21,6 @@ return function()
 		},
 		winhighlight = "Normal:CmpPmenu,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None",
 	}
-	local handlers = {
-		["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = vim.g.bc.style }),
-		["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = vim.g.bc.style }),
-	}
-	local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-	function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-		opts = opts or {}
-		opts.border = cmp_borders.border
-		opts.winhighlight = cmp_borders.winhighlight
-		return orig_util_open_floating_preview(contents, syntax, opts, ...)
-	end
-	vim.diagnostic.config({ float = { border = vim.g.bc.style } })
 
 	cmp.setup({
 		snippet = {
@@ -80,7 +67,6 @@ return function()
 			end, { "i", "s" }),
 		}),
 		sources = cmp.config.sources({
-			{ name = "copilot" },
 			{ name = "nvim_lsp" },
 			{ name = "luasnip" },
 			{ name = "vim-dadbod-completion" },
@@ -91,10 +77,6 @@ return function()
 			expandable_indicator = true,
 			fields = { "kind", "abbr", "menu" },
 			format = function(entry, vim_item)
-				require("lspkind").init({
-					symbol_map = { Copilot = "" },
-				})
-
 				local kind = require("lspkind").cmp_format({
 					mode = "symbol_text",
 					ellipsis_char = "…",
@@ -103,7 +85,7 @@ return function()
 				local strings = vim.split(kind.kind, "%s", { trimempty = true })
 
 				kind.kind = strings[1] or ""
-				kind.menu = "   (" .. (strings[2] or "") .. ")"
+				kind.menu = string.format("  (%s)", strings[2] or "")
 
 				return kind
 			end,
@@ -196,18 +178,18 @@ return function()
 			map("n", "]d", vim.diagnostic.goto_next, opts)
 			map("n", "[d", vim.diagnostic.goto_prev, opts)
 			-- workspace config
-			map("n", "<space>wa", lsp.add_workspace_folder, opts)
-			map("n", "<space>wr", lsp.remove_workspace_folder, opts)
-			map("n", "<space>D", lsp.type_definition, opts)
+			map("n", "<leader>wa", lsp.add_workspace_folder, opts)
+			map("n", "<leader>wr", lsp.remove_workspace_folder, opts)
+			map("n", "<leader>D", lsp.type_definition, opts)
 			-- editing
-			map({ "n", "v" }, "<space>ca", lsp.code_action, opts)
-			map("n", "<space>rn", lsp.rename, opts)
+			map({ "n", "v" }, "<leader>ca", lsp.code_action, opts)
+			map("n", "<leader>rn", lsp.rename, opts)
 			-- formatting
-			map("n", "<space>fm", function()
+			map("n", "<leader>fm", function()
 				lsp.format({ async = true })
 			end, opts)
 			-- kickstart the server
-			map("n", "<space>lr", vim.cmd.LspRestart, opts)
+			map("n", "<leader>lr", vim.cmd.LspRestart, opts)
 		end,
 	})
 
@@ -303,7 +285,17 @@ return function()
 		nixd = {},
 		nushell = {},
 		phpactor = {},
-		purescriptls = {},
+		purescriptls = {
+			flags = {
+				debounce_text_changes = 150,
+			},
+			settings = {
+				purescript = {
+					addSpagoSources = true,
+					formatter = "purs-tidy",
+				},
+			},
+		},
 		serve_d = {},
 		sourcekit = {},
 		tailwindcss = {},
@@ -322,17 +314,15 @@ return function()
 		zls = {},
 	}
 
-	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 	local common = {
-		capabilities = capabilities,
-		handlers = handlers,
+		capabilities = require("cmp_nvim_lsp").default_capabilities(),
+		handlers = {
+			["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = vim.g.bc.style }),
+			["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = vim.g.bc.style }),
+		},
 	}
 
 	for server, config in pairs(servers) do
-		if config == {} then
-			lspconfig[server].setup(common)
-		else
-			lspconfig[server].setup(vim.tbl_extend("force", common, config))
-		end
+		lspconfig[server].setup(config == {} and {} or vim.tbl_extend("force", common, config))
 	end
 end

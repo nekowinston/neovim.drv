@@ -27,12 +27,13 @@ local ignore_ft = {
 	"fugitive",
 	"help",
 	"lazy",
+	"noice",
+	"toggleterm",
 	"NeogitCommitView",
 	"NeogitConsole",
 	"NeogitStatus",
 	"NvimTree",
 	"TelescopePrompt",
-	"toggleterm",
 	"Trouble",
 }
 
