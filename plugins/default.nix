@@ -566,6 +566,7 @@ in
     dependencies = {
       neotest-deno.package = plugins.neotest-go;
       neotest-go.package = plugins.neotest-go;
+      neotest-haskell.package = plugins.neotest-haskell;
     };
     cmd = "Neotest";
   };

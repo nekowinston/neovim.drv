@@ -719,6 +719,26 @@
         },
         "version": "92950ad7be2ca02a41abca5c6600ff6ffaf5b5d6"
     },
+    "neotest-haskell": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "neotest-haskell",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "mrcjkb",
+            "repo": "neotest-haskell",
+            "rev": "2.1.0",
+            "sha256": "sha256-UDCJ2T859BBScmgAAnqWDOp0MmyNKkCPh+QAw6J/kFc=",
+            "type": "github"
+        },
+        "version": "2.1.0"
+    },
     "neovim-session-manager": {
         "cargoLocks": null,
         "date": "2024-10-09",

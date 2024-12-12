@@ -142,6 +142,10 @@ src.git = "https://github.com/MarkEmmons/neotest-deno"
 fetch.github = "nvim-neotest/neotest-go"
 src.git = "https://github.com/nvim-neotest/neotest-go"
 
+[neotest-haskell]
+fetch.github = "mrcjkb/neotest-haskell"
+src.github = "mrcjkb/neotest-haskell"
+
 [neovim-session-manager]
 fetch.github = "Shatur/neovim-session-manager"
 src.git = "https://github.com/Shatur/neovim-session-manager"

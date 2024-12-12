@@ -433,6 +433,17 @@
     };
     date = "2024-05-19";
   };
+  neotest-haskell = {
+    pname = "neotest-haskell";
+    version = "2.1.0";
+    src = fetchFromGitHub {
+      owner = "mrcjkb";
+      repo = "neotest-haskell";
+      rev = "2.1.0";
+      fetchSubmodules = false;
+      sha256 = "sha256-UDCJ2T859BBScmgAAnqWDOp0MmyNKkCPh+QAw6J/kFc=";
+    };
+  };
   neovim-session-manager = {
     pname = "neovim-session-manager";
     version = "ce43f2eb2a52492157d7742e5f684b9a42bb3e5c";

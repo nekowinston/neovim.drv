@@ -8,7 +8,7 @@ let
     k: v:
     vimUtils.buildVimPlugin {
       inherit (v) pname src;
-      version = v.date;
+      version = v.date or v.version;
 
       passthru = {
         inherit (v) cargoLock;
