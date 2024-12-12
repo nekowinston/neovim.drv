@@ -136,7 +136,6 @@ in
     config = true;
     lazy = false;
     priority = 1000;
-    dev = true;
   };
   milspec = {
     package = plugins.milspec-nvim;
@@ -145,7 +144,6 @@ in
         function() vim.cmd.colorscheme('milspec') end
       '';
     priority = 1000;
-    dev = true;
   };
 
   flash = {
