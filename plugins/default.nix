@@ -169,14 +169,16 @@ in
   noice = {
     package = plugins.noice-nvim;
     event = "VeryLazy";
-    config.lsp = {
-      override = {
+    config = {
+      lsp.override = {
         "vim.lsp.util.convert_input_to_markdown_lines" = true;
         "vim.lsp.util.stylize_markdown" = true;
         "cmp.entry.get_documentation" = true;
       };
-      hover.enabled = false;
-      signature.enabled = false;
+      presets = {
+        long_message_to_split = true;
+        lsp_doc_border = true;
+      };
     };
     dependencies = {
       nui.package = plugins.nui-nvim;
@@ -492,7 +494,10 @@ in
   lspconfig = {
     package = plugins.nvim-lspconfig;
     config = ./lsp.lua;
-    event = "BufRead";
+    event = [
+      "BufNewFile"
+      "BufRead"
+    ];
     dependencies = {
       cmp.package = plugins.nvim-cmp;
       cmp-buffer.package = plugins.cmp-buffer;
