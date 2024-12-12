@@ -228,11 +228,6 @@ in
       ft = filetypes;
       cmd = "ColorizerToggle";
     };
-  color-picker = {
-    package = plugins.color-picker-nvim;
-    config = true;
-    event = "VeryLazy";
-  };
 
   comment = {
     package = plugins.comment-nvim;
@@ -590,11 +585,6 @@ in
           { "<leader>fs", "<Cmd>SessionManager load_session<CR>", desc = "Show Sessions" },
         }
       '';
-  };
-  octo = {
-    package = plugins.octo-nvim;
-    config = true;
-    cmd = "Octo";
   };
   venv-selector-nvim = {
     package = plugins.venv-selector-nvim;

@@ -4,11 +4,11 @@ src.git = "https://github.com/f-person/auto-dark-mode.nvim"
 
 [bufferline-nvim]
 fetch.github = "akinsho/bufferline.nvim"
-src.git = "https://github.com/akinsho/bufferline.nvim"
+src.github = "akinsho/bufferline.nvim"
 
 [codecompanion-nvim]
 fetch.github = "olimorris/codecompanion.nvim"
-src.git = "https://github.com/olimorris/codecompanion.nvim"
+src.github = "olimorris/codecompanion.nvim"
 
 [cmp-buffer]
 fetch.github = "hrsh7th/cmp-buffer"
@@ -34,21 +34,17 @@ src.git = "https://github.com/hrsh7th/cmp-path"
 fetch.github = "saadparwaiz1/cmp_luasnip"
 src.git = "https://github.com/saadparwaiz1/cmp_luasnip"
 
-[color-picker-nvim]
-fetch.github = "ziontee113/color-picker.nvim"
-src.git = "https://github.com/ziontee113/color-picker.nvim"
-
 [comment-nvim]
 fetch.github = "numtostr/comment.nvim"
 src.git = "https://github.com/numtostr/comment.nvim"
 
 [conform-nvim]
 fetch.github = "stevearc/conform.nvim"
-src.git = "https://github.com/stevearc/conform.nvim"
+src.github = "stevearc/conform.nvim"
 
 [crates-nvim]
 fetch.github = "saecki/crates.nvim"
-src.git = "https://github.com/saecki/crates.nvim"
+src.github = "saecki/crates.nvim"
 
 [diffview-nvim]
 fetch.github = "sindrets/diffview.nvim"
@@ -62,13 +58,9 @@ src.git = "https://github.com/direnv/direnv.vim"
 fetch.github = "stevearc/dressing.nvim"
 src.git = "https://github.com/stevearc/dressing.nvim"
 
-[fidget-nvim]
-fetch.github = "j-hui/fidget.nvim"
-src.git = "https://github.com/j-hui/fidget.nvim"
-
 [flash-nvim]
 fetch.github = "folke/flash.nvim"
-src.git = "https://github.com/folke/flash.nvim"
+src.github = "folke/flash.nvim"
 
 [friendly-snippets]
 fetch.github = "rafamadriz/friendly-snippets"
@@ -80,19 +72,19 @@ src.git = "https://github.com/lewis6991/gitsigns.nvim"
 
 [haskell-tools-nvim]
 fetch.github = "mrcjkb/haskell-tools.nvim"
-src.git = "https://github.com/mrcjkb/haskell-tools.nvim"
+src.github = "mrcjkb/haskell-tools.nvim"
 
 [indent-blankline-nvim]
 fetch.github = "lukas-reineke/indent-blankline.nvim"
-src.git = "https://github.com/lukas-reineke/indent-blankline.nvim"
+src.github = "lukas-reineke/indent-blankline.nvim"
 
 [lazydev-nvim]
 fetch.github = "folke/lazydev.nvim"
-src.git = "https://github.com/folke/lazydev.nvim"
+src.github = "folke/lazydev.nvim"
 
 [lazy-nvim]
 fetch.github = "folke/lazy.nvim"
-src.git = "https://github.com/folke/lazy.nvim"
+src.github = "folke/lazy.nvim"
 
 [lspkind-nvim]
 fetch.github = "onsails/lspkind.nvim"
@@ -132,7 +124,7 @@ src.git = "https://github.com/ii14/neorepl.nvim"
 
 [neotest]
 fetch.github = "nvim-neotest/neotest"
-src.git = "https://github.com/nvim-neotest/neotest"
+src.github = "nvim-neotest/neotest"
 
 [neotest-deno]
 fetch.github = "MarkEmmons/neotest-deno"
@@ -152,7 +144,7 @@ src.git = "https://github.com/Shatur/neovim-session-manager"
 
 [noice-nvim]
 fetch.github = "folke/noice.nvim"
-src.git = "https://github.com/folke/noice.nvim"
+src.github = "folke/noice.nvim"
 
 [nui-nvim]
 fetch.github = "MunifTanjim/nui.nvim"
@@ -167,8 +159,8 @@ fetch.github = "hrsh7th/nvim-cmp"
 src.git = "https://github.com/hrsh7th/nvim-cmp"
 
 [nvim-colorizer-lua]
-fetch.github = "nvchad/nvim-colorizer.lua"
-src.git = "https://github.com/nvchad/nvim-colorizer.lua"
+fetch.github = "catgoose/nvim-colorizer.lua"
+src.git = "https://github.com/catgoose/nvim-colorizer.lua"
 
 [nvim-dap]
 fetch.github = "mfussenegger/nvim-dap"
@@ -200,11 +192,11 @@ src.git = "https://github.com/SmiteshP/nvim-navic"
 
 [nvim-nio]
 fetch.github = "nvim-neotest/nvim-nio"
-src.git = "https://github.com/nvim-neotest/nvim-nio"
+src.github = "nvim-neotest/nvim-nio"
 
 [nvim-notify]
 fetch.github = "rcarriga/nvim-notify"
-src.git = "https://github.com/rcarriga/nvim-notify"
+src.github = "rcarriga/nvim-notify"
 
 [nvim-spectre]
 fetch.github = "nvim-pack/nvim-spectre"
@@ -213,11 +205,11 @@ cargo_locks = ["spectre_oxi/Cargo.lock"]
 
 [nvim-surround]
 fetch.github = "kylechui/nvim-surround"
-src.git = "https://github.com/kylechui/nvim-surround"
+src.github = "kylechui/nvim-surround"
 
 [nvim-tree-lua]
 fetch.github = "nvim-tree/nvim-tree.lua"
-src.git = "https://github.com/nvim-tree/nvim-tree.lua"
+src.github = "nvim-tree/nvim-tree.lua"
 
 [nvim-treesitter-context]
 fetch.github = "nvim-treesitter/nvim-treesitter-context"
@@ -235,25 +227,21 @@ src.git = "https://github.com/windwp/nvim-ts-autotag"
 fetch.github = "nvim-tree/nvim-web-devicons"
 src.git = "https://github.com/nvim-tree/nvim-web-devicons"
 
-[octo-nvim]
-fetch.github = "pwntester/octo.nvim"
-src.git = "https://github.com/pwntester/octo.nvim"
-
 [plenary-nvim]
 fetch.github = "nvim-lua/plenary.nvim"
 src.git = "https://github.com/nvim-lua/plenary.nvim"
 
 [rainbow-delimiters]
 fetch.github = "hiphish/rainbow-delimiters.nvim"
-src.git = "https://github.com/hiphish/rainbow-delimiters.nvim"
+src.github_tag = "hiphish/rainbow-delimiters.nvim"
 
 [render-markdown-nvim]
 fetch.github = "MeanderingProgrammer/render-markdown.nvim"
-src.git = "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+src.github = "MeanderingProgrammer/render-markdown.nvim"
 
 [rustaceanvim]
 fetch.github = "mrcjkb/rustaceanvim"
-src.git = "https://github.com/mrcjkb/rustaceanvim"
+src.github = "mrcjkb/rustaceanvim"
 
 [schemastore-nvim]
 fetch.github = "b0o/schemastore.nvim"
@@ -265,7 +253,7 @@ src.git = "https://github.com/AndrewRadev/tagalong.vim"
 
 [telescope-nvim]
 fetch.github = "nvim-telescope/telescope.nvim"
-src.git = "https://github.com/nvim-telescope/telescope.nvim"
+src.github = "nvim-telescope/telescope.nvim"
 
 [telescope-file-browser-nvim]
 fetch.github = "nvim-telescope/telescope-file-browser.nvim"
@@ -277,19 +265,19 @@ src.git = "https://github.com/nvim-telescope/telescope-project.nvim"
 
 [todo-comments-nvim]
 fetch.github = "folke/todo-comments.nvim"
-src.git = "https://github.com/folke/todo-comments.nvim"
+src.github = "folke/todo-comments.nvim"
 
 [toggleterm-nvim]
 fetch.github = "akinsho/toggleterm.nvim"
-src.git = "https://github.com/akinsho/toggleterm.nvim"
+src.github = "akinsho/toggleterm.nvim"
 
 [trouble-nvim]
 fetch.github = "folke/trouble.nvim"
-src.git = "https://github.com/folke/trouble.nvim"
+src.github = "folke/trouble.nvim"
 
 [twilight-nvim]
 fetch.github = "folke/twilight.nvim"
-src.git = "https://github.com/folke/twilight.nvim"
+src.github = "folke/twilight.nvim"
 
 [typescript-tools-nvim]
 fetch.github = "pmizio/typescript-tools.nvim"
@@ -334,7 +322,7 @@ src.git = "https://github.com/vkhitrin/vim-tera"
 
 [which-key-nvim]
 fetch.github = "folke/which-key.nvim"
-src.git = "https://github.com/folke/which-key.nvim"
+src.github = "folke/which-key.nvim"
 
 [winshift-nvim]
 fetch.github = "sindrets/winshift.nvim"
@@ -342,4 +330,4 @@ src.git = "https://github.com/sindrets/winshift.nvim"
 
 [zen-mode-nvim]
 fetch.github = "folke/zen-mode.nvim"
-src.git = "https://github.com/folke/zen-mode.nvim"
+src.github = "folke/zen-mode.nvim"

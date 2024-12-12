@@ -112,7 +112,7 @@ return function()
 		end,
 	})
 
-	local git_ft = { "gitcommit", "NeogitCommitMessage", "Octo" }
+	local git_ft = { "gitcommit", "NeogitCommitMessage" }
 	cmp.setup.filetype(git_ft, {
 		sources = cmp.config.sources({
 			{ name = "git" },
