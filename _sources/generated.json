@@ -1,24 +1,4 @@
 {
-    "alpha-nvim": {
-        "cargoLocks": null,
-        "date": "2024-11-14",
-        "extract": null,
-        "name": "alpha-nvim",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "goolord",
-            "repo": "alpha-nvim",
-            "rev": "de72250e054e5e691b9736ee30db72c65d560771",
-            "sha256": "sha256-sNi5qarejYqM4/J7lBZI3gjVLxer5FBPq8K6qjqcMjA=",
-            "type": "github"
-        },
-        "version": "de72250e054e5e691b9736ee30db72c65d560771"
-    },
     "auto-dark-mode-nvim": {
         "cargoLocks": null,
         "date": "2024-11-19",
@@ -618,26 +598,6 @@
             "type": "github"
         },
         "version": "b6697c604b8323ce768334df14f0725537d8dccf"
-    },
-    "neoconf-nvim": {
-        "cargoLocks": null,
-        "date": "2024-12-10",
-        "extract": null,
-        "name": "neoconf-nvim",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "folke",
-            "repo": "neoconf.nvim",
-            "rev": "05d25c121e07c464d6b4203204aa113453eca152",
-            "sha256": "sha256-5dQ48syjEsOU+Gv6UcE/EqYOGYFL7QkJaXoFcznglvE=",
-            "type": "github"
-        },
-        "version": "05d25c121e07c464d6b4203204aa113453eca152"
     },
     "neogen": {
         "cargoLocks": null,
@@ -1243,26 +1203,6 @@
             "type": "github"
         },
         "version": "2d9b06177a975543726ce5c73fca176cedbffe9d"
-    },
-    "presence-nvim": {
-        "cargoLocks": null,
-        "date": "2023-01-29",
-        "extract": null,
-        "name": "presence-nvim",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "andweeb",
-            "repo": "presence.nvim",
-            "rev": "87c857a56b7703f976d3a5ef15967d80508df6e6",
-            "sha256": "sha256-ZpsunLsn//zYgUtmAm5FqKVueVd/Pa1r55ZDqxCimBk=",
-            "type": "github"
-        },
-        "version": "87c857a56b7703f976d3a5ef15967d80508df6e6"
     },
     "rainbow-delimiters": {
         "cargoLocks": null,

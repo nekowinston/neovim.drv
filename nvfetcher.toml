@@ -1,7 +1,3 @@
-[alpha-nvim]
-fetch.github = "goolord/alpha-nvim"
-src.git = "https://github.com/goolord/alpha-nvim"
-
 [auto-dark-mode-nvim]
 fetch.github = "f-person/auto-dark-mode.nvim"
 src.git = "https://github.com/f-person/auto-dark-mode.nvim"
@@ -121,10 +117,6 @@ src.git = "https://github.com/Bilal2453/luvit-meta"
 [milspec-nvim]
 fetch.github = "nekowinston/milspec.nvim"
 src.git = "https://github.com/nekowinston/milspec.nvim"
-
-[neoconf-nvim]
-fetch.github = "folke/neoconf.nvim"
-src.git = "https://github.com/folke/neoconf.nvim"
 
 [neogen]
 fetch.github = "danymat/neogen"
@@ -246,10 +238,6 @@ src.git = "https://github.com/pwntester/octo.nvim"
 [plenary-nvim]
 fetch.github = "nvim-lua/plenary.nvim"
 src.git = "https://github.com/nvim-lua/plenary.nvim"
-
-[presence-nvim]
-fetch.github = "andweeb/presence.nvim"
-src.git = "https://github.com/andweeb/presence.nvim"
 
 [rainbow-delimiters]
 fetch.github = "hiphish/rainbow-delimiters.nvim"

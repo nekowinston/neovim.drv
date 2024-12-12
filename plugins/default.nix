@@ -110,10 +110,6 @@ in
     ft = "markdown";
   };
 
-  alpha = {
-    package = plugins.alpha-nvim;
-    config = ./alpha.lua;
-  };
   neovim-session-manager = {
     package = plugins.neovim-session-manager;
     main = "session_manager";
@@ -258,7 +254,7 @@ in
       "TelescopePrompt"
       "Trouble"
     ];
-    event = "VeryLazy";
+    event = "BufRead";
   };
   nvim-surround = {
     package = plugins.nvim-surround;
@@ -356,12 +352,6 @@ in
       '';
   };
 
-  # presence = {
-  #   package = plugins.presence-nvim;
-  #   config = ./presence.lua;
-  #   event = "VeryLazy";
-  # };
-
   wakatime = {
     enabled = # lua
       ''
@@ -381,7 +371,10 @@ in
   };
   vim-dadbod-completion = {
     package = plugins.vim-dadbod-completion;
-    event = "VeryLazy";
+    cmd = [
+      "DB"
+      "DBUI"
+    ];
   };
   vim-dadbod-ui = {
     package = plugins.vim-dadbod-ui;
@@ -472,11 +465,6 @@ in
     };
   };
 
-  neoconf = {
-    package = plugins.neoconf-nvim;
-    config = true;
-    priority = 100; # make sure this loads before `lspconfig`.
-  };
   lazydev = {
     package = plugins.lazydev-nvim;
     ft = "lua";

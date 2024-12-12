@@ -47,4 +47,4 @@ vim.o.expandtab = true
 -- always show 1 column of sign column (gitsigns, etc.)
 vim.o.signcolumn = "yes:1"
 -- hide search notices, intro
-vim.opt.shortmess:append("sI")
+vim.opt.shortmess:append("s")
