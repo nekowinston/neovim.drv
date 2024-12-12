@@ -109,6 +109,11 @@ in
       '';
     ft = "markdown";
   };
+  typst-preview = {
+    package = plugins.typst-preview-nvim;
+    config = true;
+    ft = "typst";
+  };
 
   neovim-session-manager = {
     package = plugins.neovim-session-manager;
@@ -311,7 +316,7 @@ in
         }
       '';
   };
-  render-markdown-nvim = rec {
+  render-markdown = rec {
     package = plugins.render-markdown-nvim;
     config.file_types = ft;
     ft = [
@@ -586,7 +591,7 @@ in
         }
       '';
   };
-  venv-selector-nvim = {
+  venv-selector = {
     package = plugins.venv-selector-nvim;
     config = {
       settings.options.notify_user_on_venv_activation = true;
@@ -637,7 +642,7 @@ in
     cmd = "WinShift";
   };
 
-  zen-mode-nvim = {
+  zen-mode = {
     package = plugins.zen-mode-nvim;
     config.plugins = {
       options.laststatus = 0;

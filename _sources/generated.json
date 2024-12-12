@@ -1424,6 +1424,26 @@
         },
         "version": "35e397ce467bedbbbb5bfcd0aa79727b59a08d4a"
     },
+    "typst-preview-nvim": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "typst-preview-nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "chomosuke",
+            "repo": "typst-preview.nvim",
+            "rev": "v1.1.1",
+            "sha256": "sha256-J3/xxtTk+NyD/98kBoDFy/Zx0fLht0ILRskKZR6HHUI=",
+            "type": "github"
+        },
+        "version": "v1.1.1"
+    },
     "venv-selector-nvim": {
         "cargoLocks": null,
         "date": "2024-09-15",

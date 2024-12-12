@@ -283,6 +283,10 @@ src.github = "folke/twilight.nvim"
 fetch.github = "pmizio/typescript-tools.nvim"
 src.git = "https://github.com/pmizio/typescript-tools.nvim"
 
+[typst-preview-nvim]
+fetch.github = "chomosuke/typst-preview.nvim"
+src.github = "chomosuke/typst-preview.nvim"
+
 [venv-selector-nvim]
 fetch.github = "linux-cultist/venv-selector.nvim"
 src.git = "https://github.com/linux-cultist/venv-selector.nvim"

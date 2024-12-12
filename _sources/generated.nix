@@ -835,6 +835,17 @@
     };
     date = "2024-12-04";
   };
+  typst-preview-nvim = {
+    pname = "typst-preview-nvim";
+    version = "v1.1.1";
+    src = fetchFromGitHub {
+      owner = "chomosuke";
+      repo = "typst-preview.nvim";
+      rev = "v1.1.1";
+      fetchSubmodules = false;
+      sha256 = "sha256-J3/xxtTk+NyD/98kBoDFy/Zx0fLht0ILRskKZR6HHUI=";
+    };
+  };
   venv-selector-nvim = {
     pname = "venv-selector-nvim";
     version = "e82594274bf7b54387f9a2abe65f74909ac66e97";

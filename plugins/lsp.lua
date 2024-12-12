@@ -305,6 +305,7 @@ return function()
 		tailwindcss = {},
 		taplo = {},
 		teal_ls = {},
+		tinymist = {},
 		yamlls = {
 			settings = {
 				yaml = {
