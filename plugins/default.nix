@@ -66,11 +66,11 @@ in
   };
   vim-helm = {
     package = plugins.vim-helm;
-    event = "VeryLazy";
+    ft = "helm";
   };
   vim-tera = {
     package = plugins.vim-tera;
-    event = "VeryLazy";
+    ft = "tera";
   };
   nvim-autopairs = {
     package = plugins.nvim-autopairs;
@@ -224,7 +224,7 @@ in
   comment = {
     package = plugins.comment-nvim;
     config = true;
-    event = "VeryLazy";
+    event = "BufRead";
   };
   indent-blankline = {
     package = plugins.indent-blankline-nvim;
@@ -246,7 +246,7 @@ in
   nvim-surround = {
     package = plugins.nvim-surround;
     config = true;
-    event = "VeryLazy";
+    event = "BufRead";
   };
   tagalong-vim = {
     package = plugins.tagalong-vim;
@@ -282,7 +282,7 @@ in
   todo-comments = {
     package = plugins.todo-comments-nvim;
     config = true;
-    event = "VeryLazy";
+    event = "BufRead";
   };
 
   codecompanion = {
@@ -315,7 +315,9 @@ in
   gitsigns = {
     package = plugins.gitsigns-nvim;
     config = ./gitsigns.lua;
-    event = "VeryLazy";
+    # TODO: I could probably make this lazier by mapping the keys here.
+    event = "BufRead";
+    cmd = "GitSigns";
   };
 
   neogit = {
@@ -348,12 +350,11 @@ in
       '';
     package = pkgs.vimPlugins.vim-wakatime;
     paths = [ pkgs.wakatime ];
-    event = "VeryLazy";
+    event = "BufRead";
   };
 
   vim-dadbod = {
     package = plugins.vim-dadbod;
-    event = "VeryLazy";
     cmd = "DB";
   };
   vim-dadbod-completion = {
