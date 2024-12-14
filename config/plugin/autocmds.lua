@@ -1,3 +1,19 @@
+vim.api.nvim_create_autocmd("VimEnter", {
+	nested = true,
+	callback = function()
+		local filepath = vim.fn.fnamemodify(".nvim.lua", ":p")
+		local file = vim.secure.read(filepath)
+		if not file then
+			return
+		end
+
+		if vim.fn.filereadable(filepath) == 1 then
+			vim.cmd("luafile .nvim.lua")
+		end
+	end,
+	desc = "Workaround for exrc not working with neovim.nix",
+})
+
 vim.api.nvim_create_autocmd("VimResized", {
 	pattern = "*",
 	command = "wincmd =",

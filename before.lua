@@ -1,6 +1,3 @@
--- set exrc very early
-vim.opt.exrc = true
-
 -- use space as leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
