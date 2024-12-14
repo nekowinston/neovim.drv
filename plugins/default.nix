@@ -118,18 +118,7 @@ in
   neovim-session-manager = {
     package = plugins.neovim-session-manager;
     main = "session_manager";
-    config = # lua
-      ''
-        function()
-          local config = require('session_manager.config')
-          require('session_manager').setup({
-            autoload_mode = {
-              config.AutoloadMode.GitSession,
-              config.AutoloadMode.CurrentDir
-            }
-          })
-        end
-      '';
+    config = ./session-manager.lua;
   };
   auto-dark-mode = {
     package = plugins.auto-dark-mode-nvim;
