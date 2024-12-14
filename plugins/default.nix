@@ -413,6 +413,7 @@ in
         lualine_z = [ "location" ];
       };
       winbar.lualine_c = [ (mkLuaInline "{ 'navic', draw_empty = true }") ];
+      inactive_winbar.lualine_c = [ (mkLuaInline "{ 'navic', draw_empty = true }") ];
     };
     dependencies = {
       navic = {
