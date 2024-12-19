@@ -27,7 +27,7 @@ return function()
 
 		vim.system(vim.list_extend({ "hpack" }, args), { text = true }, function(out)
 			if out.code ~= 0 then
-				vim.notify("hpack autocmd error: " .. out.stderr)
+				vim.notify("hpack autocmd error:\n" .. out.stdout)
 				return
 			end
 
