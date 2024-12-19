@@ -25,18 +25,19 @@ return function()
 			args = {}
 		end
 
-		vim.system({ "hpack" }, { text = true }, function(out)
-			if out.code == 0 then
-				if out.stdout:find(" is up%-to%-date") == nil then
-					vim.notify("Cabal file changed, reloading LSP.")
-
-					-- need to schedule this because it calls Vimscript functions
-					vim.schedule(function()
-						require("haskell-tools").lsp.restart()
-					end)
-				end
-			else
+		vim.system(vim.list_extend({ "hpack" }, args), { text = true }, function(out)
+			if out.code ~= 0 then
 				vim.notify("hpack autocmd error: " .. out.stderr)
+				return
+			end
+
+			if out.stdout:find(" is up%-to%-date") == nil then
+				vim.notify("Cabal file changed, reloading LSP.")
+
+				-- need to schedule this because it calls Vimscript functions
+				vim.schedule(function()
+					require("haskell-tools").lsp.restart()
+				end)
 			end
 		end)
 	end
