@@ -7,6 +7,7 @@ in
 {
   direnv = {
     package = plugins.direnv-vim;
+    config = ./direnv.lua;
     lazy = false;
     priority = 10000;
   };
@@ -499,12 +500,7 @@ in
   # lazy by default
   haskell-tools = {
     package = plugins.haskell-tools-nvim;
-    config = # lua
-      ''
-        function()
-          vim.g.haskell_tools = {}
-        end
-      '';
+    config = ./haskell-tools.lua;
   };
   nvim-jdtls.package = plugins.nvim-jdtls;
 
