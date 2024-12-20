@@ -21,18 +21,14 @@ return function()
 	---@param args table<string,string>? optional args provided to hpack
 	---@return nil
 	local function run_hpack(args)
-		if not args then
-			args = {}
-		end
-
-		vim.system(vim.list_extend({ "hpack" }, args), { text = true }, function(out)
+		vim.system(vim.list_extend({ "hpack" }, args or {}), { text = true }, function(out)
 			if out.code ~= 0 then
 				vim.notify("hpack autocmd error:\n" .. out.stdout)
 				return
 			end
 
 			if out.stdout:find(" is up%-to%-date") == nil then
-				vim.notify("Cabal file changed, reloading LSP.")
+				vim.notify("Cabal file changed, reloading Haskell LSP.")
 
 				-- need to schedule this because it calls Vimscript functions
 				vim.schedule(function()
