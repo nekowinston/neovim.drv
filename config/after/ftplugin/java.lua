@@ -1,6 +1,4 @@
 local jdtls_bin = vim.fn.exepath("jdtls")
-local jdtls_share = vim.fn.resolve(jdtls_bin .. "/../../share/java/jdtls")
-
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
 if vim.g.lombok_path == nil and vim.fn.executable("lombok") then
@@ -18,18 +16,22 @@ else
 	)
 end
 
+local bundles = {
+	vim.fn.glob(vim.env.JAVA_DEBUG_DIR .. "com.microsoft.java.debug.plugin-*.jar", true),
+}
+
+vim.list_extend(bundles, vim.split(vim.fn.glob(vim.env.JAVA_TEST_DIR .. "*.jar", true), "\n"))
+
 require("jdtls").start_or_attach({
   -- stylua: ignore start
-	cmd = {
-		jdtls_bin,
-		"-configuration", vim.fn.expand("~/.cache/jdtls"),
-		"-data", vim.fs.joinpath(vim.fn.stdpath("data"), "/jdtls", project_name),
-		"-javaagent:" .. vim.g.lombok_path,
-	},
+  cmd = {
+    jdtls_bin,
+    "-configuration", vim.fn.expand("~/.cache/jdtls"),
+    "-data", vim.fs.joinpath(vim.fn.stdpath("data"), "/jdtls", project_name),
+    "-javaagent:" .. vim.g.lombok_path,
+  },
 	-- stylua: ignore end
-	init_options = {
-		bundles = { vim.env.JAVA_DEBUG_JAR },
-	},
+	init_options = { bundles = bundles },
 	settings = {
 		java = {
 			import = {

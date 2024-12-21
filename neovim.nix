@@ -18,7 +18,10 @@
                 vim.cmd.source "${config.neovim.build.plugins}"
               ''
           );
-          env.JAVA_DEBUG_JAR = "${pkgs.java-debug}/share/java-debug/java-debug.jar";
+          env = {
+            JAVA_DEBUG_DIR = "${pkgs.java-debug}/share/java-debug";
+            JAVA_TEST_DIR = "${pkgs.java-test}/share/java-test";
+          };
           paths = with pkgs; [
             fd
             gh

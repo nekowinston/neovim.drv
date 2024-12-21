@@ -48,7 +48,10 @@
             overlays = [
               inputs.nvim-treesitter-nix.overlays.default
               # inputs.neovim-nightly-overlay.overlays.default
-              (final: prev: { java-debug = final.callPackage ./pkgs/java-debug { }; })
+              (final: prev: {
+                java-debug = final.callPackage ./pkgs/java-debug { };
+                java-test = final.callPackage ./pkgs/java-test { };
+              })
             ];
           };
 
@@ -98,7 +101,7 @@
                   ])
                   ++ [ neovim ];
               };
-              inherit (pkgs) java-debug;
+              inherit (pkgs) java-debug java-test;
             };
         };
     };

@@ -22,7 +22,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   installPhase = ''
     mkdir -p "$out/share/java-debug"
-    install -Dm644 "./server/com.microsoft.java.debug.plugin-${finalAttrs.version}.jar" "$out/share/java-debug/java-debug.jar"
+    cp ./server/com.microsoft.java.debug.plugin-*.jar "$out/share/java-debug/java-debug.jar"
   '';
 
   meta = {
