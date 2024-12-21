@@ -3,7 +3,9 @@ local jdtls_share = vim.fn.resolve(jdtls_bin .. "/../../share/java/jdtls")
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
-if vim.g.lombok_path == nil then
+if vim.g.lombok_path == nil and vim.fn.executable("lombok") then
+	vim.g.lombok_path = vim.fn.exepath("lombok")
+else
 	vim.g.lombok_path = vim.fn.trim(
 		vim.system({
 			"nix-instantiate",
