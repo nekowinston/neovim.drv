@@ -44,16 +44,11 @@
 
             # webdev
             emmet-language-server
-            nodePackages."@astrojs/language-server"
-            nodePackages."@tailwindcss/language-server"
-            nodePackages.graphql-language-service-cli
             nodePackages.typescript
             nodePackages.vscode-langservers-extracted
             nodePackages.yaml-language-server
-            nodejs
 
             # data formats
-            nodePackages.dockerfile-language-server-nodejs
             taplo
           ];
 
