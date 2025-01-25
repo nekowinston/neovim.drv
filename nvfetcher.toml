@@ -112,7 +112,7 @@ src.git = "https://github.com/nekowinston/milspec.nvim"
 
 [neogen]
 fetch.github = "danymat/neogen"
-src.git = "https://github.com/danymat/neogen"
+src.github_tag = "danymat/neogen"
 
 [neogit]
 fetch.github = "NeogitOrg/neogit"

@@ -330,15 +330,14 @@
   };
   neogen = {
     pname = "neogen";
-    version = "dd0301bfba1f83a3bc009b5430fce7aa3cee6941";
+    version = "2.20.0";
     src = fetchFromGitHub {
       owner = "danymat";
       repo = "neogen";
-      rev = "dd0301bfba1f83a3bc009b5430fce7aa3cee6941";
+      rev = "2.20.0";
       fetchSubmodules = false;
-      sha256 = "sha256-EzAbn9oDnzgi5ajNulzFz2thGoSlpr/if3xSpY57BG4=";
+      sha256 = "sha256-aJT5GV/x1nCeC0toyr1eitgvtSIHDTnQrycNVn/OwD4=";
     };
-    date = "2024-12-27";
   };
   neogit = {
     pname = "neogit";
