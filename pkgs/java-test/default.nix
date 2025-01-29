@@ -6,7 +6,7 @@
   vscode-utils,
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
-  name = "java-debug";
+  name = "java-test";
   version = "0.43.0";
 
   src = vscode-utils.fetchVsixFromVscodeMarketplace {
