@@ -9,13 +9,16 @@
       }:
       {
         neovim = {
+          package = pkgs.neovim.override {
+            withNodeJs = false;
+            withPython3 = false;
+            withRuby = false;
+          };
           build.initlua = lib.mkForce (
             pkgs.writeText "init.lua" # lua
               ''
-                ${builtins.readFile ./before.lua}
-
-                vim.cmd.source "${config.neovim.build.before}"
-                vim.cmd.source "${config.neovim.build.plugins}"
+                vim.cmd.source("${./before.lua}")
+                vim.cmd.source("${config.neovim.build.plugins}")
               ''
           );
           env = {
@@ -24,8 +27,7 @@
           };
           paths = with pkgs; [
             fd
-            gh
-            git
+            gitMinimal
             nushell
             ripgrep
 
@@ -34,7 +36,7 @@
             stylua
 
             # nix
-            nixd
+            nil
             nixfmt-rfc-style
 
             # shell scripting

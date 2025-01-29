@@ -350,7 +350,6 @@ in
         end
       '';
     package = pkgs.vimPlugins.vim-wakatime;
-    paths = [ pkgs.wakatime ];
     event = "BufRead";
   };
 

@@ -271,9 +271,12 @@ return function()
 		html = {},
 		ltex = {
 			on_attach = function()
+				local data_path = vim.fn.stdpath("data")
+				---@cast data_path string
+
 				require("ltex_extra").setup({
 					load_langs = { "en-US", "de-AT" },
-					path = vim.fs.joinpath(vim.fn.stdpath("data"), "/dictionary"),
+					path = vim.fs.joinpath(data_path, "/dictionary"),
 				})
 			end,
 			settings = {
@@ -300,8 +303,6 @@ return function()
 				},
 			},
 		},
-		serve_d = {},
-		sourcekit = {},
 		tailwindcss = {},
 		taplo = {},
 		teal_ls = {},
