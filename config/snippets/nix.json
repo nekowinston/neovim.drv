@@ -1,6 +1,6 @@
 {
-  "Nix development shell": {
-    "prefix": "mkshell",
+  "devShell": {
+    "prefix": "mkShell",
     "body": [
       "{",
       "  pkgs ? import <nixpkgs> {",
@@ -13,22 +13,29 @@
       "  inherit (pkgs.stdenv) isDarwin isLinux;",
       "in",
       "pkgs.mkShell {",
-      "  nativeBuildInputs =",
+      "  packages =",
       "    with pkgs;",
       "    [",
       "      ${1}",
       "    ]",
       "    ++ lib.optionals isDarwin [",
-      "      # darwin",
       "      ${2}",
       "    ]",
       "    ++ lib.optionals isLinux [",
-      "      # linux deps",
       "      ${3}",
       "    ];",
-      "}",
-      ""
+      "}"
     ],
     "description": "Nix development shell"
+  },
+  "appleFrameworks": {
+    "prefix": "apple_frameworks",
+    "body": "apple_frameworks = pkgs.darwin.apple_sdk.frameworks;",
+    "description": "Nix Apple frameworks"
+  },
+  "rustSrcPath": {
+    "prefix": "RUST_SRC_PATH",
+    "body": "RUST_SRC_PATH = pkgs.rust.packages.stable.rustPlatform.rustLibSrc;",
+    "description": "RUST_SRC_PATH for Nix development shells"
   }
 }
