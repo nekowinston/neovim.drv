@@ -342,17 +342,6 @@ in
       '';
   };
 
-  wakatime = {
-    enabled = # lua
-      ''
-        function()
-          return vim.fn.glob("~/.wakatime.cfg") ~= "" or vim.fn.glob("$WAKATIME_HOME/.wakatime.cfg") ~= ""
-        end
-      '';
-    package = pkgs.vimPlugins.vim-wakatime;
-    event = "BufRead";
-  };
-
   vim-dadbod = {
     package = plugins.vim-dadbod;
     cmd = "DB";
