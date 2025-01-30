@@ -11,6 +11,14 @@ local function shorten(s)
 	return s
 end
 
+local navic = {
+	"navic",
+	navic_opts = {
+		highlight = true,
+	},
+	draw_empty = true,
+}
+
 return function()
 	require("lualine").setup({
 		options = {
@@ -37,14 +45,10 @@ return function()
 			lualine_z = { "location" },
 		},
 		winbar = {
-			lualine_c = {
-				{ "navic", draw_empty = true },
-			},
+			lualine_c = { navic },
 		},
 		inactive_winbar = {
-			lualine_c = {
-				{ "navic", draw_empty = true },
-			},
+			lualine_c = { navic },
 		},
 	})
 end

@@ -380,6 +380,9 @@ in
   lualine = {
     package = plugins.lualine-nvim;
     config = ./lualine.lua;
+    dependencies = {
+      nvim-navic.package = plugins.nvim-navic;
+    };
   };
 
   lazydev = {

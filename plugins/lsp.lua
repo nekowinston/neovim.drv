@@ -289,7 +289,7 @@ return function()
 				},
 			},
 		},
-		nixd = {},
+		nil_ls = {},
 		nushell = {},
 		phpactor = {},
 		purescriptls = {
