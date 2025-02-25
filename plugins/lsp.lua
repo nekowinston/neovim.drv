@@ -1,145 +1,9 @@
 return function()
 	local lspconfig = require("lspconfig")
-	local cmp = require("cmp")
 
-	local luasnip = require("luasnip")
 	require("luasnip.loaders.from_vscode").lazy_load()
 
 	vim.o.completeopt = "menu,menuone,noselect"
-
-	-- border style
-	local cmp_borders = {
-		border = {
-			vim.g.bc.topleft,
-			vim.g.bc.horiz,
-			vim.g.bc.topright,
-			vim.g.bc.vert,
-			vim.g.bc.botright,
-			vim.g.bc.horiz,
-			vim.g.bc.botleft,
-			vim.g.bc.vert,
-		},
-		winhighlight = "Normal:CmpPmenu,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None",
-	}
-
-	cmp.setup({
-		snippet = {
-			expand = function(args)
-				luasnip.lsp_expand(args.body)
-			end,
-		},
-		preselect = cmp.PreselectMode.Item,
-		mapping = cmp.mapping.preset.insert({
-			["<C-d>"] = cmp.mapping.scroll_docs(-4),
-			["<C-f>"] = cmp.mapping.scroll_docs(4),
-			["<C-Space>"] = cmp.mapping.complete(),
-
-			["<CR>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					if luasnip.expandable() then
-						luasnip.expand()
-					else
-						cmp.confirm({ select = true })
-					end
-				else
-					fallback()
-				end
-			end),
-
-			["<Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_next_item()
-				elseif luasnip.locally_jumpable(1) then
-					luasnip.jump(1)
-				else
-					fallback()
-				end
-			end, { "i", "s" }),
-
-			["<S-Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_prev_item()
-				elseif luasnip.locally_jumpable(-1) then
-					luasnip.jump(-1)
-				else
-					fallback()
-				end
-			end, { "i", "s" }),
-		}),
-		sources = cmp.config.sources({
-			{ name = "nvim_lsp" },
-			{ name = "luasnip" },
-			{ name = "vim-dadbod-completion" },
-			{ name = "buffer" },
-			{ name = "lazydev", group_index = 0 },
-		}),
-		formatting = {
-			expandable_indicator = true,
-			fields = { "kind", "abbr", "menu" },
-			format = function(entry, vim_item)
-				local kind = require("lspkind").cmp_format({
-					mode = "symbol_text",
-					ellipsis_char = "…",
-					maxwidth = 50,
-				})(entry, vim_item)
-				local strings = vim.split(kind.kind, "%s", { trimempty = true })
-
-				kind.kind = strings[1] or ""
-				kind.menu = string.format("  (%s)", strings[2] or "")
-
-				return kind
-			end,
-		},
-		sorting = require("cmp.config.default")().sorting,
-		experimental = {
-			ghost_text = {
-				hl_group = "CmpGhostText",
-			},
-		},
-		window = {
-			completion = cmp_borders,
-			documentation = cmp_borders,
-		},
-	})
-
-	vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
-
-	vim.api.nvim_create_autocmd("BufRead", {
-		group = vim.api.nvim_create_augroup("CmpSourceCargo", { clear = true }),
-		pattern = "Cargo.toml",
-		callback = function()
-			cmp.setup.buffer({ sources = { { name = "crates" } } })
-		end,
-	})
-
-	local git_ft = { "gitcommit", "NeogitCommitMessage" }
-	cmp.setup.filetype(git_ft, {
-		sources = cmp.config.sources({
-			{ name = "git" },
-		}, {
-			{ name = "buffer" },
-		}),
-	})
-	require("cmp_git").setup({
-		filetypes = git_ft,
-		enableRemoteUrlRewrites = true,
-	})
-
-	cmp.setup.cmdline({ "/", "?" }, {
-		mapping = cmp.mapping.preset.cmdline(),
-		sources = {
-			{ name = "buffer" },
-		},
-	})
-
-	cmp.setup.cmdline(":", {
-		mapping = cmp.mapping.preset.cmdline(),
-		sources = cmp.config.sources({
-			{ name = "path", option = { trailing_slash = true } },
-		}, {
-			{ name = "cmdline" },
-		}),
-	})
 
 	vim.api.nvim_create_autocmd("LspAttach", {
 		group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -218,8 +82,6 @@ return function()
 		},
 	})
 
-	local schemastore = require("schemastore")
-
 	local servers = {
 		astro = {},
 		basedpyright = {},
@@ -262,7 +124,7 @@ return function()
 		jsonls = {
 			settings = {
 				json = {
-					schemas = schemastore.json.schemas(),
+					schemas = require("schemastore").json.schemas(),
 					validate = { enable = true },
 				},
 			},
@@ -311,7 +173,7 @@ return function()
 			settings = {
 				yaml = {
 					completion = true,
-					schemas = schemastore.yaml.schemas(),
+					schemas = require("schemastore").yaml.schemas(),
 					suggest = { parentSkeletonSelectedFirst = true },
 					validate = true,
 				},
@@ -320,15 +182,18 @@ return function()
 		zls = {},
 	}
 
-	local common = {
-		capabilities = require("cmp_nvim_lsp").default_capabilities(),
-		handlers = {
-			["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = vim.g.bc.style }),
-			["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = vim.g.bc.style }),
-		},
-	}
-
 	for server, config in pairs(servers) do
+		local common = {
+			capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities),
+			handlers = {
+				["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = vim.g.bc.style }),
+				["textDocument/signatureHelp"] = vim.lsp.with(
+					vim.lsp.handlers.signature_help,
+					{ border = vim.g.bc.style }
+				),
+			},
+		}
+
 		lspconfig[server].setup(config == {} and {} or vim.tbl_extend("force", common, config))
 	end
 end

@@ -1,8 +1,9 @@
 { pkgs }:
 let
   plugins = pkgs.callPackage ../pkgs/plugins { };
-  inherit (pkgs) lib;
+  inherit (pkgs) lib vimPlugins;
   inherit (lib.generators) mkLuaInline;
+  borderStyle = mkLuaInline "vim.g.bc.style";
 in
 {
   direnv = {
@@ -42,7 +43,7 @@ in
     event = "BufRead";
     package = pkgs.symlinkJoin {
       name = "nvim-treesitter";
-      paths = with pkgs.vimPlugins; [ nvim-treesitter ] ++ nvim-treesitter.withAllGrammars.dependencies;
+      paths = with vimPlugins; [ nvim-treesitter ] ++ nvim-treesitter.withAllGrammars.dependencies;
     };
     config = ./nvim-treesitter.lua;
     dependencies = {
@@ -73,27 +74,13 @@ in
     package = plugins.vim-tera;
     ft = "tera";
   };
-  nvim-autopairs = {
-    package = plugins.nvim-autopairs;
-    event = "InsertEnter";
-    config = # lua
-      ''
-        function()
-        	require("nvim-autopairs").setup()
-
-        	local cmp = require("cmp")
-        	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-        	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-        end
-      '';
-  };
   vim-applescript = {
     package = plugins.vim-applescript;
     ft = "applescript";
   };
 
   markdown-preview = {
-    package = pkgs.vimPlugins.markdown-preview-nvim;
+    package = vimPlugins.markdown-preview-nvim;
     ft = "markdown";
   };
   vim-gnupg = {
@@ -162,7 +149,7 @@ in
       lsp.override = {
         "vim.lsp.util.convert_input_to_markdown_lines" = true;
         "vim.lsp.util.stylize_markdown" = true;
-        "cmp.entry.get_documentation" = true;
+        # "cmp.entry.get_documentation" = true;
       };
       presets = {
         long_message_to_split = true;
@@ -396,17 +383,16 @@ in
       "BufRead"
     ];
     dependencies = {
-      cmp.package = plugins.nvim-cmp;
-      cmp-buffer.package = plugins.cmp-buffer;
-      cmp-cmdline.package = plugins.cmp-cmdline;
-      cmp-git.package = plugins.cmp-git;
-      cmp-nvim-lsp.package = plugins.cmp-nvim-lsp;
-      cmp-path.package = plugins.cmp-path;
-      cmp_luasnip.package = plugins.cmp_luasnip;
-      friendly-snippets.package = plugins.friendly-snippets;
+      blink-cmp = {
+        package = vimPlugins.blink-cmp;
+        config = ./blink.lua;
+        dependencies = {
+          friendly-snippets.package = plugins.friendly-snippets;
+          luasnip.package = plugins.luasnip;
+        };
+      };
       lspkind.package = plugins.lspkind-nvim;
       ltex-extra.package = plugins.ltex-extra-nvim;
-      luasnip.package = plugins.luasnip;
       schemastore.package = plugins.schemastore-nvim;
       typescript-tools.package = plugins.typescript-tools-nvim;
     };
@@ -480,7 +466,7 @@ in
     config = ./telescope.lua;
     dependencies = {
       telescope-file-browser.package = plugins.telescope-file-browser-nvim;
-      telescope-fzf-native.package = pkgs.vimPlugins.telescope-fzf-native-nvim;
+      telescope-fzf-native.package = vimPlugins.telescope-fzf-native-nvim;
       telescope-project.package = plugins.telescope-project-nvim;
     };
     cmd = "Telescope";
@@ -518,7 +504,7 @@ in
       shade_terminals = false;
       direction = "float";
       float_opts = {
-        border = mkLuaInline "vim.g.bc.style";
+        border = borderStyle;
         winblend = 10;
       };
       winbar.enabled = true;
@@ -531,7 +517,7 @@ in
   };
 
   spectre = {
-    package = plugins.nvim-spectre;
+    package = vimPlugins.nvim-spectre;
     config.default.replace.cmd = "oxi";
     cmd = "Spectre";
   };

@@ -10,30 +10,6 @@ src.github = "akinsho/bufferline.nvim"
 fetch.github = "olimorris/codecompanion.nvim"
 src.github = "olimorris/codecompanion.nvim"
 
-[cmp-buffer]
-fetch.github = "hrsh7th/cmp-buffer"
-src.git = "https://github.com/hrsh7th/cmp-buffer"
-
-[cmp-cmdline]
-fetch.github = "hrsh7th/cmp-cmdline"
-src.git = "https://github.com/hrsh7th/cmp-cmdline"
-
-[cmp-git]
-fetch.github = "petertriho/cmp-git"
-src.git = "https://github.com/petertriho/cmp-git"
-
-[cmp-nvim-lsp]
-fetch.github = "hrsh7th/cmp-nvim-lsp"
-src.git = "https://github.com/hrsh7th/cmp-nvim-lsp"
-
-[cmp-path]
-fetch.github = "hrsh7th/cmp-path"
-src.git = "https://github.com/hrsh7th/cmp-path"
-
-[cmp_luasnip]
-fetch.github = "saadparwaiz1/cmp_luasnip"
-src.git = "https://github.com/saadparwaiz1/cmp_luasnip"
-
 [comment-nvim]
 fetch.github = "numtostr/comment.nvim"
 src.git = "https://github.com/numtostr/comment.nvim"
@@ -150,10 +126,6 @@ src.github = "folke/noice.nvim"
 fetch.github = "MunifTanjim/nui.nvim"
 src.git = "https://github.com/MunifTanjim/nui.nvim"
 
-[nvim-autopairs]
-fetch.github = "windwp/nvim-autopairs"
-src.git = "https://github.com/windwp/nvim-autopairs"
-
 [nvim-cmp]
 fetch.github = "hrsh7th/nvim-cmp"
 src.git = "https://github.com/hrsh7th/nvim-cmp"
@@ -197,11 +169,6 @@ src.github = "nvim-neotest/nvim-nio"
 [nvim-notify]
 fetch.github = "rcarriga/nvim-notify"
 src.github = "rcarriga/nvim-notify"
-
-[nvim-spectre]
-fetch.github = "nvim-pack/nvim-spectre"
-src.git = "https://github.com/nvim-pack/nvim-spectre"
-cargo_locks = ["spectre_oxi/Cargo.lock"]
 
 [nvim-surround]
 fetch.github = "kylechui/nvim-surround"
