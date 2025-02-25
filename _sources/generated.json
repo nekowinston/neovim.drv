@@ -398,27 +398,6 @@
         },
         "version": "f4f791f67e70d378a754d02da068231d2352e5bc"
     },
-    "luasnip": {
-        "cargoLocks": null,
-        "date": "2025-01-04",
-        "extract": null,
-        "name": "luasnip",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "L3MON4D3",
-            "repo": "LuaSnip",
-            "rev": "c9b9a22904c97d0eb69ccb9bab76037838326817",
-            "sha256": "sha256-3ecm5SDTcSOh256xSQPHhddQfMpepiEIpv58fHXrVg0=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "c9b9a22904c97d0eb69ccb9bab76037838326817"
-    },
     "luvit-meta": {
         "cargoLocks": null,
         "date": "2025-01-17",

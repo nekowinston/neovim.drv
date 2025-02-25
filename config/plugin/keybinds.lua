@@ -1,3 +1,4 @@
+vim.print("keybinds loaded")
 local map = vim.keymap.set
 
 -- easier split navigation

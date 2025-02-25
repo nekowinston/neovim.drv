@@ -1,8 +1,6 @@
 return function()
 	local lspconfig = require("lspconfig")
 
-	require("luasnip.loaders.from_vscode").lazy_load()
-
 	vim.o.completeopt = "menu,menuone,noselect"
 
 	vim.api.nvim_create_autocmd("LspAttach", {
@@ -151,7 +149,7 @@ return function()
 				},
 			},
 		},
-		nil_ls = {},
+		nixd = {},
 		nushell = {},
 		phpactor = {},
 		purescriptls = {

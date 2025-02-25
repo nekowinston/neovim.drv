@@ -17,14 +17,19 @@
           build.initlua = lib.mkForce (
             pkgs.writeText "init.lua" # lua
               ''
-                vim.cmd.source("${./before.lua}")
+                local rtp = vim.api.nvim_get_runtime_file("", true)
+                table.insert(rtp, #rtp + 1, "${./config}")
+                table.insert(rtp, #rtp + 1, "${./config}/after")
+                vim.opt.rtp = rtp
+
+                vim.g.config_dir = "${./config}"
+                vim.g.java_debug_dir = "${pkgs.java-debug}/share/java-debug"
+                vim.g.java_test_dir = "${pkgs.java-test}/share/java-test"
+
+                vim.cmd.source("${./config/plugin/init.lua}")
                 vim.cmd.source("${config.neovim.build.plugins}")
               ''
           );
-          env = {
-            JAVA_DEBUG_DIR = "${pkgs.java-debug}/share/java-debug";
-            JAVA_TEST_DIR = "${pkgs.java-test}/share/java-test";
-          };
           paths = with pkgs; [
             fd
             gitMinimal
@@ -36,7 +41,7 @@
             stylua
 
             # nix
-            nil
+            nixd
             nixfmt-rfc-style
 
             # shell scripting

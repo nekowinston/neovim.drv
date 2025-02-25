@@ -1,21 +1,13 @@
 return function()
+	local border_style = { border = vim.g.bc.style }
+
 	---@type blink.cmp.Config
 	local borderopts = {
 		completion = {
-			documentation = {
-				window = {
-					border = vim.g.bc.style,
-				},
-			},
-			menu = {
-				border = vim.g.bc.style,
-			},
+			menu = border_style,
+			documentation = { window = border_style },
 		},
-		signature = {
-			window = {
-				border = vim.g.bc.style,
-			},
-		},
+		signature = { window = border_style },
 	}
 
 	---@type blink.cmp.Config
@@ -78,6 +70,40 @@ return function()
 					end
 				end,
 				"fallback",
+			},
+		},
+		sources = {
+			default = { "lsp", "path", "snippets", "buffer" },
+			per_filetype = {
+				lua = { "lazydev", "lsp", "path", "snippets", "buffer" },
+				markdown = { "markdown" },
+				sql = { "snippets", "dadbod", "buffer" },
+			},
+			providers = {
+				snippets = {
+					name = "Snippets",
+					module = "blink.cmp.sources.snippets",
+					opts = {
+						search_paths = {
+							vim.fn.stdpath("config") .. "/snippets",
+							vim.g.config_dir,
+						},
+					},
+				},
+				dadbod = {
+					name = "Dadbod",
+					module = "vim_dadbod_completion.blink",
+				},
+				lazydev = {
+					name = "LazyDev",
+					module = "lazydev.integrations.blink",
+					score_offset = 100,
+				},
+				markdown = {
+					name = "RenderMarkdown",
+					module = "render-markdown.integ.blink",
+					fallbacks = { "lsp" },
+				},
 			},
 		},
 	}

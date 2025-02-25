@@ -13,12 +13,6 @@ in
     priority = 10000;
   };
 
-  config = {
-    src = ../config;
-    lazy = false;
-    priority = 1000;
-  };
-
   plenary.package = plugins.plenary-nvim;
   which-key.package = plugins.which-key-nvim;
   nvim-tree = {
@@ -49,9 +43,7 @@ in
     dependencies = {
       neogen = {
         package = plugins.neogen;
-        config = {
-          snippet_engine = "luasnip";
-        };
+        config.snippet_engine = "nvim";
       };
       nvim-treesitter-context = {
         package = plugins.nvim-treesitter-context;
@@ -386,10 +378,7 @@ in
       blink-cmp = {
         package = vimPlugins.blink-cmp;
         config = ./blink.lua;
-        dependencies = {
-          friendly-snippets.package = plugins.friendly-snippets;
-          luasnip.package = plugins.luasnip;
-        };
+        dependencies.friendly-snippets.package = plugins.friendly-snippets;
       };
       lspkind.package = plugins.lspkind-nvim;
       ltex-extra.package = plugins.ltex-extra-nvim;

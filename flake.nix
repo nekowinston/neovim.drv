@@ -17,10 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     git-hooks.url = "github:cachix/git-hooks.nix";
-    # fenix = {
-    #   url = "github:nix-community/fenix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs =
@@ -52,7 +48,6 @@
             overlays = [
               inputs.nvim-treesitter-nix.overlays.default
               # inputs.neovim-nightly-overlay.overlays.default
-              # inputs.fenix.overlays.default
               (final: prev: {
                 java-debug = final.callPackage ./pkgs/java-debug { };
                 java-test = final.callPackage ./pkgs/java-test { };

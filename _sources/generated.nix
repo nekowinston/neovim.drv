@@ -220,18 +220,6 @@
     };
     date = "2025-02-08";
   };
-  luasnip = {
-    pname = "luasnip";
-    version = "c9b9a22904c97d0eb69ccb9bab76037838326817";
-    src = fetchFromGitHub {
-      owner = "L3MON4D3";
-      repo = "LuaSnip";
-      rev = "c9b9a22904c97d0eb69ccb9bab76037838326817";
-      fetchSubmodules = false;
-      sha256 = "sha256-3ecm5SDTcSOh256xSQPHhddQfMpepiEIpv58fHXrVg0=";
-    };
-    date = "2025-01-04";
-  };
   luvit-meta = {
     pname = "luvit-meta";
     version = "1df30b60b1b4aecfebc785aa98943db6c6989716";
