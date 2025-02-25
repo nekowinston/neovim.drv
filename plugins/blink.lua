@@ -1,14 +1,6 @@
 return function()
-	local border_style = { border = vim.g.bc.style }
-
-	---@type blink.cmp.Config
-	local borderopts = {
-		completion = {
-			menu = border_style,
-			documentation = { window = border_style },
-		},
-		signature = { window = border_style },
-	}
+	local lspkind = require("lspkind")
+	local devicons = require("nvim-web-devicons")
 
 	---@type blink.cmp.Config
 	local opts = {
@@ -19,6 +11,45 @@ return function()
 			accept = {
 				auto_brackets = {
 					enabled = true,
+				},
+			},
+			documentation = { window = { border = vim.g.bc.style } },
+			menu = {
+				border = vim.g.bc.style,
+				draw = {
+					components = {
+						kind_icon = {
+							ellipsis = false,
+							text = function(ctx)
+								local icon = ctx.kind_icon
+								if vim.tbl_contains({ "Path" }, ctx.source_name) then
+									local dev_icon, _ = devicons.get_icon(ctx.label)
+									if dev_icon then
+										icon = dev_icon
+									end
+								else
+									icon = lspkind.symbolic(ctx.kind, { mode = "symbol" })
+								end
+
+								return icon .. ctx.icon_gap
+							end,
+
+							-- Optionally, use the highlight groups from nvim-web-devicons
+							-- You can also add the same function for `kind.highlight` if you want to
+							-- keep the highlight groups in sync with the icons.
+							highlight = function(ctx)
+								local hl = "BlinkCmpKind" .. ctx.kind
+									or require("blink.cmp.completion.windows.render.tailwind").get_hl(ctx)
+								if vim.tbl_contains({ "Path" }, ctx.source_name) then
+									local dev_icon, dev_hl = devicons.get_icon(ctx.label)
+									if dev_icon then
+										hl = dev_hl
+									end
+								end
+								return hl
+							end,
+						},
+					},
 				},
 			},
 			list = {
@@ -72,6 +103,7 @@ return function()
 				"fallback",
 			},
 		},
+		signature = { window = { border = vim.g.bc.style } },
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
 			per_filetype = {
@@ -108,5 +140,5 @@ return function()
 		},
 	}
 
-	require("blink.cmp").setup(vim.tbl_extend("force", borderopts, opts))
+	require("blink.cmp").setup(opts)
 end
