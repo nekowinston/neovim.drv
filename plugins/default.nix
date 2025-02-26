@@ -386,6 +386,22 @@ in
       typescript-tools.package = plugins.typescript-tools-nvim;
     };
   };
+  blink-compat = {
+    package = vimPlugins.blink-compat;
+    lazy = true;
+    config = true;
+  };
+  crates = {
+    package = plugins.crates-nvim;
+    config = {
+      completion = {
+        cmp.enabled = true;
+        crates.enabled = true;
+      };
+      lsp.enabled = true;
+    };
+    event = "BufRead Cargo.toml";
+  };
   # lazy by default
   rustaceanvim = {
     package = plugins.rustaceanvim;
@@ -397,12 +413,6 @@ in
     config = ./haskell-tools.lua;
   };
   nvim-jdtls.package = plugins.nvim-jdtls;
-
-  crates = {
-    package = plugins.crates-nvim;
-    config = true;
-    event = "BufRead Cargo.toml";
-  };
 
   trouble = {
     package = plugins.trouble-nvim;

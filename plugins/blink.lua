@@ -13,7 +13,11 @@ return function()
 					enabled = true,
 				},
 			},
-			documentation = { window = { border = vim.g.bc.style } },
+			documentation = {
+				auto_show = true,
+				auto_show_delay_ms = 500,
+				window = { border = vim.g.bc.style },
+			},
 			menu = {
 				border = vim.g.bc.style,
 				draw = {
@@ -54,9 +58,7 @@ return function()
 			},
 			list = {
 				selection = {
-					preselect = function()
-						return not require("blink.cmp").snippet_active({ direction = 1 })
-					end,
+					preselect = false,
 				},
 			},
 			trigger = {
@@ -64,7 +66,7 @@ return function()
 			},
 		},
 		keymap = {
-			preset = "super-tab",
+			preset = "enter",
 			["<CR>"] = {
 				function(cmp)
 					if cmp.is_visible() then
@@ -73,7 +75,7 @@ return function()
 							return cmp.snippet_forward()
 						end
 
-						return cmp.accept_and_enter()
+						return cmp.accept()
 					end
 				end,
 				"fallback",
@@ -105,7 +107,22 @@ return function()
 		},
 		signature = { window = { border = vim.g.bc.style } },
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = function()
+				if vim.fs.basename(vim.api.nvim_buf_get_name(0)) == "Cargo.toml" then
+					return { "crates", "lsp", "path", "snippets", "buffer" }
+				end
+
+				local success, node = pcall(vim.treesitter.get_node)
+				if
+					success
+					and node
+					and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type())
+				then
+					return { "path", "buffer" }
+				end
+
+				return { "lsp", "path", "snippets", "buffer" }
+			end,
 			per_filetype = {
 				lua = { "lazydev", "lsp", "path", "snippets", "buffer" },
 				markdown = { "markdown" },
@@ -121,6 +138,11 @@ return function()
 							vim.g.config_dir,
 						},
 					},
+				},
+				crates = {
+					name = "crates",
+					module = "blink.compat.source",
+					score_offset = 3,
 				},
 				dadbod = {
 					name = "Dadbod",
