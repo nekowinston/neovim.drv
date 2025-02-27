@@ -33,7 +33,6 @@
           paths = with pkgs; [
             fd
             gitMinimal
-            nushell
             ripgrep
 
             # lua

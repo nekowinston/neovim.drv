@@ -1,11 +1,5 @@
 vim.g.mapleader = " "
 
--- use Nushell as the shell
-vim.o.shell = "nu"
-vim.o.shellcmdflag = "-c"
-vim.o.shellquote = ""
-vim.o.shellxquote = ""
-
 -- execute .nvim.lua, .nvimrc, and .exrc files in directories
 vim.o.exrc = true
 
