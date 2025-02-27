@@ -17,10 +17,10 @@ else
 end
 
 local bundles = {
-	vim.fn.glob(vim.env.JAVA_DEBUG_DIR .. "com.microsoft.java.debug.plugin-*.jar", true),
+	vim.fn.glob(vim.g.java_debug_dir .. "com.microsoft.java.debug.plugin-*.jar", true),
 }
 
-vim.list_extend(bundles, vim.split(vim.fn.glob(vim.env.JAVA_TEST_DIR .. "*.jar", true), "\n"))
+vim.list_extend(bundles, vim.split(vim.fn.glob(vim.g.java_test_dir .. "*.jar", true), "\n"))
 
 require("jdtls").start_or_attach({
   -- stylua: ignore start

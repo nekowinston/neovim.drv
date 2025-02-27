@@ -24,78 +24,6 @@
       sha256 = "sha256-ae4MB6+6v3awvfSUWlau9ASJ147ZpwuX1fvJdfMwo1Q=";
     };
   };
-  cmp-buffer = {
-    pname = "cmp-buffer";
-    version = "3022dbc9166796b644a841a02de8dd1cc1d311fa";
-    src = fetchFromGitHub {
-      owner = "hrsh7th";
-      repo = "cmp-buffer";
-      rev = "3022dbc9166796b644a841a02de8dd1cc1d311fa";
-      fetchSubmodules = false;
-      sha256 = "sha256-dG4U7MtnXThoa/PD+qFtCt76MQ14V1wX8GMYcvxEnbM=";
-    };
-    date = "2022-08-10";
-  };
-  cmp-cmdline = {
-    pname = "cmp-cmdline";
-    version = "d250c63aa13ead745e3a40f61fdd3470efde3923";
-    src = fetchFromGitHub {
-      owner = "hrsh7th";
-      repo = "cmp-cmdline";
-      rev = "d250c63aa13ead745e3a40f61fdd3470efde3923";
-      fetchSubmodules = false;
-      sha256 = "sha256-iBmXp+gUSMbgfkv7c7RDQAwPq02e07wEnBETP0dWBOo=";
-    };
-    date = "2024-03-22";
-  };
-  cmp-git = {
-    pname = "cmp-git";
-    version = "483ffb9a7471409a841df099d7c13556234365a4";
-    src = fetchFromGitHub {
-      owner = "petertriho";
-      repo = "cmp-git";
-      rev = "483ffb9a7471409a841df099d7c13556234365a4";
-      fetchSubmodules = false;
-      sha256 = "sha256-NBb/yPV4twg2pp5VHfIihryag/fwRpM3BDE7Zwsrn0o=";
-    };
-    date = "2025-01-14";
-  };
-  cmp-nvim-lsp = {
-    pname = "cmp-nvim-lsp";
-    version = "99290b3ec1322070bcfb9e846450a46f6efa50f0";
-    src = fetchFromGitHub {
-      owner = "hrsh7th";
-      repo = "cmp-nvim-lsp";
-      rev = "99290b3ec1322070bcfb9e846450a46f6efa50f0";
-      fetchSubmodules = false;
-      sha256 = "sha256-iaihXNCF5bB5MdeoosD/kc3QtpA/QaIDZVLiLIurBSM=";
-    };
-    date = "2024-12-10";
-  };
-  cmp-path = {
-    pname = "cmp-path";
-    version = "91ff86cd9c29299a64f968ebb45846c485725f23";
-    src = fetchFromGitHub {
-      owner = "hrsh7th";
-      repo = "cmp-path";
-      rev = "91ff86cd9c29299a64f968ebb45846c485725f23";
-      fetchSubmodules = false;
-      sha256 = "sha256-thppiiV3wjIaZnAXmsh7j3DUc6ceSCvGzviwFUnoPaI=";
-    };
-    date = "2022-10-03";
-  };
-  cmp_luasnip = {
-    pname = "cmp_luasnip";
-    version = "98d9cb5c2c38532bd9bdb481067b20fea8f32e90";
-    src = fetchFromGitHub {
-      owner = "saadparwaiz1";
-      repo = "cmp_luasnip";
-      rev = "98d9cb5c2c38532bd9bdb481067b20fea8f32e90";
-      fetchSubmodules = false;
-      sha256 = "sha256-86lKQPPyqFz8jzuLajjHMKHrYnwW6+QOcPyQEx6B+gw=";
-    };
-    date = "2024-11-04";
-  };
   codecompanion-nvim = {
     pname = "codecompanion-nvim";
     version = "v12.8.0";
@@ -292,18 +220,6 @@
     };
     date = "2025-02-08";
   };
-  luasnip = {
-    pname = "luasnip";
-    version = "c9b9a22904c97d0eb69ccb9bab76037838326817";
-    src = fetchFromGitHub {
-      owner = "L3MON4D3";
-      repo = "LuaSnip";
-      rev = "c9b9a22904c97d0eb69ccb9bab76037838326817";
-      fetchSubmodules = false;
-      sha256 = "sha256-3ecm5SDTcSOh256xSQPHhddQfMpepiEIpv58fHXrVg0=";
-    };
-    date = "2025-01-04";
-  };
   luvit-meta = {
     pname = "luvit-meta";
     version = "1df30b60b1b4aecfebc785aa98943db6c6989716";
@@ -444,18 +360,6 @@
     };
     date = "2024-12-11";
   };
-  nvim-autopairs = {
-    pname = "nvim-autopairs";
-    version = "68f0e5c3dab23261a945272032ee6700af86227a";
-    src = fetchFromGitHub {
-      owner = "windwp";
-      repo = "nvim-autopairs";
-      rev = "68f0e5c3dab23261a945272032ee6700af86227a";
-      fetchSubmodules = false;
-      sha256 = "sha256-FUnYZWSJh5wAfXevH+nK+g/s4WhnzwxbW6a3gUDQI6o=";
-    };
-    date = "2025-02-14";
-  };
   nvim-cmp = {
     pname = "nvim-cmp";
     version = "5a11682453ac6b13dbf32cd403da4ee9c07ef1c3";
@@ -585,24 +489,6 @@
       fetchSubmodules = false;
       sha256 = "sha256-C+HjESSYbDwWoDLGJqydV4eflH6327iAHbGyInKbgSA=";
     };
-  };
-  nvim-spectre = {
-    pname = "nvim-spectre";
-    version = "ddd7383e856a7c939cb4f5143278fe041bbb8cb9";
-    src = fetchFromGitHub {
-      owner = "nvim-pack";
-      repo = "nvim-spectre";
-      rev = "ddd7383e856a7c939cb4f5143278fe041bbb8cb9";
-      fetchSubmodules = false;
-      sha256 = "sha256-pZ7AH1U95IWMmhk/uBO0Lsxx78H5H9ygPxk/HIqFFlY=";
-    };
-    cargoLock."spectre_oxi/Cargo.lock" = {
-      lockFile = ./nvim-spectre-ddd7383e856a7c939cb4f5143278fe041bbb8cb9/spectre_oxi/Cargo.lock;
-      outputHashes = {
-        
-      };
-    };
-    date = "2025-01-13";
   };
   nvim-surround = {
     pname = "nvim-surround";
