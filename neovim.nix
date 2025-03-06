@@ -3,7 +3,6 @@
     perSystem =
       {
         config,
-        inputs',
         lib,
         pkgs,
         ...
@@ -60,7 +59,7 @@
           ];
 
           lazy = {
-            package = (pkgs.callPackage ./pkgs/plugins { }).lazy-nvim;
+            package = pkgs.vimPlugins.lazy-nvim;
             settings = {
               change_detection.enabled = false;
               checker.enabled = false;

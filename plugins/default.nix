@@ -7,16 +7,16 @@ let
 in
 {
   direnv = {
-    package = plugins.direnv-vim;
+    package = vimPlugins.direnv-vim;
     config = ./direnv.lua;
     lazy = false;
     priority = 10000;
   };
 
-  plenary.package = plugins.plenary-nvim;
-  which-key.package = plugins.which-key-nvim;
+  plenary.package = vimPlugins.plenary-nvim;
+  which-key.package = vimPlugins.which-key-nvim;
   nvim-tree = {
-    package = plugins.nvim-tree-lua;
+    package = vimPlugins.nvim-tree-lua;
     config = {
       sync_root_with_cwd = true;
       diagnostics.enable = true;
@@ -29,7 +29,7 @@ in
       '';
   };
   nvim-web-devicons = {
-    package = plugins.nvim-web-devicons;
+    package = vimPlugins.nvim-web-devicons;
     lazy = true;
   };
 
@@ -42,24 +42,24 @@ in
     config = ./nvim-treesitter.lua;
     dependencies = {
       neogen = {
-        package = plugins.neogen;
+        package = vimPlugins.neogen;
         config.snippet_engine = "nvim";
       };
       nvim-treesitter-context = {
-        package = plugins.nvim-treesitter-context;
+        package = vimPlugins.nvim-treesitter-context;
         config = {
           enable = false;
           mode = "topline";
         };
       };
-      nvim-treesitter-textobjects.package = plugins.nvim-treesitter-textobjects;
-      nvim-ts-autotag.package = plugins.nvim-ts-autotag;
-      rainbow-delimiters.package = plugins.rainbow-delimiters;
-      twilight-nvim.package = plugins.twilight-nvim;
+      nvim-treesitter-textobjects.package = vimPlugins.nvim-treesitter-textobjects;
+      nvim-ts-autotag.package = vimPlugins.nvim-ts-autotag;
+      rainbow-delimiters.package = vimPlugins.rainbow-delimiters-nvim;
+      twilight-nvim.package = vimPlugins.twilight-nvim;
     };
   };
   vim-helm = {
-    package = plugins.vim-helm;
+    package = vimPlugins.vim-helm;
     ft = "helm";
   };
   vim-tera = {
@@ -76,11 +76,11 @@ in
     ft = "markdown";
   };
   vim-gnupg = {
-    package = plugins.vim-gnupg;
+    package = vimPlugins.vim-gnupg;
     event = "VeryLazy";
   };
   vim-table-mode = {
-    package = plugins.vim-table-mode;
+    package = vimPlugins.vim-table-mode;
     config = # lua
       ''
         function()
@@ -90,7 +90,7 @@ in
     ft = "markdown";
   };
   typst-preview = {
-    package = plugins.typst-preview-nvim;
+    package = vimPlugins.typst-preview-nvim;
     config = true;
     ft = "typst";
   };
@@ -116,7 +116,7 @@ in
   };
 
   flash = {
-    package = plugins.flash-nvim;
+    package = vimPlugins.flash-nvim;
     config = true;
     keys = # lua
       ''
@@ -132,10 +132,10 @@ in
 
   dressing = {
     event = "VeryLazy";
-    package = plugins.dressing-nvim;
+    package = vimPlugins.dressing-nvim;
   };
   noice = {
-    package = plugins.noice-nvim;
+    package = vimPlugins.noice-nvim;
     event = "VeryLazy";
     config = {
       lsp.override = {
@@ -149,15 +149,15 @@ in
       };
     };
     dependencies = {
-      nui.package = plugins.nui-nvim;
+      nui.package = vimPlugins.nui-nvim;
       nvim-notify = {
-        package = plugins.nvim-notify;
+        package = vimPlugins.nvim-notify;
         config = ./nvim-notify.lua;
       };
     };
   };
   bufferline = {
-    package = plugins.bufferline-nvim;
+    package = vimPlugins.bufferline-nvim;
     config = ./bufferline.lua;
     event = "VeryLazy";
   };
@@ -178,7 +178,7 @@ in
       ];
     in
     {
-      package = plugins.nvim-colorizer-lua;
+      package = vimPlugins.nvim-colorizer-lua;
       config = {
         filetypes = filetypes;
         user_default_options = {
@@ -202,12 +202,12 @@ in
     };
 
   comment = {
-    package = plugins.comment-nvim;
+    package = vimPlugins.comment-nvim;
     config = true;
     event = "BufRead";
   };
   indent-blankline = {
-    package = plugins.indent-blankline-nvim;
+    package = vimPlugins.indent-blankline-nvim;
     main = "ibl";
     config.exclude.filetypes = [
       "alpha"
@@ -224,12 +224,12 @@ in
     event = "BufRead";
   };
   nvim-surround = {
-    package = plugins.nvim-surround;
+    package = vimPlugins.nvim-surround;
     config = true;
     event = "BufRead";
   };
   tagalong-vim = {
-    package = plugins.tagalong-vim;
+    package = vimPlugins.tagalong-vim;
     config = # lua
       ''
         function()
@@ -260,13 +260,13 @@ in
     ];
   };
   todo-comments = {
-    package = plugins.todo-comments-nvim;
+    package = vimPlugins.todo-comments-nvim;
     config = true;
     event = "BufRead";
   };
 
   codecompanion = {
-    package = plugins.codecompanion-nvim;
+    package = vimPlugins.codecompanion-nvim;
     config = ./codecompanion.lua;
     cmd = [
       "CodeCompanion"
@@ -284,7 +284,7 @@ in
       '';
   };
   render-markdown = rec {
-    package = plugins.render-markdown-nvim;
+    package = vimPlugins.render-markdown-nvim;
     config.file_types = ft;
     ft = [
       "markdown"
@@ -293,14 +293,14 @@ in
   };
 
   gitsigns = {
-    package = plugins.gitsigns-nvim;
+    package = vimPlugins.gitsigns-nvim;
     config = ./gitsigns.lua;
     event = "BufRead";
     cmd = "GitSigns";
   };
 
   neogit = {
-    package = plugins.neogit;
+    package = vimPlugins.neogit;
     config.integrations.diffview = true;
     cmd = "Neogit";
     keys = # lua
@@ -309,7 +309,7 @@ in
       '';
   };
   diffview = {
-    package = plugins.diffview-nvim;
+    package = vimPlugins.diffview-nvim;
     cmd = [
       "DiffviewOpen"
       "DiffviewFileHistory"
@@ -321,18 +321,18 @@ in
   };
 
   vim-dadbod = {
-    package = plugins.vim-dadbod;
+    package = vimPlugins.vim-dadbod;
     cmd = "DB";
   };
   vim-dadbod-completion = {
-    package = plugins.vim-dadbod-completion;
+    package = vimPlugins.vim-dadbod-completion;
     cmd = [
       "DB"
       "DBUI"
     ];
   };
   vim-dadbod-ui = {
-    package = plugins.vim-dadbod-ui;
+    package = vimPlugins.vim-dadbod-ui;
     config = # lua
       ''
         function()
@@ -345,15 +345,13 @@ in
   };
 
   lualine = {
-    package = plugins.lualine-nvim;
+    package = vimPlugins.lualine-nvim;
     config = ./lualine.lua;
-    dependencies = {
-      nvim-navic.package = plugins.nvim-navic;
-    };
+    dependencies.nvim-navic.package = vimPlugins.nvim-navic;
   };
 
   lazydev = {
-    package = plugins.lazydev-nvim;
+    package = vimPlugins.lazydev-nvim;
     ft = "lua";
     config.library = [
       {
@@ -363,11 +361,11 @@ in
     ];
   };
   luvit-meta = {
-    package = plugins.luvit-meta;
+    package = vimPlugins.luvit-meta;
     lazy = true;
   };
   lspconfig = {
-    package = plugins.nvim-lspconfig;
+    package = vimPlugins.nvim-lspconfig;
     config = ./lsp.lua;
     event = [
       "BufNewFile"
@@ -377,12 +375,12 @@ in
       blink-cmp = {
         package = vimPlugins.blink-cmp;
         config = ./blink.lua;
-        dependencies.friendly-snippets.package = plugins.friendly-snippets;
+        dependencies.friendly-snippets.package = vimPlugins.friendly-snippets;
       };
-      lspkind.package = plugins.lspkind-nvim;
-      ltex-extra.package = plugins.ltex-extra-nvim;
-      schemastore.package = plugins.schemastore-nvim;
-      typescript-tools.package = plugins.typescript-tools-nvim;
+      lspkind.package = vimPlugins.lspkind-nvim;
+      ltex-extra.package = vimPlugins.ltex_extra-nvim;
+      schemastore.package = vimPlugins.SchemaStore-nvim;
+      typescript-tools.package = vimPlugins.typescript-tools-nvim;
     };
   };
   blink-compat = {
@@ -391,7 +389,7 @@ in
     config = true;
   };
   crates = {
-    package = plugins.crates-nvim;
+    package = vimPlugins.crates-nvim;
     config = {
       completion = {
         cmp.enabled = true;
@@ -403,24 +401,24 @@ in
   };
   # lazy by default
   rustaceanvim = {
-    package = plugins.rustaceanvim;
+    package = vimPlugins.rustaceanvim;
     config = ./rustaceanvim.lua;
   };
   # lazy by default
   haskell-tools = {
-    package = plugins.haskell-tools-nvim;
+    package = vimPlugins.haskell-tools-nvim;
     config = ./haskell-tools.lua;
   };
-  nvim-jdtls.package = plugins.nvim-jdtls;
+  nvim-jdtls.package = vimPlugins.nvim-jdtls;
 
   trouble = {
-    package = plugins.trouble-nvim;
+    package = vimPlugins.trouble-nvim;
     config.padding = false;
     cmd = "Trouble";
   };
 
   conform = {
-    package = plugins.conform-nvim;
+    package = vimPlugins.conform-nvim;
     config = ./conform.lua;
     event = "BufWritePre";
     cmd = "FormatDisable";
@@ -428,20 +426,20 @@ in
 
   # required by nvim-dap and neotest
   nvim-nio = {
-    package = plugins.nvim-nio;
+    package = vimPlugins.nvim-nio;
     lazy = true;
   };
 
   nvim-dap = {
-    package = plugins.nvim-dap;
+    package = vimPlugins.nvim-dap;
     config = ./dap.lua;
     dependencies = {
       nvim-dap-virtual-text = {
-        package = plugins.nvim-dap-virtual-text;
+        package = vimPlugins.nvim-dap-virtual-text;
         config = true;
       };
       nvim-dap-ui = {
-        package = plugins.nvim-dap-ui;
+        package = vimPlugins.nvim-dap-ui;
         config = true;
       };
     };
@@ -450,22 +448,22 @@ in
   };
 
   neotest = {
-    package = plugins.neotest;
+    package = vimPlugins.neotest;
     dependencies = {
-      neotest-deno.package = plugins.neotest-go;
-      neotest-go.package = plugins.neotest-go;
-      neotest-haskell.package = plugins.neotest-haskell;
+      neotest-deno.package = vimPlugins.neotest-go;
+      neotest-go.package = vimPlugins.neotest-go;
+      neotest-haskell.package = vimPlugins.neotest-haskell;
     };
     cmd = "Neotest";
   };
 
   telescope = {
-    package = plugins.telescope-nvim;
+    package = vimPlugins.telescope-nvim;
     config = ./telescope.lua;
     dependencies = {
-      telescope-file-browser.package = plugins.telescope-file-browser-nvim;
+      telescope-file-browser.package = vimPlugins.telescope-file-browser-nvim;
       telescope-fzf-native.package = vimPlugins.telescope-fzf-native-nvim;
-      telescope-project.package = plugins.telescope-project-nvim;
+      telescope-project.package = vimPlugins.telescope-project-nvim;
     };
     cmd = "Telescope";
     keys = # lua
@@ -485,7 +483,7 @@ in
       settings.options.notify_user_on_venv_activation = true;
     };
     dependencies = {
-      nvim-dap-python.package = plugins.nvim-dap-python;
+      nvim-dap-python.package = vimPlugins.nvim-dap-python;
     };
     cmd = "VenvSelect";
     ft = "python";
@@ -496,7 +494,7 @@ in
   };
 
   toggleterm = {
-    package = plugins.toggleterm-nvim;
+    package = vimPlugins.toggleterm-nvim;
     config = {
       open_mapping = "<C-t>";
       shade_terminals = false;
@@ -521,17 +519,17 @@ in
   };
 
   neorepl = {
-    package = plugins.neorepl-nvim;
+    package = vimPlugins.neorepl-nvim;
     cmd = "Repl";
   };
 
   winshift = {
-    package = plugins.winshift-nvim;
+    package = vimPlugins.winshift-nvim;
     cmd = "WinShift";
   };
 
   zen-mode = {
-    package = plugins.zen-mode-nvim;
+    package = vimPlugins.zen-mode-nvim;
     config.plugins = {
       options.laststatus = 0;
       wezterm.enabled = true;
