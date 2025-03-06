@@ -49,6 +49,7 @@
         {
           self',
           config,
+          lib,
           pkgs,
           system,
           ...
@@ -99,7 +100,7 @@
                 env = {
                   NEOVIDE_FRAME = "none";
                   NEOVIDE_MULTIGRID = "1";
-                  NEOVIM_BIN = "${neovim}/bin/nvim";
+                  NEOVIM_BIN = lib.getExe pkgs.neovim;
                 };
               };
               docker = pkgs.dockerTools.buildImage {
