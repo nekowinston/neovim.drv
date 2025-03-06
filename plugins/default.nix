@@ -141,12 +141,9 @@ in
       lsp.override = {
         "vim.lsp.util.convert_input_to_markdown_lines" = true;
         "vim.lsp.util.stylize_markdown" = true;
-        "cmp.entry.get_documentation" = true;
       };
-      presets = {
-        long_message_to_split = true;
-        lsp_doc_border = true;
-      };
+      presets.long_message_to_split = true;
+      views.hover.border.style = mkLuaInline "vim.g.bc.style";
     };
     dependencies = {
       nui.package = vimPlugins.nui-nvim;
