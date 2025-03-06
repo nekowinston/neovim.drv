@@ -38,10 +38,10 @@ return function()
 			map("n", "gr", lsp.references, opts)
 			-- jump to diagnostics
 			map("n", "]d", function()
-				vim.diagnostic.goto_next({ float = { border = vim.g.bc.style } })
+				vim.diagnostic.jump({ count = 1, float = { border = vim.g.bc.style } })
 			end, opts)
 			map("n", "[d", function()
-				vim.diagnostic.goto_prev({ float = { border = vim.g.bc.style } })
+				vim.diagnostic.jump({ count = -1, float = { border = vim.g.bc.style } })
 			end, opts)
 			-- workspace config
 			map("n", "<leader>wa", lsp.add_workspace_folder, opts)
@@ -74,12 +74,15 @@ return function()
 			return root_dir
 		end,
 		settings = {
-      -- Nix silliness
-      -- stylua: ignore
-      tsserver_path = vim.fn.resolve(vim.fn.exepath("tsserver") .. "/../../lib/node_modules/typescript/bin/tsserver"),
+			-- Nix silliness
+			tsserver_path = (vim.fn.exepath("tsserver") ~= "") and vim.fn.resolve(
+				vim.fn.exepath("tsserver") .. "/../../lib/node_modules/typescript/bin/tsserver"
+			) or nil,
 		},
 	})
 
+	---@type table<string, lspconfig.Config>
+	---@diagnostic disable: missing-fields
 	local servers = {
 		astro = {},
 		basedpyright = {},
@@ -179,16 +182,14 @@ return function()
 		},
 		zls = {},
 	}
+	---@diagnostic enable: missing-fields
 
 	for server, config in pairs(servers) do
 		local common = {
 			capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities),
 			handlers = {
-				["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = vim.g.bc.style }),
-				["textDocument/signatureHelp"] = vim.lsp.with(
-					vim.lsp.handlers.signature_help,
-					{ border = vim.g.bc.style }
-				),
+				["textDocument/hover"] = vim.lsp.buf.hover({ border = vim.g.bc.style }),
+				["textDocument/signatureHelp"] = vim.lsp.buf.signature_help({ border = vim.g.bc.style }),
 			},
 		}
 

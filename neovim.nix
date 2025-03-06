@@ -3,13 +3,14 @@
     perSystem =
       {
         config,
+        inputs',
         lib,
         pkgs,
         ...
       }:
       {
         neovim = {
-          package = pkgs.neovim.override {
+          package = (pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped { }).override {
             withNodeJs = false;
             withPython3 = false;
             withRuby = false;

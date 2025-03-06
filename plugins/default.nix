@@ -141,7 +141,7 @@ in
       lsp.override = {
         "vim.lsp.util.convert_input_to_markdown_lines" = true;
         "vim.lsp.util.stylize_markdown" = true;
-        # "cmp.entry.get_documentation" = true;
+        "cmp.entry.get_documentation" = true;
       };
       presets = {
         long_message_to_split = true;
@@ -295,7 +295,6 @@ in
   gitsigns = {
     package = plugins.gitsigns-nvim;
     config = ./gitsigns.lua;
-    # TODO: I could probably make this lazier by mapping the keys here.
     event = "BufRead";
     cmd = "GitSigns";
   };

@@ -4,13 +4,25 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs = {
+        flake-compat.follows = "";
+        flake-parts.follows = "flake-parts";
+        git-hooks.follows = "git-hooks";
+        hercules-ci-effects.follows = "";
+        nixpkgs.follows = "nixpkgs";
+        treefmt-nix.follows = "";
+      };
+    };
     neovim-nix = {
       url = "github:willruggiano/neovim.nix";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.git-hooks.follows = "git-hooks";
-      inputs.example.follows = "";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+        git-hooks.follows = "git-hooks";
+        example.follows = "";
+      };
     };
     nvim-treesitter-nix = {
       url = "github:nekowinston/nvim-treesitter-nix";
@@ -46,8 +58,8 @@
             inherit system;
             config.allowUnfree = true;
             overlays = [
+              inputs.neovim-nightly-overlay.overlays.default
               inputs.nvim-treesitter-nix.overlays.default
-              # inputs.neovim-nightly-overlay.overlays.default
               (final: prev: {
                 java-debug = final.callPackage ./pkgs/java-debug { };
                 java-test = final.callPackage ./pkgs/java-test { };
