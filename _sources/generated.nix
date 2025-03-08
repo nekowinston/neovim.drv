@@ -3,15 +3,15 @@
 {
   auto-dark-mode-nvim = {
     pname = "auto-dark-mode-nvim";
-    version = "02ef9553e2a1d6e861bc6955d58ce5883d28a6ad";
+    version = "510099c19879d5ce83ae5507e44a949e15333593";
     src = fetchFromGitHub {
       owner = "f-person";
       repo = "auto-dark-mode.nvim";
-      rev = "02ef9553e2a1d6e861bc6955d58ce5883d28a6ad";
+      rev = "510099c19879d5ce83ae5507e44a949e15333593";
       fetchSubmodules = false;
-      sha256 = "sha256-FTXakglUrqifEXjzES6M4L+rthItu5rlw6QyIOLYNOc=";
+      sha256 = "sha256-0bqtV5At8wq72YbpbCHDzaSgiFTcpZ1kGfwLgUwRcYg=";
     };
-    date = "2025-01-25";
+    date = "2025-03-08";
   };
   milspec-nvim = {
     pname = "milspec-nvim";
@@ -27,15 +27,15 @@
   };
   neovim-session-manager = {
     pname = "neovim-session-manager";
-    version = "270e235b014f0c37bf362eb1e8913d66bba33a2e";
+    version = "3409dc920d40bec4c901c0a122a80bee03d6d1e1";
     src = fetchFromGitHub {
       owner = "Shatur";
       repo = "neovim-session-manager";
-      rev = "270e235b014f0c37bf362eb1e8913d66bba33a2e";
+      rev = "3409dc920d40bec4c901c0a122a80bee03d6d1e1";
       fetchSubmodules = false;
-      sha256 = "sha256-0CB7/hqj3zEZPQUOQoaETcNzFJcQyKt3k7hIXoArhZg=";
+      sha256 = "sha256-k2akj/s6qJx/sCnz3UNHo5zbENTpw+OPuo2WPF1W7rg=";
     };
-    date = "2025-01-19";
+    date = "2025-03-07";
   };
   venv-selector-nvim = {
     pname = "venv-selector-nvim";
