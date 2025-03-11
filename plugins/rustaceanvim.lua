@@ -12,10 +12,12 @@ return function()
 					relativePatternSupport = false,
 				}
 			end,
-			settings = {
-				files = {
-					-- https://github.com/rust-lang/rust-analyzer/issues/12613
-					excludeDirs = { ".direnv" },
+			default_settings = {
+				["rust-analyzer"] = {
+					files = {
+						-- https://github.com/rust-lang/rust-analyzer/issues/12613
+						exclude = { ".direnv" },
+					},
 				},
 			},
 		},
