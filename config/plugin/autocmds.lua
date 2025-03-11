@@ -37,33 +37,35 @@ vim.api.nvim_create_autocmd({ "RecordingEnter", "RecordingLeave" }, {
 })
 
 local numbertoggle = vim.api.nvim_create_augroup("numbertoggle", {})
-local ignore_ft = {
-	"",
-	"alpha",
-	"fugitive",
-	"help",
-	"lazy",
-	"noice",
-	"toggleterm",
-	"NeogitCommitView",
-	"NeogitConsole",
-	"NeogitStatus",
-	"NvimTree",
-	"TelescopePrompt",
-	"Trouble",
-}
 
 ---@param callback fun(): nil
 ---@return nil
-local function ft_guard(callback)
-	if not vim.tbl_contains(ignore_ft, vim.bo.filetype) then
+local function numbertoggle_guard(callback)
+	local not_relative = vim.api.nvim_win_get_config(vim.api.nvim_get_current_win()).relative == ""
+	local ft_ok = not vim.tbl_contains({
+		"",
+		"alpha",
+		"fugitive",
+		"help",
+		"lazy",
+		"noice",
+		"toggleterm",
+		"NeogitCommitView",
+		"NeogitConsole",
+		"NeogitStatus",
+		"NvimTree",
+		"TelescopePrompt",
+		"Trouble",
+	}, vim.bo.filetype)
+
+	if ft_ok and not_relative then
 		callback()
 	end
 end
 
 vim.api.nvim_create_autocmd({ "InsertEnter", "BufLeave", "WinLeave", "FocusLost" }, {
 	callback = function()
-		ft_guard(function()
+		numbertoggle_guard(function()
 			vim.opt_local.rnu = false
 		end)
 	end,
@@ -71,7 +73,7 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "BufLeave", "WinLeave", "FocusLost"
 })
 vim.api.nvim_create_autocmd({ "InsertLeave", "BufEnter", "WinEnter", "FocusGained" }, {
 	callback = function()
-		ft_guard(function()
+		numbertoggle_guard(function()
 			vim.opt_local.rnu = true
 		end)
 	end,
@@ -79,7 +81,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "BufEnter", "WinEnter", "FocusGaine
 })
 vim.api.nvim_create_autocmd({ "CmdlineEnter", "CmdlineLeave" }, {
 	callback = function(data)
-		ft_guard(function()
+		numbertoggle_guard(function()
 			vim.o.rnu = data.event == "CmdlineLeave"
 			vim.cmd.redraw()
 		end)
