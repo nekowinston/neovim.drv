@@ -95,10 +95,10 @@ in
     ft = "typst";
   };
 
-  neovim-session-manager = {
-    package = plugins.neovim-session-manager;
-    main = "session_manager";
-    config = ./session-manager.lua;
+  resession = {
+    package = vimPlugins.resession-nvim;
+    lazy = false;
+    config = ./resession.lua;
   };
   auto-dark-mode = {
     package = plugins.auto-dark-mode-nvim;
@@ -470,7 +470,6 @@ in
           { "<leader>fg", "<Cmd>Telescope live_grep<CR>", desc = "Live Grep" },
           { "<leader>fh", "<Cmd>Telescope help_tags<CR>", desc = "Help Tags" },
           { "<leader>fp", "<Cmd>Telescope project<CR>", desc = "Project" },
-          { "<leader>fs", "<Cmd>SessionManager load_session<CR>", desc = "Show Sessions" },
         }
       '';
   };

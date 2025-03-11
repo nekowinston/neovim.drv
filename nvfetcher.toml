@@ -7,10 +7,6 @@ src.branch = "feat/use-new-neovim-apis-add-healthcheck"
 fetch.github = "nekowinston/milspec.nvim"
 src.git = "https://github.com/nekowinston/milspec.nvim"
 
-[neovim-session-manager]
-fetch.github = "Shatur/neovim-session-manager"
-src.git = "https://github.com/Shatur/neovim-session-manager"
-
 [venv-selector-nvim]
 fetch.github = "linux-cultist/venv-selector.nvim"
 src.git = "https://github.com/linux-cultist/venv-selector.nvim"

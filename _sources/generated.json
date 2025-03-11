@@ -41,27 +41,6 @@
         },
         "version": "11d492e7c3ef3b16a446415b303d239a26643f2b"
     },
-    "neovim-session-manager": {
-        "cargoLocks": null,
-        "date": "2025-03-07",
-        "extract": null,
-        "name": "neovim-session-manager",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "Shatur",
-            "repo": "neovim-session-manager",
-            "rev": "3409dc920d40bec4c901c0a122a80bee03d6d1e1",
-            "sha256": "sha256-k2akj/s6qJx/sCnz3UNHo5zbENTpw+OPuo2WPF1W7rg=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "3409dc920d40bec4c901c0a122a80bee03d6d1e1"
-    },
     "venv-selector-nvim": {
         "cargoLocks": null,
         "date": "2024-09-15",
