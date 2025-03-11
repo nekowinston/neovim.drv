@@ -1,7 +1,6 @@
 [auto-dark-mode-nvim]
 fetch.github = "f-person/auto-dark-mode.nvim"
 src.git = "https://github.com/f-person/auto-dark-mode.nvim"
-src.branch = "feat/use-new-neovim-apis-add-healthcheck"
 
 [milspec-nvim]
 fetch.github = "nekowinston/milspec.nvim"

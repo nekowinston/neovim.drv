@@ -3,15 +3,15 @@
 {
   auto-dark-mode-nvim = {
     pname = "auto-dark-mode-nvim";
-    version = "510099c19879d5ce83ae5507e44a949e15333593";
+    version = "c31de126963ffe9403901b4b0990dde0e6999cc6";
     src = fetchFromGitHub {
       owner = "f-person";
       repo = "auto-dark-mode.nvim";
-      rev = "510099c19879d5ce83ae5507e44a949e15333593";
+      rev = "c31de126963ffe9403901b4b0990dde0e6999cc6";
       fetchSubmodules = false;
-      sha256 = "sha256-0bqtV5At8wq72YbpbCHDzaSgiFTcpZ1kGfwLgUwRcYg=";
+      sha256 = "sha256-ZCViqnA+VoEOG+Xr+aJNlfRKCjxJm5y78HRXax3o8UY=";
     };
-    date = "2025-03-08";
+    date = "2025-03-10";
   };
   milspec-nvim = {
     pname = "milspec-nvim";

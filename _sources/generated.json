@@ -1,7 +1,7 @@
 {
     "auto-dark-mode-nvim": {
         "cargoLocks": null,
-        "date": "2025-03-08",
+        "date": "2025-03-10",
         "extract": null,
         "name": "auto-dark-mode-nvim",
         "passthru": null,
@@ -13,12 +13,12 @@
             "name": null,
             "owner": "f-person",
             "repo": "auto-dark-mode.nvim",
-            "rev": "510099c19879d5ce83ae5507e44a949e15333593",
-            "sha256": "sha256-0bqtV5At8wq72YbpbCHDzaSgiFTcpZ1kGfwLgUwRcYg=",
+            "rev": "c31de126963ffe9403901b4b0990dde0e6999cc6",
+            "sha256": "sha256-ZCViqnA+VoEOG+Xr+aJNlfRKCjxJm5y78HRXax3o8UY=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "510099c19879d5ce83ae5507e44a949e15333593"
+        "version": "c31de126963ffe9403901b4b0990dde0e6999cc6"
     },
     "milspec-nvim": {
         "cargoLocks": null,
