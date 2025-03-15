@@ -61,10 +61,7 @@
             overlays = [
               inputs.neovim-nightly-overlay.overlays.default
               inputs.nvim-treesitter-nix.overlays.default
-              (final: prev: {
-                java-debug = final.callPackage ./pkgs/java-debug { };
-                java-test = final.callPackage ./pkgs/java-test { };
-              })
+              (import ./pkgs/overlays.nix)
             ];
           };
 
@@ -78,7 +75,7 @@
             };
           };
 
-          devShells.default = pkgs.mkShell {
+          devShells.default = pkgs.mkShellNoCC {
             inherit (config.pre-commit.devShell) shellHook;
             packages = with pkgs; [
               self'.formatter
@@ -88,6 +85,8 @@
           };
 
           formatter = pkgs.nixfmt-rfc-style;
+
+          legacyPackages = pkgs;
 
           packages =
             let
@@ -114,7 +113,6 @@
                   ])
                   ++ [ neovim ];
               };
-              inherit (pkgs) java-debug java-test;
             };
         };
     };

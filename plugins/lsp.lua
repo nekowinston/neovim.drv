@@ -121,6 +121,7 @@ return function()
 			},
 		},
 		helm_ls = {},
+		html = {},
 		jqls = {},
 		jsonls = {
 			settings = {
@@ -130,8 +131,6 @@ return function()
 				},
 			},
 		},
-		lua_ls = {},
-		html = {},
 		ltex = {
 			on_attach = function()
 				local data_path = vim.fn.stdpath("data")
@@ -152,6 +151,7 @@ return function()
 				},
 			},
 		},
+		lua_ls = {},
 		nixd = {},
 		nushell = {},
 		phpactor = {},

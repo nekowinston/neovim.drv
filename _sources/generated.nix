@@ -25,6 +25,18 @@
     };
     date = "2024-12-21";
   };
+  tree-sitter-lean = {
+    pname = "tree-sitter-lean";
+    version = "efe6b87145608d12f5996bd7f0cf6095a0e82261";
+    src = fetchFromGitHub {
+      owner = "Julian";
+      repo = "tree-sitter-lean";
+      rev = "efe6b87145608d12f5996bd7f0cf6095a0e82261";
+      fetchSubmodules = false;
+      sha256 = "sha256-MF+LRzhDw3V/l/h11ZTyWCUCm3b+g0oyOdaCZMVlJc4=";
+    };
+    date = "2024-12-25";
+  };
   venv-selector-nvim = {
     pname = "venv-selector-nvim";
     version = "e82594274bf7b54387f9a2abe65f74909ac66e97";

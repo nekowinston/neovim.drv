@@ -30,14 +30,23 @@ in
   };
   nvim-web-devicons = {
     package = vimPlugins.nvim-web-devicons;
-    lazy = true;
+    config.override_by_extension.lean = {
+      icon = "∀";
+      name = "Lean";
+    };
   };
 
   nvim-treesitter = {
     event = "BufRead";
     package = pkgs.symlinkJoin {
       name = "nvim-treesitter";
-      paths = with vimPlugins; [ nvim-treesitter ] ++ nvim-treesitter.withAllGrammars.dependencies;
+      paths =
+        with vimPlugins;
+        [
+          nvim-treesitter
+          nvim-treesitter-parsers.lean
+        ]
+        ++ nvim-treesitter.withAllGrammars.dependencies;
     };
     config = ./nvim-treesitter.lua;
     dependencies = {
@@ -405,6 +414,14 @@ in
   haskell-tools = {
     package = vimPlugins.haskell-tools-nvim;
     config = ./haskell-tools.lua;
+  };
+  lean-nvim = {
+    package = vimPlugins.lean-nvim;
+    event = [
+      "BufReadPre *.lean"
+      "BufNewFile *.lean"
+    ];
+    config = ./lean.lua;
   };
   nvim-jdtls.package = vimPlugins.nvim-jdtls;
 

@@ -41,6 +41,27 @@
         },
         "version": "11d492e7c3ef3b16a446415b303d239a26643f2b"
     },
+    "tree-sitter-lean": {
+        "cargoLocks": null,
+        "date": "2024-12-25",
+        "extract": null,
+        "name": "tree-sitter-lean",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "Julian",
+            "repo": "tree-sitter-lean",
+            "rev": "efe6b87145608d12f5996bd7f0cf6095a0e82261",
+            "sha256": "sha256-MF+LRzhDw3V/l/h11ZTyWCUCm3b+g0oyOdaCZMVlJc4=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "efe6b87145608d12f5996bd7f0cf6095a0e82261"
+    },
     "venv-selector-nvim": {
         "cargoLocks": null,
         "date": "2024-09-15",

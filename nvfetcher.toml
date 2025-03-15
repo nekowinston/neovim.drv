@@ -6,6 +6,10 @@ src.git = "https://github.com/f-person/auto-dark-mode.nvim"
 fetch.github = "nekowinston/milspec.nvim"
 src.git = "https://github.com/nekowinston/milspec.nvim"
 
+[tree-sitter-lean]
+fetch.github = "Julian/tree-sitter-lean"
+src.git = "https://github.com/Julian/tree-sitter-lean"
+
 [venv-selector-nvim]
 fetch.github = "linux-cultist/venv-selector.nvim"
 src.git = "https://github.com/linux-cultist/venv-selector.nvim"
