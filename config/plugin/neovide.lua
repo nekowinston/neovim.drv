@@ -2,6 +2,8 @@ if not vim.g.neovide then
 	return
 end
 
+---@type vim.keymap.set.Opts
+local opts = { silent = true }
 local map = vim.keymap.set
 local system = vim.uv.os_uname().sysname
 
@@ -24,10 +26,10 @@ end
 
 map("n", "<D-=>", function()
 	change_scale_factor(1.25)
-end)
+end, opts)
 map("n", "<D-->", function()
 	change_scale_factor(1 / 1.25)
-end)
+end, opts)
 
 if system == "Darwin" then
 	-- options only available on macOS
@@ -35,10 +37,10 @@ if system == "Darwin" then
 	vim.g.neovide_transparency = 0.95
 	vim.g.neovide_window_blurred = true
 	-- save with ⌘+S
-	map("n", "<D-s>", ":w<CR>")
+	map("n", "<D-s>", ":w<CR>", opts)
 	-- clipboard with ⌘+C and ⌘+V
-	map("v", "<D-c>", '"+y')
-	map({ "n", "v" }, "<D-v>", '"+p')
-	map("c", "<D-v>", "<C-R>+")
-	map("i", "<D-v>", '<Esc>l"+pa')
+	map("v", "<D-c>", '"+y', opts)
+	map({ "n", "v" }, "<D-v>", '"+p', opts)
+	map("c", "<D-v>", "<C-R>+", opts)
+	map("i", "<D-v>", '<Esc>l"+pa', opts)
 end

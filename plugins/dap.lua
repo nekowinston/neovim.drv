@@ -1,9 +1,16 @@
+---@param mode string
+---@param lhs string
+---@param rhs string | fun(): nil
+---@param opts? vim.keymap.set.Opts
+local map = function(mode, lhs, rhs, opts)
+	opts = vim.tbl_extend("force", { silent = true, buffer = vim.api.nvim_get_current_buf() }, opts or {})
+	vim.keymap.set(mode, lhs, rhs, opts)
+end
+
 return function()
 	local dap = require("dap")
 	local dapui = require("dapui")
 	local dapui_widgets = require("dap.ui.widgets")
-
-	local map = vim.keymap.set
 
 	dap.listeners.before.attach.dapui_config = function()
 		dapui.open()

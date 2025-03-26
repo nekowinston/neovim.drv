@@ -25,7 +25,8 @@ return function()
 
 			-- local keymaps
 			local map = vim.keymap.set
-			local opts = { buffer = ev.buf }
+			---@type vim.keymap.set.Opts
+			local opts = { buffer = ev.buf, silent = true }
 			local lsp = vim.lsp.buf
 
 			-- peeking & navigation
