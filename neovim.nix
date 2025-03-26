@@ -44,15 +44,15 @@
             nixfmt-rfc-style
 
             # shell scripting
-            nodePackages.bash-language-server
+            bash-language-server
             shellcheck
             shfmt
 
             # webdev
             emmet-language-server
-            nodePackages.typescript
-            nodePackages.vscode-langservers-extracted
-            nodePackages.yaml-language-server
+            vscode-langservers-extracted
+            vtsls
+            yaml-language-server
 
             # data formats
             taplo

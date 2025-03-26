@@ -60,28 +60,6 @@ return function()
 		end,
 	})
 
-	require("typescript-tools").setup({
-		single_file_support = false,
-		root_dir = function(fname)
-			local root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json")(fname)
-
-			-- this is needed to make sure we don't pick up root_dir inside node_modules
-			local node_modules_index = root_dir and root_dir:find("node_modules", 1, true)
-			if node_modules_index and node_modules_index > 0 then
-				---@diagnostic disable-next-line: need-check-nil
-				root_dir = root_dir:sub(1, node_modules_index - 2)
-			end
-
-			return root_dir
-		end,
-		settings = {
-			-- Nix silliness
-			tsserver_path = (vim.fn.exepath("tsserver") ~= "") and vim.fn.resolve(
-				vim.fn.exepath("tsserver") .. "/../../lib/node_modules/typescript/bin/tsserver"
-			) or nil,
-		},
-	})
-
 	---@type table<string, lspconfig.Config>
 	---@diagnostic disable: missing-fields
 	local servers = {
@@ -171,6 +149,21 @@ return function()
 		taplo = {},
 		teal_ls = {},
 		tinymist = {},
+		vtsls = {
+			single_file_support = false,
+			root_dir = function(fname)
+				local root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json")(fname)
+
+				-- this is needed to make sure we don't pick up root_dir inside node_modules
+				local node_modules_index = root_dir and root_dir:find("node_modules", 1, true)
+				if node_modules_index and node_modules_index > 0 then
+					---@diagnostic disable-next-line: need-check-nil
+					root_dir = root_dir:sub(1, node_modules_index - 2)
+				end
+
+				return root_dir
+			end,
+		},
 		yamlls = {
 			settings = {
 				yaml = {

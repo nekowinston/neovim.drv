@@ -386,7 +386,6 @@ in
       lspkind.package = vimPlugins.lspkind-nvim;
       ltex-extra.package = vimPlugins.ltex_extra-nvim;
       schemastore.package = vimPlugins.SchemaStore-nvim;
-      typescript-tools.package = vimPlugins.typescript-tools-nvim;
     };
   };
   blink-compat = {
