@@ -19,37 +19,43 @@ return function()
 				},
 			},
 			left_mouse_command = "buffer %d",
-			middle_mouse_command = "bdelete! %d",
+			middle_mouse_command = function(bufnum)
+				require("snacks").bufdelete({ buf = bufnum })
+			end,
 			right_mouse_command = nil,
 			numbers = "ordinal",
 		},
 	})
 
-	local map = vim.keymap.set
+	local map = function(lhs, rhs, opts)
+		vim.keymap.set("n", lhs, rhs, vim.tbl_extend("force", { silent = true }, opts or {}))
+	end
 
-	map("n", "<A-,>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Select buffer to the left" })
-	map("n", "<A-.>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Select buffer to the right" })
+	map("<A-,>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Select buffer to the left" })
+	map("<A-.>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Select buffer to the right" })
 
-	map("n", "<A-<>", "<Cmd>BufferLineMovePrev<CR>", { desc = "Move buffer left" })
-	map("n", "<A->>", "<Cmd>BufferLineMoveNext<CR>", { desc = "Move buffer right" })
+	map("<A-<>", "<Cmd>BufferLineMovePrev<CR>", { desc = "Move buffer left" })
+	map("<A->>", "<Cmd>BufferLineMoveNext<CR>", { desc = "Move buffer right" })
 
-	map("n", "<A-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", { desc = "Go to buffer 1" })
-	map("n", "<A-2>", "<Cmd>BufferLineGoToBuffer 2<CR>", { desc = "Go to buffer 2" })
-	map("n", "<A-3>", "<Cmd>BufferLineGoToBuffer 3<CR>", { desc = "Go to buffer 3" })
-	map("n", "<A-4>", "<Cmd>BufferLineGoToBuffer 4<CR>", { desc = "Go to buffer 4" })
-	map("n", "<A-5>", "<Cmd>BufferLineGoToBuffer 5<CR>", { desc = "Go to buffer 5" })
-	map("n", "<A-6>", "<Cmd>BufferLineGoToBuffer 6<CR>", { desc = "Go to buffer 6" })
-	map("n", "<A-7>", "<Cmd>BufferLineGoToBuffer 7<CR>", { desc = "Go to buffer 7" })
-	map("n", "<A-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", { desc = "Go to buffer 8" })
-	map("n", "<A-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", { desc = "Go to buffer 9" })
-	map("n", "<A-0>", "<Cmd>BufferLineGoToBuffer -1<CR>", { desc = "Go to last buffer" })
+	for i = 1, 9 do
+		map("<A-" .. tostring(i) .. ">", function()
+			bufferline.go_to(i, true)
+		end, { desc = "Go to buffer " .. tostring(i) })
+	end
+	map("<A-0>", function()
+		bufferline.go_to(-1, true)
+	end, { desc = "Go to last buffer" })
 
-	map("n", "<A-p>", "<Cmd>BufferLineTogglePin<CR>", { desc = "Pin/unpin buffer" })
-	map("n", "<A-x>", "<Cmd>bdelete<CR>", { desc = "Close buffer" })
-	map("n", "<A-X>", "<Cmd>bdelete!<CR>", { desc = "Close buffer (force)" })
-	map("n", "<A-c>", "<Cmd>enew<CR>", { desc = "Create new buffer" })
+	map("<A-p>", "<Cmd>BufferLineTogglePin<CR>", { desc = "Pin/unpin buffer" })
+	map("<A-x>", function()
+		require("snacks").bufdelete()
+	end, { desc = "Close buffer" })
+	map("<A-X>", function()
+		require("snacks").bufdelete({ force = true })
+	end, { desc = "Close buffer (force)" })
+	map("<A-c>", "<Cmd>enew<CR>", { desc = "Create new buffer" })
 
-	map("n", "<A-space>", "<Cmd>BufferLinePick<CR>", { desc = "Pick buffer" })
-	map("n", "<leader>bd", "<Cmd>BufferLineSortByDirectory<CR>", { desc = "Sort buffers by directory" })
-	map("n", "<leader>bl", "<Cmd>BufferLineSortByExtension<CR>", { desc = "Sort buffers by extension" })
+	map("<A-space>", "<Cmd>BufferLinePick<CR>", { desc = "Pick buffer" })
+	map("<leader>bd", "<Cmd>BufferLineSortByDirectory<CR>", { desc = "Sort buffers by directory" })
+	map("<leader>bl", "<Cmd>BufferLineSortByExtension<CR>", { desc = "Sort buffers by extension" })
 end

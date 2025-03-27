@@ -1,4 +1,4 @@
----@param mode string
+---@param mode string | string[]
 ---@param lhs string
 ---@param rhs string | fun(): nil
 ---@param opts? vim.keymap.set.Opts
