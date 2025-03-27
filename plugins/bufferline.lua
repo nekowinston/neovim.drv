@@ -7,6 +7,9 @@ return function()
 	bufferline.setup({
 		highlights = require("milspec.utils.bufferline").get(),
 		options = {
+			close_command = function(n)
+				Snacks.bufdelete(n)
+			end,
 			show_close_icon = true,
 			show_buffer_close_icons = true,
 			offsets = {

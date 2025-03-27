@@ -3,7 +3,6 @@ let
   plugins = pkgs.callPackage ../pkgs/plugins { };
   inherit (pkgs) lib vimPlugins;
   inherit (lib.generators) mkLuaInline;
-  borderStyle = mkLuaInline "vim.o.winborder";
 in
 {
   direnv = {
@@ -194,6 +193,7 @@ in
       cmd = "ColorizerToggle";
     };
 
+  vim-sleuth.package = vimPlugins.vim-sleuth;
   comment = {
     package = vimPlugins.comment-nvim;
     config = true;
@@ -378,6 +378,45 @@ in
     package = vimPlugins.trouble-nvim;
     config.padding = false;
     cmd = "Trouble";
+    keys = # lua
+      ''
+        {
+          { "<leader>xx", "<Cmd>Trouble diagnostics toggle<CR>", desc = "Diagnostics (Trouble)" },
+          { "<leader>xX", "<Cmd>Trouble diagnostics toggle filter.buf=0<CR>", desc = "Buffer Diagnostics (Trouble)" },
+          { "<leader>cs", "<Cmd>Trouble symbols toggle<CR>", desc = "Symbols (Trouble)" },
+          { "<leader>cS", "<Cmd>Trouble lsp toggle<CR>", desc = "LSP references/definitions/... (Trouble)" },
+          { "<leader>xL", "<Cmd>Trouble loclist toggle<CR>", desc = "Location List (Trouble)" },
+          { "<leader>xQ", "<Cmd>Trouble qflist toggle<CR>", desc = "Quickfix List (Trouble)" },
+          {
+            "[q",
+            function()
+              if require("trouble").is_open() then
+                require("trouble").prev({ skip_groups = true, jump = true })
+              else
+                local ok, err = pcall(vim.cmd.cprev)
+                if not ok then
+                  vim.notify(err, vim.log.levels.ERROR)
+                end
+              end
+            end,
+            desc = "Previous Trouble/Quickfix Item",
+          },
+          {
+            "]q",
+            function()
+              if require("trouble").is_open() then
+                require("trouble").next({ skip_groups = true, jump = true })
+              else
+                local ok, err = pcall(vim.cmd.cnext)
+                if not ok then
+                  vim.notify(err, vim.log.levels.ERROR)
+                end
+              end
+            end,
+            desc = "Next Trouble/Quickfix Item",
+          }
+        }
+      '';
   };
 
   conform = {
@@ -449,25 +488,6 @@ in
     keys = # lua
       ''
         { { "<leader>cv", "<Cmd>:VenvSelect<CR>", desc = "Select VirtualEnv", ft = "python" } }
-      '';
-  };
-
-  toggleterm = {
-    package = vimPlugins.toggleterm-nvim;
-    config = {
-      open_mapping = "<C-t>";
-      shade_terminals = false;
-      direction = "float";
-      float_opts = {
-        border = borderStyle;
-        winblend = 10;
-      };
-      winbar.enabled = true;
-    };
-    cmd = "ToggleTerm";
-    keys = # lua
-      ''
-        { { "<C-t>", "<Cmd>ToggleTerm direction=float<CR>", desc = "Toggle Terminal" } }
       '';
   };
 

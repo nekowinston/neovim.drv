@@ -1,5 +1,7 @@
 return function()
-	require("snacks").setup({
+	local snacks = require("snacks")
+
+	snacks.setup({
 		bigfile = { enabed = true },
 		notifier = { enabled = true },
 		input = { enabled = true },
@@ -12,5 +14,15 @@ return function()
 				col = 0,
 			},
 		},
+		terminal = {
+			win = {
+				border = vim.o.winborder,
+				position = "float",
+			},
+		},
 	})
+
+	vim.keymap.set({ "n", "t" }, "<C-t>", function()
+		snacks.terminal.toggle()
+	end, { silent = true, desc = "Toggle floating terminal" })
 end

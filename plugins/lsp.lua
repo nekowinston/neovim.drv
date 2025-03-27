@@ -1,8 +1,6 @@
 return function()
 	local lspconfig = require("lspconfig")
 
-	vim.o.completeopt = "menu,menuone,noselect"
-
 	vim.api.nvim_create_autocmd("LspAttach", {
 		group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 		callback = function(ev)
@@ -151,8 +149,9 @@ return function()
 		tinymist = {},
 		vtsls = {
 			single_file_support = false,
-			root_dir = function(fname)
-				local root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json")(fname)
+			---@type (string | fun(filename: string, bufnr: number): string)?
+			root_dir = function(filename)
+				local root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json")(filename)
 
 				-- this is needed to make sure we don't pick up root_dir inside node_modules
 				local node_modules_index = root_dir and root_dir:find("node_modules", 1, true)

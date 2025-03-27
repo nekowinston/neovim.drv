@@ -16,7 +16,7 @@ return function()
 				["rust-analyzer"] = {
 					files = {
 						-- https://github.com/rust-lang/rust-analyzer/issues/12613
-						exclude = { ".direnv" },
+						exclude = { ".devenv", ".direnv" },
 					},
 				},
 			},
