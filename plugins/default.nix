@@ -73,10 +73,6 @@ in
     package = vimPlugins.vim-helm;
     ft = "helm";
   };
-  vim-tera = {
-    package = plugins.vim-tera;
-    ft = "tera";
-  };
   vim-applescript = {
     package = plugins.vim-applescript;
     ft = "applescript";
