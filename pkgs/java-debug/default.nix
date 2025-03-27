@@ -1,20 +1,13 @@
 {
+  _sources,
   jdk,
   lib,
   stdenvNoCC,
   unzip,
-  vscode-utils,
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
-  name = "java-debug";
-  version = "0.53.0";
+  inherit (_sources.java-debug) pname version src;
 
-  src = vscode-utils.fetchVsixFromVscodeMarketplace {
-    publisher = "vscjava";
-    name = "vscode-java-debug";
-    version = "0.58.2024090204";
-    hash = "sha256-xOITwuGoWWFHFETG2R0B+hH8nsPm5w0loT5KAyhJhBQ=";
-  };
   nativeBuildInputs = [ unzip ];
   sourceRoot = "extension";
 

@@ -1,14 +1,12 @@
-final: prev:
-let
-  nvfetcher = prev.callPackage ../_sources/generated.nix { };
-in
-{
+final: prev: {
+  _sources = final.callPackage ../_sources/generated.nix { };
+
   java-debug = final.callPackage ./java-debug { };
   java-test = final.callPackage ./java-test { };
 
   tree-sitter-grammars = prev.tree-sitter-grammars // {
     tree-sitter-lean = prev.tree-sitter.buildGrammar {
-      inherit (nvfetcher.tree-sitter-lean) pname src version;
+      inherit (final._sources.tree-sitter-lean) pname src version;
       language = "lean";
     };
   };

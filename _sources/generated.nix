@@ -13,6 +13,24 @@
     };
     date = "2025-03-10";
   };
+  java-debug = {
+    pname = "java-debug";
+    version = "0.58.2025022807";
+    src = fetchurl {
+      url = "https://vscjava.gallery.vsassets.io/_apis/public/gallery/publisher/vscjava/extension/vscode-java-debug/0.58.2025022807/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage";
+      name = "vscode-java-debug-0.58.2025022807.zip";
+      sha256 = "sha256-8bzDbCF03U5P15tkVkieOGuuLetUFXjZNrQKZTcKNFA=";
+    };
+  };
+  java-test = {
+    pname = "java-test";
+    version = "0.43.0";
+    src = fetchurl {
+      url = "https://vscjava.gallery.vsassets.io/_apis/public/gallery/publisher/vscjava/extension/vscode-java-test/0.43.0/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage";
+      name = "vscode-java-test-0.43.0.zip";
+      sha256 = "sha256-EM0S1Y4cRMBCRbAZgl9m6fIhANPrvdGVZXOLlDLnVWo=";
+    };
+  };
   milspec-nvim = {
     pname = "milspec-nvim";
     version = "11d492e7c3ef3b16a446415b303d239a26643f2b";

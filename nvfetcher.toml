@@ -2,6 +2,14 @@
 fetch.github = "f-person/auto-dark-mode.nvim"
 src.git = "https://github.com/f-person/auto-dark-mode.nvim"
 
+[java-debug]
+src.vsmarketplace = "vscjava.vscode-java-debug"
+fetch.vsmarketplace = "vscjava.vscode-java-debug"
+
+[java-test]
+src.vsmarketplace = "vscjava.vscode-java-test"
+fetch.vsmarketplace = "vscjava.vscode-java-test"
+
 [milspec-nvim]
 fetch.github = "nekowinston/milspec.nvim"
 src.git = "https://github.com/nekowinston/milspec.nvim"

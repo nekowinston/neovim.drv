@@ -20,6 +20,36 @@
         },
         "version": "c31de126963ffe9403901b4b0990dde0e6999cc6"
     },
+    "java-debug": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "java-debug",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": "vscode-java-debug-0.58.2025022807.zip",
+            "sha256": "sha256-8bzDbCF03U5P15tkVkieOGuuLetUFXjZNrQKZTcKNFA=",
+            "type": "url",
+            "url": "https://vscjava.gallery.vsassets.io/_apis/public/gallery/publisher/vscjava/extension/vscode-java-debug/0.58.2025022807/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage"
+        },
+        "version": "0.58.2025022807"
+    },
+    "java-test": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "java-test",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": "vscode-java-test-0.43.0.zip",
+            "sha256": "sha256-EM0S1Y4cRMBCRbAZgl9m6fIhANPrvdGVZXOLlDLnVWo=",
+            "type": "url",
+            "url": "https://vscjava.gallery.vsassets.io/_apis/public/gallery/publisher/vscjava/extension/vscode-java-test/0.43.0/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage"
+        },
+        "version": "0.43.0"
+    },
     "milspec-nvim": {
         "cargoLocks": null,
         "date": "2024-12-21",
