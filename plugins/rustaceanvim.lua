@@ -21,10 +21,5 @@ return function()
 				},
 			},
 		},
-		tools = {
-			float_win_config = {
-				border = vim.g.bc.style,
-			},
-		},
 	}
 end

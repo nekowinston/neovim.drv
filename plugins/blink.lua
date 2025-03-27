@@ -16,9 +16,6 @@ return function()
 			documentation = {
 				auto_show = true,
 				auto_show_delay_ms = 500,
-				window = {
-					border = vim.g.bc.style,
-				},
 			},
 			ghost_text = {
 				enabled = true,
@@ -29,7 +26,6 @@ return function()
 				},
 			},
 			menu = {
-				border = vim.g.bc.style,
 				draw = {
 					components = {
 						kind_icon = {
@@ -106,11 +102,6 @@ return function()
 					end
 				end,
 				"fallback",
-			},
-		},
-		signature = {
-			window = {
-				border = vim.g.bc.style,
 			},
 		},
 		sources = {

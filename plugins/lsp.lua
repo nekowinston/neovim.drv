@@ -39,10 +39,10 @@ return function()
 			map("n", "gr", lsp.references, opts)
 			-- jump to diagnostics
 			map("n", "]d", function()
-				vim.diagnostic.jump({ count = 1, float = { border = vim.g.bc.style } })
+				vim.diagnostic.jump({ count = 1, float = true })
 			end, opts)
 			map("n", "[d", function()
-				vim.diagnostic.jump({ count = -1, float = { border = vim.g.bc.style } })
+				vim.diagnostic.jump({ count = -1, float = true })
 			end, opts)
 			-- workspace config
 			map("n", "<leader>wa", lsp.add_workspace_folder, opts)
@@ -179,14 +179,12 @@ return function()
 	---@diagnostic enable: missing-fields
 
 	for server, config in pairs(servers) do
-		local common = {
+		lspconfig[server].setup(vim.tbl_extend("force", {
 			capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities),
 			handlers = {
-				["textDocument/hover"] = vim.lsp.buf.hover({ border = vim.g.bc.style }),
-				["textDocument/signatureHelp"] = vim.lsp.buf.signature_help({ border = vim.g.bc.style }),
+				["textDocument/hover"] = vim.lsp.buf.hover({ border = vim.o.winborder }),
+				["textDocument/signatureHelp"] = vim.lsp.buf.signature_help({ border = vim.o.winborder }),
 			},
-		}
-
-		lspconfig[server].setup(config == {} and {} or vim.tbl_extend("force", common, config))
+		}, config))
 	end
 end

@@ -3,7 +3,7 @@ let
   plugins = pkgs.callPackage ../pkgs/plugins { };
   inherit (pkgs) lib vimPlugins;
   inherit (lib.generators) mkLuaInline;
-  borderStyle = mkLuaInline "vim.g.bc.style";
+  borderStyle = mkLuaInline "vim.o.winborder";
 in
 {
   direnv = {
@@ -61,8 +61,10 @@ in
           mode = "topline";
         };
       };
-      nvim-treesitter-textobjects.package = vimPlugins.nvim-treesitter-textobjects;
-      nvim-ts-autotag.package = vimPlugins.nvim-ts-autotag;
+      nvim-ts-autotag = {
+        package = vimPlugins.nvim-ts-autotag;
+        config = true;
+      };
       rainbow-delimiters.package = vimPlugins.rainbow-delimiters-nvim;
       twilight-nvim.package = vimPlugins.twilight-nvim;
     };
@@ -139,10 +141,6 @@ in
       '';
   };
 
-  dressing = {
-    event = "VeryLazy";
-    package = vimPlugins.dressing-nvim;
-  };
   noice = {
     package = vimPlugins.noice-nvim;
     event = "VeryLazy";
@@ -152,15 +150,8 @@ in
         "vim.lsp.util.stylize_markdown" = true;
       };
       presets.long_message_to_split = true;
-      views.hover.border.style = mkLuaInline "vim.g.bc.style";
     };
-    dependencies = {
-      nui.package = vimPlugins.nui-nvim;
-      nvim-notify = {
-        package = vimPlugins.nvim-notify;
-        config = ./nvim-notify.lua;
-      };
-    };
+    dependencies.nui.package = vimPlugins.nui-nvim;
   };
   bufferline = {
     package = vimPlugins.bufferline-nvim;
@@ -234,37 +225,6 @@ in
     config = true;
     event = "BufRead";
   };
-  tagalong-vim = {
-    package = vimPlugins.tagalong-vim;
-    config = # lua
-      ''
-        function()
-          vim.g.tagalong_filetypes = {
-            "astro",
-            "blade",
-            "ejs",
-            "html",
-            "htmldjango",
-            "htmltera",
-            "javascriptreact",
-            "php",
-            "typescriptreact",
-            "xml",
-          }
-        end
-      '';
-    ft = [
-      "astro"
-      "blade"
-      "ejs"
-      "html"
-      "htmldjango"
-      "javascriptreact"
-      "php"
-      "typescriptreact"
-      "xml"
-    ];
-  };
   todo-comments = {
     package = vimPlugins.todo-comments-nvim;
     config = true;
@@ -283,7 +243,6 @@ in
     keys = # lua
       ''
         {
-          { "<C-a>", "<Cmd>CodeCompanionActions<CR>", mode = {"n", "v"} },
           { "<leader>a", "<Cmd>CodeCompanionChat Toggle<CR>", mode = {"n", "v"}, desc = "CodeCompanion: Toggle" },
           { "ga", "<Cmd>CodeCompanionChat Add<CR>", mode = "v", desc = "CodeCompanion: Add selection" },
         }
@@ -328,26 +287,24 @@ in
 
   vim-dadbod = {
     package = vimPlugins.vim-dadbod;
-    cmd = "DB";
-  };
-  vim-dadbod-completion = {
-    package = vimPlugins.vim-dadbod-completion;
+    dependencies = {
+      vim-dadbod-completion.package = vimPlugins.vim-dadbod-completion;
+      vim-dadbod-ui = {
+        package = vimPlugins.vim-dadbod-ui;
+        config = # lua
+          ''
+            function()
+              vim.g.db_ui_use_nerd_fonts = true
+              vim.g.db_ui_use_nvim_notify = true
+              vim.g.db_ui_win_position = "right"
+            end
+          '';
+      };
+    };
     cmd = [
       "DB"
       "DBUI"
     ];
-  };
-  vim-dadbod-ui = {
-    package = vimPlugins.vim-dadbod-ui;
-    config = # lua
-      ''
-        function()
-          vim.g.db_ui_use_nerd_fonts = true
-          vim.g.db_ui_use_nvim_notify = true
-          vim.g.db_ui_win_position = "right"
-        end
-      '';
-    cmd = "DBUI";
   };
 
   lualine = {
@@ -416,11 +373,8 @@ in
   };
   lean-nvim = {
     package = vimPlugins.lean-nvim;
-    event = [
-      "BufReadPre *.lean"
-      "BufNewFile *.lean"
-    ];
     config = ./lean.lua;
+    ft = "lean";
   };
   nvim-jdtls.package = vimPlugins.nvim-jdtls;
 
@@ -474,9 +428,7 @@ in
     package = vimPlugins.telescope-nvim;
     config = ./telescope.lua;
     dependencies = {
-      telescope-file-browser.package = vimPlugins.telescope-file-browser-nvim;
       telescope-fzf-native.package = vimPlugins.telescope-fzf-native-nvim;
-      telescope-project.package = vimPlugins.telescope-project-nvim;
     };
     cmd = "Telescope";
     keys = # lua
@@ -485,7 +437,6 @@ in
           { "<leader>fd", "<Cmd>Telescope find_files<CR>", desc = "Find Files" },
           { "<leader>fg", "<Cmd>Telescope live_grep<CR>", desc = "Live Grep" },
           { "<leader>fh", "<Cmd>Telescope help_tags<CR>", desc = "Help Tags" },
-          { "<leader>fp", "<Cmd>Telescope project<CR>", desc = "Project" },
         }
       '';
   };
@@ -540,11 +491,16 @@ in
     cmd = "WinShift";
   };
 
+  snacks = {
+    package = vimPlugins.snacks-nvim;
+    config = ./snacks.lua;
+  };
   zen-mode = {
     package = vimPlugins.zen-mode-nvim;
     config.plugins = {
       options.laststatus = 0;
-      wezterm.enabled = true;
+      neovide.enabled = true;
+      wezterm.enabled = mkLuaInline "vim.fn.environ().TERM_PROGRAM == 'WezTerm'";
     };
     cmd = "ZenMode";
   };

@@ -14,7 +14,8 @@ return function()
 					filetype = "NvimTree",
 					text = "   neovim " .. vStr,
 					text_align = "left",
-					separator = vim.g.bc.vert,
+					-- FIXME: change this depending to vim.o.winborder
+					separator = "│",
 				},
 			},
 			left_mouse_command = "buffer %d",

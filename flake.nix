@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:NixOS/nixpkgs";
     flake-parts.url = "github:hercules-ci/flake-parts";
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
@@ -24,10 +25,6 @@
         example.follows = "";
       };
     };
-    nvim-treesitter-nix = {
-      url = "github:nekowinston/nvim-treesitter-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     git-hooks.url = "github:cachix/git-hooks.nix";
   };
 
@@ -47,10 +44,11 @@
       ];
       perSystem =
         {
-          self',
           config,
+          inputs',
           lib,
           pkgs,
+          self',
           system,
           ...
         }:
@@ -59,9 +57,11 @@
             inherit system;
             config.allowUnfree = true;
             overlays = [
-              inputs.neovim-nightly-overlay.overlays.default
-              inputs.nvim-treesitter-nix.overlays.default
+              (final: prev: {
+                inherit (inputs'.nixpkgs-master.legacyPackages) vimPlugins;
+              })
               (import ./pkgs/overlays.nix)
+              inputs.neovim-nightly-overlay.overlays.default
             ];
           };
 

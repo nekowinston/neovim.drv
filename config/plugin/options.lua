@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-
 -- execute .nvim.lua, .nvimrc, and .exrc files in directories
 vim.o.exrc = true
 

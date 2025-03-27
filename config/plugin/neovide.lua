@@ -15,7 +15,7 @@ map("n", "<M-CR>", function()
 end)
 
 vim.g.neovide_scale_factor = 1.0
-if vim.g.bc.style == "rounded" then
+if vim.o.winborder == "rounded" then
 	vim.g.neovide_floating_corner_radius = 0.5
 end
 

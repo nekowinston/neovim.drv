@@ -39,15 +39,15 @@
   };
   venv-selector-nvim = {
     pname = "venv-selector-nvim";
-    version = "e82594274bf7b54387f9a2abe65f74909ac66e97";
+    version = "c677caa1030808a9f90092e522de7cc20c1390dd";
     src = fetchFromGitHub {
       owner = "linux-cultist";
       repo = "venv-selector.nvim";
-      rev = "e82594274bf7b54387f9a2abe65f74909ac66e97";
+      rev = "c677caa1030808a9f90092e522de7cc20c1390dd";
       fetchSubmodules = false;
-      sha256 = "sha256-AyxITaKoeM+l+RbFp2UWy0zVrxrIxy8S/oDJsEr/VDQ=";
+      sha256 = "sha256-ogd4T+mIbb86qFUbDczzDra8yWm/bwKmYCRGYCJz6fM=";
     };
-    date = "2024-09-15";
+    date = "2025-03-22";
   };
   vim-applescript = {
     pname = "vim-applescript";
