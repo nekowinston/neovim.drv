@@ -10,10 +10,6 @@ return function()
 			multi_icon = "│",
 		},
 		extensions = {
-			file_browser = {
-				grouped = true,
-				sorting_strategy = "ascending",
-			},
 			fzf = {
 				fuzzy = true,
 				override_generic_sorter = true,
@@ -21,5 +17,19 @@ return function()
 				case_mode = "smart_case",
 			},
 		},
+	})
+
+	-- hotfix workaround for https://github.com/nvim-telescope/telescope.nvim/issues/3436
+	vim.api.nvim_create_autocmd("User", {
+		pattern = "TelescopeFindPre",
+		callback = function()
+			vim.opt_local.winborder = "none"
+			vim.api.nvim_create_autocmd("WinLeave", {
+				once = true,
+				callback = function()
+					vim.opt_local.winborder = vim.o.winborder
+				end,
+			})
+		end,
 	})
 end
