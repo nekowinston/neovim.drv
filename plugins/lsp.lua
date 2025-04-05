@@ -87,7 +87,57 @@ return function()
 				"typescriptreact",
 			},
 		},
-		gopls = {},
+		gopls = {
+			on_attach = function(client)
+				if not client.server_capabilities.semanticTokensProvider then
+					local semantic = client.config.capabilities.textDocument.semanticTokens
+					if not semantic then
+						return vim.notify("patching gopls semantic highlighting failed", vim.log.levels.ERROR)
+					end
+
+					client.server_capabilities.semanticTokensProvider = {
+						full = true,
+						legend = { tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes },
+						range = true,
+					}
+				end
+			end,
+			settings = {
+				gopls = {
+					analyses = {
+						nilness = true,
+						unusedparams = true,
+						unusedwrite = true,
+						useany = true,
+					},
+					codelenses = {
+						gc_details = false,
+						generate = true,
+						regenerate_cgo = true,
+						test = true,
+						tidy = true,
+						upgrade_dependency = true,
+						vendor = true,
+						vulncheck = true,
+					},
+					completeUnimported = true,
+					directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+					gofumpt = true,
+					hints = {
+						assignVariableTypes = true,
+						compositeLiteralFields = true,
+						compositeLiteralTypes = true,
+						constantValues = true,
+						functionTypeParameters = true,
+						parameterNames = true,
+						rangeVariableTypes = true,
+					},
+					semanticTokens = true,
+					staticcheck = true,
+					usePlaceholders = true,
+				},
+			},
+		},
 		graphql = {
 			filetypes = {
 				"graphql",
@@ -131,7 +181,9 @@ return function()
 		lua_ls = {},
 		nixd = {},
 		nushell = {},
-		phpactor = {},
+		phpactor = {
+			filetypes = { "blade", "php" },
+		},
 		purescriptls = {
 			flags = {
 				debounce_text_changes = 150,

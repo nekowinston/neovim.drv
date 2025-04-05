@@ -57,9 +57,7 @@
             inherit system;
             config.allowUnfree = true;
             overlays = [
-              (final: prev: {
-                inherit (inputs'.nixpkgs-master.legacyPackages) vimPlugins neovim-unwrapped;
-              })
+              (final: prev: { inherit (inputs'.nixpkgs-master.legacyPackages) vimPlugins; })
               (import ./pkgs/overlays.nix)
               # inputs.neovim-nightly-overlay.overlays.default
             ];
@@ -86,8 +84,6 @@
 
           formatter = pkgs.nixfmt-rfc-style;
 
-          legacyPackages = pkgs;
-
           packages =
             let
               neovim = config.neovim.final;
@@ -99,7 +95,7 @@
                 env = {
                   NEOVIDE_FRAME = "none";
                   NEOVIDE_MULTIGRID = "1";
-                  NEOVIM_BIN = lib.getExe pkgs.neovim;
+                  NEOVIM_BIN = lib.getExe neovim;
                 };
               };
               docker = pkgs.dockerTools.buildImage {

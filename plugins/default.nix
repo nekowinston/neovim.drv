@@ -144,7 +144,10 @@ in
         "vim.lsp.util.convert_input_to_markdown_lines" = true;
         "vim.lsp.util.stylize_markdown" = true;
       };
-      presets.long_message_to_split = true;
+      presets = {
+        long_message_to_split = true;
+        lsp_doc_border = true;
+      };
     };
     dependencies.nui.package = vimPlugins.nui-nvim;
   };
@@ -472,6 +475,7 @@ in
           { "<leader>fd", "<Cmd>Telescope find_files<CR>", desc = "Find Files" },
           { "<leader>fg", "<Cmd>Telescope live_grep<CR>", desc = "Live Grep" },
           { "<leader>fh", "<Cmd>Telescope help_tags<CR>", desc = "Help Tags" },
+          { "<leader>fr", "<Cmd>Telescope resume<CR>", desc = "Resume last picker" },
         }
       '';
   };
